@@ -1,0 +1,63 @@
+/* ─────────────────────────────────────────────────
+   index.css  — minimal base reset
+   The component (NKsStudySync) injects its own
+   scoped styles via a <style> tag, so keep this
+   file as lean as possible to avoid conflicts.
+───────────────────────────────────────────────── */
+
+/* 1. Border-box everywhere */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove browser default margin/padding */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* 3. Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 4. Root element fills viewport */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* 5. No horizontal overflow at page level */
+body {
+  overflow-x: hidden;
+}
+
+/* 6. Prevent image overflow */
+img, video, svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* 7. Remove list styling globally (component re-adds where needed) */
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 8. Remove button / input browser defaults */
+button, input, textarea, select {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+  appearance: none;
+}
+
+/* 9. Anchor reset */
+a {
+  color: inherit;
+  text-decoration: none;
+}
