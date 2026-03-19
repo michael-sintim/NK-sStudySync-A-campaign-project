@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { supabase } from "./supabaseClient";
 
 const THEME = {
   amber: "#F5A300",
@@ -176,12 +177,12 @@ const styles = `
     border-radius: 100px; margin-bottom: 2rem;
     border: 2px solid var(--red);
     box-shadow: 4px 4px 0 var(--red);
-    }
-    .hero-title {
-      font-size: clamp(4rem, 9vw, 6rem);
-      font-weight: 700; line-height: 0.95; color: var(--black);
-      margin-bottom: 1.5rem; text-shadow: 4px 4px 0 rgba(0,0,0,0.1);
-    }
+  }
+  .hero-title {
+    font-size: clamp(4rem, 9vw, 6rem);
+    font-weight: 700; line-height: 0.95; color: var(--black);
+    margin-bottom: 1.5rem; text-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+  }
   .hero-title .red { color: var(--red); }
   .hero-sub {
     font-size: 1.4rem; color: var(--black-soft); line-height: 1.8;
@@ -220,7 +221,6 @@ const styles = `
     border-top: 4px solid var(--black);
     border-bottom: 4px solid var(--black);
   }
-  /* FIX 1: Added missing semicolon after background value */
   .section-amber-deep {
     width: 100%;
     background: #FFD700;
@@ -234,28 +234,18 @@ const styles = `
     border-bottom: 4px solid var(--black);
   }
   .section-red .section-inner {
-    max-width: 1400px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 100px 2%;
+    max-width: 1400px; width: 100%; margin: 0 auto; padding: 100px 2%;
   }
   .section-red .logo-strip {
-    overflow: hidden;
-    border-top: 3px solid rgba(255,255,255,0.3);
-    padding-top: 2rem;
-    width: 100%;
+    overflow: hidden; border-top: 3px solid rgba(255,255,255,0.3);
+    padding-top: 2rem; width: 100%;
   }
   .section-red .logo-pill {
-    background: rgba(255,255,255,0.15);
-    color: var(--white);
+    background: rgba(255,255,255,0.15); color: var(--white);
     border: 2px solid rgba(255,255,255,0.4);
-    padding: 0.8rem 2rem;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
+    padding: 0.8rem 2rem; font-family: 'Oswald', sans-serif;
+    font-size: 1rem; font-weight: 600; letter-spacing: 0.05em;
+    white-space: nowrap; box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
   }
   .section-black {
     width: 100%;
@@ -263,7 +253,6 @@ const styles = `
     border-top: 4px solid var(--amber);
     border-bottom: 4px solid var(--amber);
   }
-  /* FIX 2: Restored join-section background properly */
   .join-section {
     width: 100%;
     background: #F5A300;
@@ -271,12 +260,7 @@ const styles = `
     border-bottom: 5px solid var(--black);
   }
 
-  .section-inner {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 100px 5%;
-  }
+  .section-inner { max-width: 1200px; width: 100%; margin: 0 auto; padding: 100px 5%; }
 
   .section-tag {
     display: inline-block; background: var(--black); color: var(--amber);
@@ -301,24 +285,16 @@ const styles = `
   .pull-quote .red { color: var(--red); }
 
   .mission-grid, .features-grid, .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    width: 100%;
-    margin-top: 3rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; width: 100%; margin-top: 3rem;
   }
   .mission-card, .feature-card, .testimonial-card {
-    background: var(--amber-light);
-    border: 3px solid var(--black);
-    border-radius: 20px;
-    padding: 2.5rem;
-    box-shadow: 8px 8px 0 var(--black);
-    transition: var(--ease);
-    width: 100%;
+    background: var(--amber-light); border: 3px solid var(--black);
+    border-radius: 20px; padding: 2.5rem;
+    box-shadow: 8px 8px 0 var(--black); transition: var(--ease); width: 100%;
   }
   .mission-card:hover, .feature-card:hover, .testimonial-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 12px 12px 0 var(--black);
+    transform: translateY(-8px); box-shadow: 12px 12px 0 var(--black);
   }
   .mission-icon, .feature-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
   .mission-card h3, .feature-card h3 { font-size: 1.5rem; color: var(--red); margin-bottom: 0.75rem; }
@@ -333,7 +309,7 @@ const styles = `
     box-shadow: 6px 6px 0 var(--black); transition: var(--ease); width: 100%;
   }
   .stat-card:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--black); }
-  .stat-number { font-family: 'Oswald', sans-serif; font-size: 3rem; font-weight: 700; color: var(--white); display: block; line-height: 1; }
+  .stat-number { font-family: 'Oswald', sans-serif; font-size: 3rem; font-weight: 700; color: white; display: block; line-height: 1; }
   .stat-label { font-size: 0.85rem; color: var(--black); margin-top: 0.5rem; line-height: 1.4; font-weight: 700; }
   .problem-text { width: 100%; }
   .problem-text h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--amber); margin-bottom: 1.5rem; }
@@ -341,8 +317,7 @@ const styles = `
 
   /* ===== IMPACT ===== */
   .impact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem; margin-bottom: 4rem; width: 100%;
   }
   .impact-stat {
@@ -392,42 +367,51 @@ const styles = `
 
   /* ===== JOIN ===== */
   .join-section .section-inner { text-align: center; }
-  .signup-form { display: flex; max-width: 550px; width: 100%; margin: 0 auto 2rem; }
+  .signup-form { display: flex; max-width: 380px; width: 100%; margin: 0 auto 1rem; }
   .signup-form input {
-    flex: 1; padding: 1.2rem 1.5rem;
-    background: white; border: 3px solid var(--black); border-right: none;
+    flex: 1; padding: 0.6rem 1rem;
+    background: white; border: 2px solid var(--black); border-right: none;
     color: var(--black); font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem; font-weight: 700;
-    outline: none; border-radius: 12px 0 0 12px;
+    font-size: 0.88rem; font-weight: 700;
+    outline: none; border-radius: 8px 0 0 8px;
   }
+  .signup-form input::placeholder { color: rgba(0,0,0,0.4); }
   .signup-form button {
     background: var(--black); color: var(--amber);
-    border: 3px solid var(--black); padding: 1.2rem 2rem;
-    font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 700;
-    letter-spacing: 0.05em; cursor: pointer; border-radius: 0 12px 12px 0;
-    transition: background 0.2s;
-    }
-    .signup-form button:hover { background: var(--amber); color:black}
-    .signup-form input::placeholder { color: rgba(0,0,0,0.4); }
+    border: 2px solid var(--black); padding: 0.6rem 1.2rem;
+    font-family: 'Oswald', sans-serif; font-size: 0.88rem; font-weight: 700;
+    letter-spacing: 0.05em; cursor: pointer; border-radius: 0 8px 8px 0;
+    transition: background 0.2s, color 0.2s;
+  }
+  .signup-form button:hover { background: var(--amber-light); color: var(--black); }
+  .signup-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+  .signup-form input:disabled { opacity: 0.6; }
+  .signup-msg-success {
+    font-family: 'Oswald', sans-serif; font-weight: 700;
+    font-size: 0.95rem; color: var(--black);
+    margin-bottom: 1rem; display: block;
+  }
+  .signup-msg-error {
+    font-family: 'Oswald', sans-serif; font-weight: 700;
+    font-size: 0.88rem; color: var(--red-dark);
+    margin-bottom: 1rem; display: block;
+  }
 
-  /* FIX 4: Added missing ss-socials and ss-soc-lbl classes */
+  /* ===== SOCIALS ===== */
   .ss-socials {
     display: flex; align-items: center; justify-content: center;
     gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; width: 100%;
   }
   .ss-soc-lbl {
-    font-weight: 800; font-size: 0.85rem; color: var(--black);
-    margin-right: 0.5rem;
+    font-weight: 800; font-size: 0.85rem; color: var(--black); margin-right: 0.5rem;
   }
   .ss-soc-btn {
     display: inline-flex; align-items: center; gap: 8px;
-    background: transparent;
-    color: black;
+    background: transparent; color: black;
     border: 2px solid black;
-    padding: 0.5rem 1.1rem; cursor: pointer; border-radius: 6px;
-    margin: 4px;
+    padding: 0.5rem 1.1rem; cursor: pointer; border-radius: 6px; margin: 4px;
     font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 700;
-    letter-spacing: 0.06em; transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+    letter-spacing: 0.06em; transition: transform 0.18s, box-shadow 0.18s;
   }
   .ss-soc-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
   .ss-soc-btn svg { flex-shrink: 0; }
@@ -444,19 +428,14 @@ const styles = `
   .footer-links a:hover { color: var(--amber); }
   .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; width: 100%; }
   .footer-copy { color: rgba(255,255,255,0.25); font-size: 0.85rem; }
-  .footer-socials { display: flex; gap: 0.75rem; }
+  .footer-socials { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   .footer-social-icon {
-    width: 36px; height: 36px;
-    background: rgba(255,255,255,0.08);
-    border: 2px solid rgba(255,255,255,0.15);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(255,255,255,0.5);
-    font-size: 1rem;
-    text-decoration: none;
-    transition: all 0.2s;
+    height: 36px; background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.15); border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: all 0.2s; flex-shrink: 0;
   }
-  .footer-social-icon:hover { background: var(--amber); color: var(--black); border-color: var(--amber); }
+  .footer-social-icon:hover { opacity: 0.85; transform: translateY(-2px); }
 
   /* ===== REVEAL ANIMATIONS ===== */
   .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; width: 100%; }
@@ -475,8 +454,8 @@ const styles = `
   }
   @media (max-width: 600px) {
     .signup-form { flex-direction: column; }
-    .signup-form input { border-right: 3px solid var(--black); border-bottom: none; border-radius: 12px 12px 0 0; }
-    .signup-form button { border-radius: 0 0 12px 12px; }
+    .signup-form input { border-right: 2px solid var(--black); border-bottom: none; border-radius: 8px 8px 0 0; }
+    .signup-form button { border-radius: 0 0 8px 8px; }
     .pull-quote { font-size: 1.8rem; }
     .hero-title { font-size: 3rem; }
     .section-inner { padding: 60px 1.5rem; }
@@ -503,7 +482,6 @@ function useScrollReveal() {
   return ref;
 }
 
-/* FIX 3: Corrected useCountUp — format is now properly used in both StatCard and ImpactStat */
 function useCountUp(target, format, suffix, active) {
   const [val, setVal] = useState(0);
   useEffect(() => {
@@ -577,30 +555,25 @@ function RevealSection({ children, className = "", delay = "" }) {
     </div>
   );
 }
+
 const schools = [
-  "Aerospace Engineering",
-  "Agricultural Engineering",
-  "Biomedical Engineering",
-  "Chemical Engineering",
-  "Civil Engineering",
-  "Computer Engineering",
-  "Electrical/Electronic Engineering",
-  "Geological Engineering",
-  "Geomatic Engineering",
-  "Industrial Engineering",
-  "Materials Engineering",
-  "Mechanical Engineering",
-  "Metallurgical Engineering",
-  "Petroleum Engineering",
-  "Petrochemical Engineering",
+  "Aerospace Engineering","Agricultural Engineering","Biomedical Engineering",
+  "Chemical Engineering","Civil Engineering","Computer Engineering",
+  "Electrical/Electronic Engineering","Geological Engineering","Geomatic Engineering",
+  "Industrial Engineering","Materials Engineering","Mechanical Engineering",
+  "Metallurgical Engineering","Petroleum Engineering","Petrochemical Engineering",
   "Telecommunication Engineering"
 ];
 
 /* ===== MAIN COMPONENT ===== */
 export default function NKsStudySync() {
-  const [scrolled, setScrolled] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [heroWords, setHeroWords] = useState([]);
+  const [scrolled,    setScrolled]    = useState(false);
+  const [drawerOpen,  setDrawerOpen]  = useState(false);
+  const [heroWords,   setHeroWords]   = useState([]);
+  const [email,       setEmail]       = useState("");
+  const [submitted,   setSubmitted]   = useState(false);
+  const [signupError, setSignupError] = useState("");
+  const [loading,     setLoading]     = useState(false);
 
   useEffect(() => {
     const style = document.createElement("style");
@@ -608,23 +581,20 @@ export default function NKsStudySync() {
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
   }, []);
-  
-// BROKEN — appends on every render
-// FIXED — resets first, prevents duplicates
-useEffect(() => {
-  setHeroWords([]);
-  const words = ["The", "Study", "Revolution", "Starts", "With", "Us"];
-  const timers = words.map((w, i) =>
-    setTimeout(
-      () => setHeroWords((prev) => {
-        if (prev.find(p => p.word === w)) return prev; // guard against duplicates
-        return [...prev, { word: w, red: i === 2 || i === 3 }];
-      }),
-      300 + i * 150
-    )
-  );
-  return () => timers.forEach(clearTimeout); // cleanup on unmount
-}, []);
+
+  useEffect(() => {
+    setHeroWords([]);
+    const words = ["The", "Study", "Revolution", "Starts", "With", "Us"];
+    const timers = words.map((w, i) =>
+      setTimeout(() => {
+        setHeroWords((prev) => {
+          if (prev.find(p => p.word === w)) return prev;
+          return [...prev, { word: w, red: i === 2 || i === 3 }];
+        });
+      }, 300 + i * 150)
+    );
+    return () => timers.forEach(clearTimeout);
+  }, []);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60);
@@ -635,6 +605,29 @@ useEffect(() => {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setDrawerOpen(false);
+  };
+
+  const handleSignup = async () => {
+    if (!email || !email.includes("@")) {
+      setSignupError("Please enter a valid email address.");
+      return;
+    }
+    setLoading(true);
+    setSignupError("");
+    const { error } = await supabase
+      .from("email_signups")
+      .insert([{ email }]);
+    if (error) {
+      if (error.code === "23505") {
+        setSignupError("This email is already registered!");
+      } else {
+        setSignupError("Something went wrong. Please try again.");
+      }
+    } else {
+      setSubmitted(true);
+      setEmail("");
+    }
+    setLoading(false);
   };
 
   return (
@@ -819,10 +812,10 @@ useEffect(() => {
             <p className="section-sub-white">Real results from real students. No spin, no cherry-picking.</p>
           </RevealSection>
           <div className="impact-grid">
-            <ImpactStat target={300}   suffix="+" format="short"   label="Students Already Using NK's StudySync" />
-            <ImpactStat target={89}      suffix="%" format=""        label="Report Better Grades Within 4 Weeks" />
-            <ImpactStat target={80} suffix=""  format="millions" label="Study Sessions Completed" />
-            <ImpactStat target={100}      suffix="%" format=""        label="Would Recommend to a Classmate" />
+            <ImpactStat target={300}  suffix="+" format="short"    label="Students Already Using NK's StudySync" />
+            <ImpactStat target={89}   suffix="%" format=""         label="Report Better Grades Within 4 Weeks" />
+            <ImpactStat target={80}   suffix=""  format="millions" label="Study Sessions Completed" />
+            <ImpactStat target={100}  suffix="%" format=""         label="Would Recommend to a Classmate" />
           </div>
           <RevealSection>
             <div className="logo-strip">
@@ -852,9 +845,9 @@ useEffect(() => {
           </RevealSection>
           <div className="testimonials-grid">
             {[
-              { initials:"JK", name:"Jordan K.", school:"Level 300 · Geomatic Engineering", quote:"The study rooms are incredible. My group went from scattered WhatsApp chats to focused, productive sessions. Our group assignment marks went up across the board.", delay:"d2" },
+              { initials:"JK", name:"Jordan K.",  school:"Level 300 · Geomatic Engineering",   quote:"The study rooms are incredible. My group went from scattered WhatsApp chats to focused, productive sessions. Our group assignment marks went up across the board.", delay:"d1" },
               { initials:"MS", name:"Michael S.", school:"First Year · Materials Engineering", quote:"The study rooms are incredible. My group went from scattered WhatsApp chats to focused, productive sessions. Our group assignment marks went up across the board.", delay:"d2" },
-              { initials:"PM", name:"Priya M.",  school:"Level 200 · Electrical Engineering",     quote:"The AI tutor actually explains things in a way that makes sense for how I think. It's like having a personal tutor available at 2am before an exam.", delay:"d3" },
+              { initials:"PM", name:"Priya M.",   school:"Level 200 · Electrical Engineering", quote:"The AI tutor actually explains things in a way that makes sense for how I think. It's like having a personal tutor available at 2am before an exam.", delay:"d3" },
             ].map((t) => (
               <RevealSection key={t.name} className={t.delay}>
                 <div className="testimonial-card">
@@ -925,64 +918,78 @@ useEffect(() => {
               and join 500 students changing how we learn.
             </p>
           </RevealSection>
+
           <RevealSection className="d1">
-            <div className="signup-form">
-              <input type="email" placeholder="Enter your student email..." />
-              <button>Join Now →</button>
-            </div><div className="ss-socials">
-  <span className="ss-soc-lbl">Spread the word:</span>
+            {submitted && (
+              <span className="signup-msg-success">✅ You're in! Welcome to the movement.</span>
+            )}
+            {signupError && (
+              <span className="signup-msg-error">⚠️ {signupError}</span>
+            )}
+            {!submitted && (
+              <div className="signup-form">
+                <input
+                  type="email"
+                  placeholder="Enter your student email..."
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSignup()}
+                  disabled={loading}
+                />
+                <button onClick={handleSignup} disabled={loading}>
+                  {loading ? "Joining..." : "Join Now →"}
+                </button>
+              </div>
+            )}
 
-  {/* X / Twitter — #000000 */}
-  <button className="ss-soc-btn">
-    <span style={{ background:"#000000", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-      </svg>
-    </span>
-    Twitter
-  </button>
+            <div className="ss-socials">
+              <span className="ss-soc-lbl">Spread the word:</span>
 
-  {/* Instagram — gradient */}
-  <button className="ss-soc-btn">
-    <span style={{ background:"linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-      </svg>
-    </span>
-    Instagram
-  </button>
+              <button className="ss-soc-btn">
+                <span style={{ background:"#000000", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </span>
+                Twitter
+              </button>
 
-  {/* WhatsApp — #25D366 */}
-  <button className="ss-soc-btn">
-    <span style={{ background:"#25D366", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-      </svg>
-    </span>
-    WhatsApp
-  </button>
+              <button className="ss-soc-btn">
+                <span style={{ background:"linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                  </svg>
+                </span>
+                Instagram
+              </button>
 
-  {/* TikTok — #010101 */}
-  <button className="ss-soc-btn">
-    <span style={{ background:"#010101", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
-      </svg>
-    </span>
-    TikTok
-  </button>
+              <button className="ss-soc-btn">
+                <span style={{ background:"#25D366", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+                  </svg>
+                </span>
+                WhatsApp
+              </button>
 
-  {/* YouTube — #FF0000 */}
-  <button className="ss-soc-btn">
-    <span style={{ background:"#FF0000", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-      </svg>
-    </span>
-    YouTube
-  </button>
+              <button className="ss-soc-btn">
+                <span style={{ background:"#010101", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+                  </svg>
+                </span>
+                TikTok
+              </button>
 
-</div>
+              <button className="ss-soc-btn">
+                <span style={{ background:"#FF0000", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </span>
+                YouTube
+              </button>
+            </div>
           </RevealSection>
         </div>
       </section>
@@ -1006,21 +1013,47 @@ useEffect(() => {
           <div className="footer-bottom">
             <span className="footer-copy">© 2025 Nk's StudySync. All rights reserved.</span>
             <div className="footer-socials">
-              <a href="#" className="footer-social-icon" aria-label="YouTube">
-                <i className="fab fa-youtube"></i>
+
+              <a href="#" className="footer-social-icon" aria-label="YouTube"
+                style={{ background:"#FF0000", borderColor:"#FF0000", width:"auto", padding:"0 10px", gap:"6px" }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                <span style={{ fontSize:"0.72rem", fontFamily:"Oswald,sans-serif", fontWeight:700, color:"white" }}>YouTube</span>
               </a>
-              <a href="#" className="footer-social-icon" aria-label="Telegram">
-                <i className="fab fa-telegram-plane"></i>
+
+              <a href="#" className="footer-social-icon" aria-label="Telegram"
+                style={{ background:"#26A5E4", borderColor:"#26A5E4", width:"auto", padding:"0 10px", gap:"6px" }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+                <span style={{ fontSize:"0.72rem", fontFamily:"Oswald,sans-serif", fontWeight:700, color:"white" }}>Telegram</span>
               </a>
-              <a href="#" className="footer-social-icon" aria-label="TikTok">
-                <i className="fab fa-tiktok"></i>
+
+              <a href="#" className="footer-social-icon" aria-label="TikTok"
+                style={{ background:"#010101", borderColor:"#333", width:"auto", padding:"0 10px", gap:"6px" }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+                </svg>
+                <span style={{ fontSize:"0.72rem", fontFamily:"Oswald,sans-serif", fontWeight:700, color:"white" }}>TikTok</span>
               </a>
-              <a href="#" className="footer-social-icon" aria-label="X (Twitter)">
-                <i className="fab fa-x-twitter"></i>
+
+              <a href="#" className="footer-social-icon" aria-label="X (Twitter)"
+                style={{ background:"#000000", borderColor:"#333", width:"auto", padding:"0 10px", gap:"6px" }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                <span style={{ fontSize:"0.72rem", fontFamily:"Oswald,sans-serif", fontWeight:700, color:"white" }}>Twitter</span>
               </a>
-              <a href="#" className="footer-social-icon" aria-label="Instagram">
-                <i className="fab fa-instagram"></i>
+
+              <a href="#" className="footer-social-icon" aria-label="Instagram"
+                style={{ background:"linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)", borderColor:"#dc2743", width:"auto", padding:"0 10px", gap:"6px" }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                </svg>
+                <span style={{ fontSize:"0.72rem", fontFamily:"Oswald,sans-serif", fontWeight:700, color:"white" }}>Instagram</span>
               </a>
+
             </div>
           </div>
         </div>
