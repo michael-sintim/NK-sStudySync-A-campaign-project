@@ -243,7 +243,7 @@ const styles = `
   .section-red .logo-pill {
     background: rgba(255,255,255,0.15); color: var(--white);
     border: 2px solid rgba(255,255,255,0.4);
-    padding: 0.8rem 2rem; font-family: 'Oswald', sans-serif;
+    padding: 0.8rem 2rem; font-family: 'Poppins', sans-serif;
     font-size: 1rem; font-weight: 600; letter-spacing: 0.05em;
     white-space: nowrap; box-shadow: 4px 4px 0 rgba(0,0,0,0.25);
   }
@@ -330,6 +330,7 @@ const styles = `
   .impact-label { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 0.5rem; font-weight: 700; line-height: 1.4; }
   .logo-strip { overflow: hidden; border-top: 3px solid rgba(255,255,255,0.3); padding-top: 2rem; width: 100%; }
   .logo-strip-track { display: flex; gap: 2rem; animation: scrollLogos 25s linear infinite; width: max-content; }
+  
   @keyframes scrollLogos { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .logo-pill {
     background: rgba(255,255,255,0.15); color: var(--white);
@@ -410,8 +411,8 @@ const styles = `
     background: transparent; color: black;
     border: 2px solid black;
     padding: 0.5rem 1.1rem; cursor: pointer; border-radius: 6px; margin: 4px;
-    font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 700;
-    letter-spacing: 0.06em; transition: transform 0.18s, box-shadow 0.18s;
+    font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.00em; transition: transform 0.18s, box-shadow 0.18s;
   }
   .ss-soc-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
   .ss-soc-btn svg { flex-shrink: 0; }
@@ -430,13 +431,18 @@ const styles = `
   .footer-copy { color: rgba(255,255,255,0.25); font-size: 0.85rem; }
   .footer-socials { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   .footer-social-icon {
-    height: 36px; background: rgba(255,255,255,0.08);
-    border: 2px solid rgba(255,255,255,0.15); border-radius: 8px;
-    display: inline-flex; align-items: center; justify-content: center;
-    text-decoration: none; transition: all 0.2s; flex-shrink: 0;
-  }
-  .footer-social-icon:hover { opacity: 0.85; transform: translateY(-2px); }
-
+  width: 38px; height: 38px;
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.15); border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none; transition: all 0.2s; flex-shrink: 0;
+}
+.footer-social-icon:hover {
+  background: var(--amber-light);
+  border-color: var(--amber-light);
+  transform: translateY(-2px);
+}
+.footer-social-icon:hover svg { fill: var(--black); }
   /* ===== REVEAL ANIMATIONS ===== */
   .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; width: 100%; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -633,6 +639,7 @@ export default function NKsStudySync() {
   return (
     <>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"></link>
 
       {/* NAV */}
       <nav className={`nav${scrolled ? " scrolled" : ""}`}>
@@ -1014,48 +1021,37 @@ export default function NKsStudySync() {
             <span className="footer-copy">© 2025 Nk's StudySync. All rights reserved.</span>
             <div className="footer-socials">
 
-              <a href="#" className="footer-social-icon" aria-label="YouTube"
-                style={{ background:"#FF0000", borderColor:"#FF0000", width:"auto", padding:"0 10px", gap:"6px" }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                <span style={{ fontSize:"0.72rem", fontFamily:"Oswald,sans-serif", fontWeight:700, color:"white" }}>YouTube</span>
-              </a>
+  <a href="#" className="footer-social-icon" aria-label="YouTube">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </svg>
+  </a>
 
-              <a href="#" className="footer-social-icon" aria-label="Telegram"
-                style={{ background:"#26A5E4", borderColor:"#26A5E4", width:"auto", padding:"0 10px", gap:"6px" }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                </svg>
-                <span style={{ fontSize:"0.72rem", fontFamily:"Oswald,sans-serif", fontWeight:700, color:"white" }}>Telegram</span>
-              </a>
+  <a href="#" className="footer-social-icon" aria-label="Telegram">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+    </svg>
+  </a>
 
-              <a href="#" className="footer-social-icon" aria-label="TikTok"
-                style={{ background:"#010101", borderColor:"#333", width:"auto", padding:"0 10px", gap:"6px" }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
-                </svg>
-                <span style={{ fontSize:"0.72rem", fontFamily:"Oswald,sans-serif", fontWeight:700, color:"white" }}>TikTok</span>
-              </a>
+  <a href="#" className="footer-social-icon" aria-label="TikTok">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+    </svg>
+  </a>
 
-              <a href="#" className="footer-social-icon" aria-label="X (Twitter)"
-                style={{ background:"#000000", borderColor:"#333", width:"auto", padding:"0 10px", gap:"6px" }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-                <span style={{ fontSize:"0.72rem", fontFamily:"Oswald,sans-serif", fontWeight:700, color:"white" }}>Twitter</span>
-              </a>
+  <a href="#" className="footer-social-icon" aria-label="X (Twitter)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </svg>
+  </a>
 
-              <a href="#" className="footer-social-icon" aria-label="Instagram"
-                style={{ background:"linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)", borderColor:"#dc2743", width:"auto", padding:"0 10px", gap:"6px" }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-                </svg>
-                <span style={{ fontSize:"0.72rem", fontFamily:"Oswald,sans-serif", fontWeight:700, color:"white" }}>Instagram</span>
-              </a>
+  <a href="#" className="footer-social-icon" aria-label="Instagram">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+    </svg>
+  </a>
 
-            </div>
-          </div>
+</div></div>
         </div>
       </footer>
     </>
