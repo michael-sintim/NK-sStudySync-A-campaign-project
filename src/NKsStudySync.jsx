@@ -895,8 +895,8 @@ export default function NKsStudySync() {
           </RevealSection>
           <div className="testimonials-grid">
             {[
-              { initials:"JK", name:"Jordan K.",  school:"Level 300 · Geomatic Engineering",   quote:"The study rooms are incredible. My group went from scattered WhatsApp chats to focused, productive sessions. Our group assignment marks went up across the board.", delay:"d1" },
-              { initials:"MS", name:"Michael S.", school:"First Year · Materials Engineering", quote:"The study rooms are incredible. My group went from scattered WhatsApp chats to focused, productive sessions. Our group assignment marks went up across the board.", delay:"d2" },
+              { initials:"JK", name:"Jordan K.",  school:"Level 300 · Geomatic Engineering",   quote:"I used to pull all-nighters before every exam and still blank out in the hall. StudySync spread my revision across three weeks. I walked into my Fluid Mechanics paper actually feeling ready.", delay:"d1" },
+              { initials:"MS", name:"Michael S.", school:"First Year · Materials Engineering", quote:"Thermodynamics almost ended my engineering dream. I was failing every quiz until NK's weekend tutorials broke it down in a way no lecturer ever did. Passed with a B+ in end of sem", delay:"d2" },
               { initials:"PM", name:"Priya M.",   school:"Level 200 · Electrical Engineering", quote:"The AI tutor actually explains things in a way that makes sense for how I think. It's like having a personal tutor available at 2am before an exam.", delay:"d3" },
             ].map((t) => (
               <RevealSection key={t.name} className={t.delay}>
