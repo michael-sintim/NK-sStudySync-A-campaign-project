@@ -295,8 +295,19 @@ const styles = `
   }
   .mission-card:hover, .feature-card:hover, .testimonial-card:hover {
     transform: translateY(-8px); box-shadow: 12px 12px 0 var(--black);
-  }
-  .mission-icon, .feature-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+  }.mission-icon {
+  width: 56px; height: 56px;
+  background: rgba(211,47,47,0.08);
+  border: 2px solid rgba(211,47,47,0.15);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: var(--ease);
+}
+.mission-card:hover .mission-icon {
+  background: rgba(211,47,47,0.15);
+  border-color: var(--red);
+}
   .mission-card h3, .feature-card h3 { font-size: 1.5rem; color: var(--red); margin-bottom: 0.75rem; }
   .mission-card p, .feature-card p { color: var(--black-soft); line-height: 1.7; font-size: 1rem; font-weight: 600; }
 
@@ -715,14 +726,46 @@ export default function NKsStudySync() {
             </blockquote>
           </RevealSection>
           <div className="mission-grid">
-            {[
-              { icon:"📚", title:"Academic Equity",       desc:"No student should fall behind because of poor tools. We're levelling the playing field for every learner, regardless of background or institution.", delay:"d1" },
-              { icon:"🤝", title:"Real Collaboration",    desc:"Study groups that actually work. No more scattered chats and missed messages — focused, productive sessions that move the needle.", delay:"d2" },
-              { icon:"🧠", title:"Extra Tutorial Sessions", desc:"Dedicated weekend tutorials led by top-performing peers. Get the targeted help you need on your hardest topics before the week even begins.", delay:"d3" },
-            ].map((c) => (
+          {[
+  {
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+      </svg>
+    ),
+    title: "Academic Equity",
+    desc: "No student should fall behind because of poor tools. We're levelling the playing field for every learner, regardless of background or institution.",
+    delay: "d1"
+  },
+  {
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    ),
+    title: "Real Collaboration",
+    desc: "Study groups that actually work. No more scattered chats and missed messages — focused, productive sessions that move the needle.",
+    delay: "d2"
+  },
+  {
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+    title: "Extra Tutorial Sessions",
+    desc: "Dedicated weekend tutorials led by top-performing peers. Get the targeted help you need on your hardest topics before the week even begins.",
+    delay: "d3"
+  },
+].map((c) => (
               <RevealSection key={c.title} className={c.delay}>
                 <div className="mission-card">
-                  <span className="mission-icon">{c.icon}</span>
+                  <div className="mission-icon">{c.icon}</div>
                   <h3>{c.title}</h3>
                   <p>{c.desc}</p>
                 </div>
