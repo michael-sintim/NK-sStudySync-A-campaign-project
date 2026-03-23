@@ -718,7 +718,7 @@ export default function NKsStudySync() {
             {[
               { icon:"📚", title:"Academic Equity",       desc:"No student should fall behind because of poor tools. We're levelling the playing field for every learner, regardless of background or institution.", delay:"d1" },
               { icon:"🤝", title:"Real Collaboration",    desc:"Study groups that actually work. No more scattered chats and missed messages — focused, productive sessions that move the needle.", delay:"d2" },
-              { icon:"🧠", title:"Extra Tutorial Sessions", desc:"Dedicated weekend tutorials led by top-performing peers and teaching assistants. Get the targeted help you need on your hardest topics before the week even begins.", delay:"d3" },
+              { icon:"🧠", title:"Extra Tutorial Sessions", desc:"Dedicated weekend tutorials led by top-performing peers. Get the targeted help you need on your hardest topics before the week even begins.", delay:"d3" },
             ].map((c) => (
               <RevealSection key={c.title} className={c.delay}>
                 <div className="mission-card">
