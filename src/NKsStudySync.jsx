@@ -789,11 +789,10 @@ export default function NKsStudySync() {
           <div className="problem-grid">
             <RevealSection>
               <div className="stat-cluster">
-                <StatCard target={73} suffix="%" label="of students report disorganised study habits" />
-                <StatCard target={60} suffix="%" label="miss deadlines due to poor scheduling" />
-                <StatCard target={80} suffix="%" label="use 5+ disconnected apps to study" />
-                <StatCard target={12} suffix="%" label="feel their study tools are actually effective" />
-              </div>
+  <StatCard target={67} suffix="%" label="of students study the night before exams due to poor planning" />
+  <StatCard target={74} suffix="%" label="struggle to find past questions and study materials online" />
+  <StatCard target={81} suffix="%" label="say group study sessions are unproductive and disorganised" />
+</div>
             </RevealSection>
             <RevealSection className="d2">
               <div className="problem-text">
