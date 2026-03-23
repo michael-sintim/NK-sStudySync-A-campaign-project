@@ -625,7 +625,8 @@ export default function NKsStudySync() {
   };
 
   const handleSignup = async () => {
-    if (!email || !email.includes("@")) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!email || !emailRegex.test(email)) {
       setSignupError("Please enter a valid email address.");
       return;
     }
@@ -897,7 +898,7 @@ export default function NKsStudySync() {
             {[
               { initials:"JK", name:"Jordan K.",  school:"Level 300 · Geomatic Engineering",   quote:"I used to pull all-nighters before every exam and still blank out in the hall. StudySync spread my revision across three weeks. I walked into my Fluid Mechanics paper actually feeling ready.", delay:"d1" },
               { initials:"MS", name:"Michael S.", school:"First Year · Materials Engineering", quote:"Thermodynamics almost ended my engineering dream. I was failing every quiz until NK's weekend tutorials broke it down in a way no lecturer ever did. Passed with a B+ in end of sem", delay:"d2" },
-              { initials:"PM", name:"Kojo O.",   school:"Level 200 · Electrical Engineering", quote:"I used to leave Circuit Theory lectures and immediately forget everything that was said. The pace was too fast and I was too afraid to ask questions. NK's peer tutors went at my speed. Finally passed", delay:"d3" },
+              { initials:"KO", name:"Kojo O.",   school:"Level 200 · Electrical Engineering", quote:"I used to leave Circuit Theory lectures and immediately forget everything that was said. The pace was too fast and I was too afraid to ask questions. NK's peer tutors went at my speed. Finally passed", delay:"d3" },
             ].map((t) => (
               <RevealSection key={t.name} className={t.delay}>
                 <div className="testimonial-card">
@@ -930,24 +931,26 @@ export default function NKsStudySync() {
             </h2>
           </RevealSection>
           <div className="manifesto-list">
-            {{ n:"01", heading:"Lectures Are Not Enough —", sub:"And We Are Filling The Gap", desc:"A 75-minute lecture moving at full pace cannot reach every student. NK's StudySync exists in the space between the lecture hall and the examination hall — and that space is where we do our best work.", delay:"d1" },
-{ n:"02", heading:"Confusion Is Not Failure —", sub:"It Is Just The Starting Point", desc:"Feeling lost after a lecture does not mean you are not smart enough. It means you need a different explanation. We provide that explanation — without judgement, without rushing, without giving up on you.", delay:"d2" },
-{ n:"03", heading:"Resources Should Be Free —", sub:"And Easy To Find", desc:"Students should not have to beg seniors on WhatsApp for past questions the night before an exam. We organise, verify, and share every resource our community needs completely free of charge.", delay:"d3" },
-{ n:"04", heading:"Group Work Should Actually Work —", sub:"We Make That Happen", desc:"We structure study groups so they produce results instead of wasted evenings. Focused agendas, peer accountability, and shared goals turn group sessions into real academic progress.", delay:"d2" },
-{ n:"05", heading:"No One Studies Alone —", sub:"Not On Our Watch", desc:"The loneliest moment in engineering is sitting with a concept you cannot crack and having no one to call. We make sure that moment does not exist for any student in our community.", delay:"d3" },.map((m) => (
-              <RevealSection key={m.n} className={m.delay}>
-                <div className="manifesto-item">
-                  <div className="manifesto-num">{m.n}</div>
-                  <div className="manifesto-content">
-                    <h3>
-                      <span style={{ color:"var(--amber)" }}>{m.heading}</span> {m.sub}
-                    </h3>
-                    <p>{m.desc}</p>
-                  </div>
-                </div>
-              </RevealSection>
-            ))}
-          </div>
+  {[
+    { n:"01", heading:"Lectures Are Not Enough —",          sub:"And We Are Filling The Gap",    desc:"A 75-minute lecture moving at full pace cannot reach every student. NK's StudySync exists in the space between the lecture hall and the examination hall — and that space is where we do our best work.", delay:"d1" },
+    { n:"02", heading:"Confusion Is Not Failure —",          sub:"It Is Just The Starting Point", desc:"Feeling lost after a lecture does not mean you are not smart enough. It means you need a different explanation. We provide that explanation — without judgement, without rushing, without giving up on you.", delay:"d2" },
+    { n:"03", heading:"Resources Should Be Free —",          sub:"And Easy To Find",              desc:"Students should not have to beg seniors on WhatsApp for past questions the night before an exam. We organise, verify, and share every resource our community needs completely free of charge.", delay:"d3" },
+    { n:"04", heading:"Group Work Should Actually Work —",   sub:"We Make That Happen",           desc:"We structure study groups so they produce results instead of wasted evenings. Focused agendas, peer accountability, and shared goals turn group sessions into real academic progress.", delay:"d2" },
+    { n:"05", heading:"No One Studies Alone —",              sub:"Not On Our Watch",              desc:"The loneliest moment in engineering is sitting with a concept you cannot crack and having no one to call. We make sure that moment does not exist for any student in our community.", delay:"d3" },
+  ].map((m) => (
+    <RevealSection key={m.n} className={m.delay}>
+      <div className="manifesto-item">
+        <div className="manifesto-num">{m.n}</div>
+        <div className="manifesto-content">
+          <h3>
+            <span style={{ color:"var(--amber)" }}>{m.heading}</span> {m.sub}
+          </h3>
+          <p>{m.desc}</p>
+        </div>
+      </div>
+    </RevealSection>
+  ))}
+</div>
         </div>
       </section>
 
@@ -993,7 +996,7 @@ export default function NKsStudySync() {
             <div className="ss-socials">
               <span className="ss-soc-lbl">Spread the word:</span>
 
-              <button className="ss-soc-btn">
+              <button className="ss-soc-btn" onClick={() => window.open('https://x.com/nksstudysync?s=21','_blank')}>
                 <span style={{ background:"#000000", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -1002,16 +1005,16 @@ export default function NKsStudySync() {
                 Twitter
               </button>
 
-              <button className="ss-soc-btn">
-                <span style={{ background:"linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-                  </svg>
-                </span>
-                Instagram
-              </button>
+<button className="ss-soc-btn" onClick={() => window.open('https://t.me/NKstudysync','_blank')} >
+  <span style={{ background:"#26A5E4", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+    </svg>
+  </span>
+  Telegram
+</button>
 
-              <button className="ss-soc-btn">
+              <button className="ss-soc-btn" onClick={() => window.open('https://whatsapp.com/channel/0029VbBhEgpGE56o9hpRwl3h','_blank')}>
                 <span style={{ background:"#25D366", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
@@ -1020,7 +1023,7 @@ export default function NKsStudySync() {
                 WhatsApp
               </button>
 
-              <button className="ss-soc-btn">
+              <button className="ss-soc-btn" onClick={() => window.open('https://www.tiktok.com/@nksstudysync?_r=1&_t=ZS-94YRfL8NmxY','_blank')}>
                 <span style={{ background:"#010101", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
@@ -1029,7 +1032,10 @@ export default function NKsStudySync() {
                 TikTok
               </button>
 
-              <button className="ss-soc-btn">
+              <button className="ss-soc-btn"  onClick={() => window.open(
+    "https://youtube.com/@nksstudysync?si=muGnVD2CntcJ5kTT",
+    "_blank"
+  )}>
                 <span style={{ background:"#FF0000", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -1062,34 +1068,34 @@ export default function NKsStudySync() {
             <span className="footer-copy">© 2025 Nk's StudySync. All rights reserved.</span>
             <div className="footer-socials">
 
-  <a href="#" className="footer-social-icon" aria-label="YouTube">
+  <a href="https://youtube.com/@nksstudysync?si=muGnVD2CntcJ5kTT" target="_blank" className="footer-social-icon" aria-label="YouTube">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
     </svg>
   </a>
 
-  <a href="#" className="footer-social-icon" aria-label="Telegram">
+  <a href="https://t.me/NKstudysync" className="footer-social-icon"  target="_blank" aria-label="Telegram">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
       <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
     </svg>
   </a>
 
-  <a href="#" className="footer-social-icon" aria-label="TikTok">
+  <a href="https://www.tiktok.com/@nksstudysync?_r=1&_t=ZS-94YRfL8NmxY" target="_blank" className="footer-social-icon" aria-label="TikTok">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
       <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
     </svg>
   </a>
 
-  <a href="#" className="footer-social-icon" aria-label="X (Twitter)">
+  <a href="https://x.com/nksstudysync?s=21" className="footer-social-icon" target="_blank" aria-label="X (Twitter)">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
     </svg>
   </a>
 
-  <a href="#" className="footer-social-icon" aria-label="Instagram">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-    </svg>
+  <a href="https://whatsapp.com/channel/0029VbBhEgpGE56o9hpRwl3h" target="_blank" className="footer-social-icon" aria-label="WhatApp">
+   <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+</svg>
   </a>
 
 </div></div>
