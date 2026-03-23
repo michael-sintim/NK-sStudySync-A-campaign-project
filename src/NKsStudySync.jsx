@@ -897,7 +897,7 @@ export default function NKsStudySync() {
             {[
               { initials:"JK", name:"Jordan K.",  school:"Level 300 · Geomatic Engineering",   quote:"I used to pull all-nighters before every exam and still blank out in the hall. StudySync spread my revision across three weeks. I walked into my Fluid Mechanics paper actually feeling ready.", delay:"d1" },
               { initials:"MS", name:"Michael S.", school:"First Year · Materials Engineering", quote:"Thermodynamics almost ended my engineering dream. I was failing every quiz until NK's weekend tutorials broke it down in a way no lecturer ever did. Passed with a B+ in end of sem", delay:"d2" },
-              { initials:"PM", name:"Priya M.",   school:"Level 200 · Electrical Engineering", quote:"The AI tutor actually explains things in a way that makes sense for how I think. It's like having a personal tutor available at 2am before an exam.", delay:"d3" },
+              { initials:"PM", name:"Kojo O.",   school:"Level 200 · Electrical Engineering", quote:"I used to leave Circuit Theory lectures and immediately forget everything that was said. The pace was too fast and I was too afraid to ask questions. NK's peer tutors went at my speed. Finally passed", delay:"d3" },
             ].map((t) => (
               <RevealSection key={t.name} className={t.delay}>
                 <div className="testimonial-card">
@@ -930,13 +930,11 @@ export default function NKsStudySync() {
             </h2>
           </RevealSection>
           <div className="manifesto-list">
-            {[
-              { n:"01", heading:"Equal Access —",               sub:"Free Tier For All",           desc:"Every student deserves access to the core tools they need to succeed. No paywalls on essential features. No student left behind because they can't afford a premium plan.", delay:"d1" },
-              { n:"02", heading:"Student Privacy First —",      sub:"Zero Data Selling",           desc:"We will never sell your data to advertisers. Full GDPR and Privacy Act compliance. Your academic life is yours — we're just here to help you manage it.", delay:"d2" },
-              { n:"03", heading:"Teacher Integration —",        sub:"Built With Educators",        desc:"StudySync is co-designed with teachers, tutors, and academic staff. It fits into existing school infrastructure, not against it.", delay:"d3" },
-              { n:"04", heading:"Continuous Innovation —",      sub:"Monthly Updates",             desc:"We ship new features every month, driven entirely by student feedback. The product roadmap is voted on by the community. You decide what we build next.", delay:"d2" },
-              { n:"05", heading:"Community Over Competition —", sub:"Collaborative Not Cutthroat", desc:"Academic success shouldn't be a zero-sum game. StudySync is designed to lift every student up — not to pit you against your classmates.", delay:"d3" },
-            ].map((m) => (
+            {{ n:"01", heading:"Lectures Are Not Enough —", sub:"And We Are Filling The Gap", desc:"A 75-minute lecture moving at full pace cannot reach every student. NK's StudySync exists in the space between the lecture hall and the examination hall — and that space is where we do our best work.", delay:"d1" },
+{ n:"02", heading:"Confusion Is Not Failure —", sub:"It Is Just The Starting Point", desc:"Feeling lost after a lecture does not mean you are not smart enough. It means you need a different explanation. We provide that explanation — without judgement, without rushing, without giving up on you.", delay:"d2" },
+{ n:"03", heading:"Resources Should Be Free —", sub:"And Easy To Find", desc:"Students should not have to beg seniors on WhatsApp for past questions the night before an exam. We organise, verify, and share every resource our community needs completely free of charge.", delay:"d3" },
+{ n:"04", heading:"Group Work Should Actually Work —", sub:"We Make That Happen", desc:"We structure study groups so they produce results instead of wasted evenings. Focused agendas, peer accountability, and shared goals turn group sessions into real academic progress.", delay:"d2" },
+{ n:"05", heading:"No One Studies Alone —", sub:"Not On Our Watch", desc:"The loneliest moment in engineering is sitting with a concept you cannot crack and having no one to call. We make sure that moment does not exist for any student in our community.", delay:"d3" },.map((m) => (
               <RevealSection key={m.n} className={m.delay}>
                 <div className="manifesto-item">
                   <div className="manifesto-num">{m.n}</div>
