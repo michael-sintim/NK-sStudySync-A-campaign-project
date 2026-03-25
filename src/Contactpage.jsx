@@ -276,7 +276,7 @@ const PROGRAMMES = [
   "Telecommunication Engineering",
 ];
 
-const LEVELS = ["Level 100","Level 200","Level 300","Level 400"];
+const LEVELS = ["Level 100","Level 200","Level 300","Level 400",];
 
 export default function ContactPage() {
   const navigate = useNavigate();
@@ -386,7 +386,7 @@ export default function ContactPage() {
   return (
     <div className="cp-root" key={styleVersion}>
       <nav className="cp-nav">
-        <div className="cp-nav-logo" onClick={() => navigate("/")}>
+        <div className="cp-nav-logo">
           <div className="cp-logo-bolt">⚡</div>
           <span><span className="cp-logo-nk">Nk's</span> StudySync</span>
         </div>
