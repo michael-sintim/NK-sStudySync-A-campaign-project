@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import NKsStudySync from "./NKsStudySync";
-import ContactPage from "./ContactPage";
+import ContactPage from "./Contactpage";
 
 // Wrapper for Home page
 function HomeWrapper() {
