@@ -276,7 +276,7 @@ const PROGRAMMES = [
   "Telecommunication Engineering",
 ];
 
-const LEVELS = ["Level 100","Level 200","Level 300","Level 400","Level 500","Postgraduate"];
+const LEVELS = ["Level 100","Level 200","Level 300","Level 400"];
 
 export default function ContactPage() {
   const navigate = useNavigate();
