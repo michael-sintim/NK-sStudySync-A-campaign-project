@@ -704,7 +704,7 @@ export default function NKsStudySync() {
             ))}
           </h1>
           <p className="hero-sub">
-            Nk's StudySync is the unified academic platform students deserve — 
+            Nk's StudySync is the unified academic platform students deserve —
             smarter scheduling, real-time collaboration, AI-powered study tools,
             and a community built for academic excellence.
           </p>
@@ -1045,7 +1045,7 @@ export default function NKsStudySync() {
             </div>
           </div>
           <div className="footer-bottom">
-            <span className="footer-copy">© 2025 Nk's StudySync. All rights reserved.</span>
+            <span className="footer-copy">© 2026 Nk's StudySync. All rights reserved.</span>
             <div className="footer-socials">
               <a href="https://youtube.com/@nksstudysync?si=muGnVD2CntcJ5kTT" target="_blank" className="footer-social-icon" aria-label="YouTube">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
