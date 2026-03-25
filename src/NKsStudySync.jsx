@@ -704,7 +704,7 @@ export default function NKsStudySync() {
             ))}
           </h1>
           <p className="hero-sub">
-            Nk's StudySync is the unified academic platform students deserve —
+            Nk's StudySync is the unified academic platform students deserve — 
             smarter scheduling, real-time collaboration, AI-powered study tools,
             and a community built for academic excellence.
           </p>
