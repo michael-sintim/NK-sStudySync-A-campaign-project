@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import NKsStudySync from "./NKsStudySync";
 import ContactPage from "./Contactpage";
+import ScrollToTop from "./ScrollToTop.jsx";
 
 // Wrapper for Home page
 function HomeWrapper() {
@@ -17,6 +18,7 @@ function ContactWrapper() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomeWrapper />} />
         <Route path="/contact" element={<ContactWrapper />} />
