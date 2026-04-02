@@ -1117,52 +1117,62 @@ export default function NKsStudySync() {
         </div>
       </div>
     </RevealSection>
-
-    {/* CTA */}
-    <RevealSection className="d3">
-      <div style={{ textAlign: "center" }}>
-        <p style={{
-          color: "rgba(255,255,255,0.55)", fontSize: "0.95rem",
-          fontWeight: 700, marginBottom: "1.5rem", letterSpacing: "0.02em",
-        }}>
-          Free to use. No account needed to try it.
-        </p>
-        <button
-          onClick={handleQuizlenzClick}
-          style={{
-            background: "var(--amber)",
-            color: "var(--black)",
-            border: "3px solid var(--amber)",
-            padding: "1rem 2.8rem",
-            fontFamily: "'Oswald', sans-serif",
-            fontSize: "1.1rem",
-            fontWeight: 700,
-            letterSpacing: "0.08em",
-            cursor: "pointer",
-            borderRadius: "10px",
-            boxShadow: "6px 6px 0 var(--red)",
-            transition: "all 0.3s cubic-bezier(0.23, 1, 0.32, 1)",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.6rem",
-          }}
-          onMouseEnter={e => { e.currentTarget.style.transform = "translate(3px,3px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--red)"; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = "translate(0,0)"; e.currentTarget.style.boxShadow = "6px 6px 0 var(--red)"; }}
-        >
-          Try Quizlenz Free →
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-        </button>
-        <p style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.8rem", marginTop: "1rem", fontWeight: 600 }}>
-          Trusted by NK's StudySync students across KNUST engineering departments
-        </p>
-      </div>
-    </RevealSection>
-
+{/* CTA */}
+<RevealSection className="d3">
+  <div style={{ textAlign: "center", padding: "0 1rem" }}>
+    <p style={{
+      color: "rgba(255,255,255,0.55)", fontSize: "clamp(0.82rem, 2.5vw, 0.95rem)",
+      fontWeight: 700, marginBottom: "1.5rem", letterSpacing: "0.02em",
+      lineHeight: 1.6,
+    }}>
+      Free to use. No account needed to try it.
+    </p>
+    <button
+      onClick={handleQuizlenzClick}
+      style={{
+        background: "var(--amber)",
+        color: "var(--black)",
+        border: "3px solid var(--amber)",
+        padding: "clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 5vw, 2.8rem)",
+        fontFamily: "'Oswald', sans-serif",
+        fontSize: "clamp(0.9rem, 3vw, 1.1rem)",
+        fontWeight: 700,
+        letterSpacing: "0.08em",
+        cursor: "pointer",
+        borderRadius: "10px",
+        boxShadow: "6px 6px 0 var(--red)",
+        transition: "all 0.3s cubic-bezier(0.23, 1, 0.32, 1)",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "0.6rem",
+        width: "clamp(200px, 80vw, 320px)",
+        maxWidth: "100%",
+        whiteSpace: "nowrap",
+      }}
+      onMouseEnter={e => { e.currentTarget.style.transform = "translate(3px,3px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--red)"; }}
+      onMouseLeave={e => { e.currentTarget.style.transform = "translate(0,0)"; e.currentTarget.style.boxShadow = "6px 6px 0 var(--red)"; }}
+    >
+      Try Quizlenz Free →
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+        style={{ flexShrink: 0 }}>
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        <polyline points="15 3 21 3 21 9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    </button>
+    <p style={{
+      color: "rgba(255,255,255,0.3)", fontSize: "clamp(0.72rem, 2vw, 0.8rem)",
+      marginTop: "1rem", fontWeight: 600, lineHeight: 1.6,
+      maxWidth: "360px", margin: "1rem auto 0",
+      padding: "0 1rem",
+    }}>
+      Trusted by NK's StudySync students across KNUST engineering departments
+    </p>
   </div>
+</RevealSection>
+
+</div>
 </section>
 
       {/* JOIN */}
