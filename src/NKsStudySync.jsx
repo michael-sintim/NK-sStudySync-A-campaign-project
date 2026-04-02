@@ -580,7 +580,7 @@ const handleQuizLensAIClick = async () => {
     referrer: "homepage_QuizLensAI_section",
     user_agent: navigator.userAgent,
   }]);
-  window.open("https://QuizLensAIAIAIAIai.com", "_blank");
+  window.open("https://QuizLensai.com", "_blank");
 };
 
 const schools = [
@@ -668,17 +668,22 @@ export default function NKsStudySync() {
       <nav className={`nav${scrolled ? " scrolled" : ""}`}>
         <div className="nav-logo" onClick={() => scrollTo("hero")}>
       
-<div className="footer-logo-text" style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-  <img 
-    src="/IMG_8586.JPG.jpeg" 
+<div className="nav-logo" onClick={() => scrollTo("hero")}>
+  <img
+    src="/IMG_8586.JPG.jpeg"
     alt="NK's StudySync"
-    style={{ height: "38px", width: "38px", objectFit: "contain", borderRadius: "6px", filter: "brightness(0) invert(1)" }}
+    style={{
+      height: "42px",
+      width: "42px",
+      objectFit: "contain",
+      borderRadius: "8px",
+    }}
   />
 </div>
           <span><span className="logo-nk">Nk's</span> StudySync</span>
         </div>
         <ul className="nav-links">
-          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAIAI","QuizLensAIAI"],["join","Join"]].map(([id, label]) => (
+          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["join","Join"]].map(([id, label]) => (
            
            <li key={id}>
               <a href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
@@ -1192,6 +1197,9 @@ export default function NKsStudySync() {
     </p>
   </div>
 </RevealSection>
+</div>
+</section>
+
       {/* JOIN */}
       <section className="join-section" id="join">
         <div className="section-inner">
@@ -1226,9 +1234,10 @@ export default function NKsStudySync() {
                   onKeyDown={(e) => e.key === "Enter" && handleSignup()}
                   disabled={loading}
                 />
-                <button onClick={() => navigate("/contact")}>
-                  Join Now →
-                </button>
+               <button onClick={handleSignup} disabled={loading}>
+  {loading ? "Joining..." : "Join Now →"}
+ 
+</button>
               </div>
               
             )}
@@ -1247,7 +1256,7 @@ export default function NKsStudySync() {
     onClick={() => navigate("/contact")}
     style={{ fontSize: "1rem", padding: "0.9rem 2.4rem" }}
   >
-    Join Nk's StudySync →
+    Register For Nk's StudySync →
   </button>
 
 </div>
