@@ -302,6 +302,7 @@ body {
     border-radius: 20px; padding: 2.5rem;
     box-shadow: 8px 8px 0 var(--black); transition: var(--ease); width: 100%;
   }
+    
   .mission-card:hover, .testimonial-card:hover {
     transform: translateY(-8px); box-shadow: 12px 12px 0 var(--black);
   }.mission-icon {
