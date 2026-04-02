@@ -36,18 +36,26 @@ const styles = `
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--amber);
-    color: var(--black);
-    overflow-x: hidden;
-    line-height: 1.6;
-  }
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--amber);
+  color: var(--black);
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  line-height: 1.6;
+  position: relative;
+}
 
   h1, h2, h3, h4 {
     font-family: 'Oswald', sans-serif;
     letter-spacing: 0.02em;
-  }
+  }*,
 
   /* ===== NAVIGATION ===== */
   .nav {
