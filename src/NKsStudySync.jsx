@@ -691,7 +691,7 @@ export default function NKsStudySync() {
       <div className={`mobile-drawer${drawerOpen ? " open" : ""}`}>
         <button className="drawer-close" onClick={() => setDrawerOpen(false)}>✕</button>
         <ul>
-          {[["mission","Mission"],["problem","Why StudySync"],["impact","Impact Data"],["voices","Student Voices"],["manifesto","Manifesto"],["join","Join the Movement"]].map(([id, label]) => (
+          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["quizlenz","Quizlenz"],["join","Join"]].map(([id, label]) => (
             <li key={id}>
               <a href="#" onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
             </li>
@@ -844,7 +844,7 @@ export default function NKsStudySync() {
           <div className="impact-grid">
             <ImpactStat target={1000}  suffix="+" format="short"    label="Students Already Using NK's StudySync" />
             <ImpactStat target={89}   suffix="%" format=""         label="Report Better Grades Within 4 Weeks" />
-            <ImpactStat target={76}   suffix=""  format="millions" label="Study Sessions Completed" />
+            <ImpactStat target={30}   suffix=""  format="millions" label="Study Sessions Completed" />
             <ImpactStat target={85}  suffix="%" format=""         label="Would Recommend to a Classmate" />
           </div>
           <RevealSection>
