@@ -55,7 +55,7 @@ body {
   h1, h2, h3, h4 {
     font-family: 'Oswald', sans-serif;
     letter-spacing: 0.02em;
-  }*,
+  }
 
   /* ===== NAVIGATION ===== */
   .nav {
@@ -895,10 +895,28 @@ export default function NKsStudySync() {
           </RevealSection>
           <div className="testimonials-grid">
             {[
-              { initials:"JK", name:"Jordan K.",  school:"Level 300 · Geomatic Engineering",   quote:"I used to pull all-nighters before every exam and still blank out in the hall. StudySync spread my revision across three weeks. I walked into my Fluid Mechanics paper actually feeling ready.", delay:"d1" },
-              { initials:"MS", name:"Michael S.", school:"First Year · Materials Engineering", quote:"Thermodynamics almost ended my engineering dream. I was failing every quiz until NK's weekend tutorials broke it down in a way no lecturer ever did. Passed with a B+ in end of sem", delay:"d2" },
-              { initials:"KO", name:"Kojo O.",   school:"Level 200 · Electrical Engineering", quote:"I used to leave Circuit Theory lectures and immediately forget everything that was said. The pace was too fast and I was too afraid to ask questions. NK's peer tutors went at my speed. Finally passed", delay:"d3" },
-            ].map((t) => (
+  {
+    initials: "RD",
+    name: "Reindorf D. K. Baah Maurice",
+    school: "Level 200 · Automobile Engineering",
+    quote: "I sent my CENG report for plagiarism check and proofreading — NK looked through everything and told me my report was actually well done. That kind of honest feedback from a senior who genuinely cares is exactly what I needed before submission.",
+    delay: "d1"
+  },
+  {
+    initials: "FS",
+    name: "Farama Saunffaa Emmanuel",
+    school: "Level 200 · Engineering",
+    quote: "NK checked my CENG report formatting and said it was very good and unique — only one font throughout, Times New Roman. My plagiarism came back at 13% and most of the highlighted areas were just the table of contents, acknowledgement and declaration. Passed clean.",
+    delay: "d2"
+  },
+  {
+    initials: "EQ",
+    name: "Emmanuel Quansah",
+    school: "Level 200 · Aerospace Engineering",
+    quote: "I didn't even know how to use Turnitin for plagiarism checking. NK walked me through exactly where to find it on the CENG portal — step by step. Submitted on time with no stress.",
+    delay: "d3"
+  },
+].map((t) => (
               <RevealSection key={t.name} className={t.delay}>
                 <div className="testimonial-card">
                   <div className="big-quote">"</div>
