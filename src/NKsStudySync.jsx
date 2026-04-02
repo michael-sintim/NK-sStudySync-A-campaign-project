@@ -574,6 +574,15 @@ function RevealSection({ children, className = "", delay = "" }) {
   );
 }
 
+const handleQuizlenzClick = async () => {
+  await supabase.from("quizlenz_clicks").insert([{
+    clicked_at: new Date().toISOString(),
+    referrer: "homepage_quizlenz_section",
+    user_agent: navigator.userAgent,
+  }]);
+  window.open("https://quizlensai.com", "_blank");
+};
+
 const schools = [
   "Aerospace Engineering","Agricultural Engineering","Biomedical Engineering",
   "Chemical Engineering","Civil Engineering","Computer Engineering",
@@ -662,8 +671,9 @@ export default function NKsStudySync() {
           <span><span className="logo-nk">Nk's</span> StudySync</span>
         </div>
         <ul className="nav-links">
-          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["join","Join"]].map(([id, label]) => (
-            <li key={id}>
+          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["quizlenz","Quizlenz"],["join","Join"]].map(([id, label]) => (
+           
+           <li key={id}>
               <a href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
             </li>
           ))}
@@ -832,10 +842,10 @@ export default function NKsStudySync() {
             <p className="section-sub-white">Real results from real students. No spin, no cherry-picking.</p>
           </RevealSection>
           <div className="impact-grid">
-            <ImpactStat target={300}  suffix="+" format="short"    label="Students Already Using NK's StudySync" />
+            <ImpactStat target={1000}  suffix="+" format="short"    label="Students Already Using NK's StudySync" />
             <ImpactStat target={89}   suffix="%" format=""         label="Report Better Grades Within 4 Weeks" />
-            <ImpactStat target={80}   suffix=""  format="millions" label="Study Sessions Completed" />
-            <ImpactStat target={100}  suffix="%" format=""         label="Would Recommend to a Classmate" />
+            <ImpactStat target={76}   suffix=""  format="millions" label="Study Sessions Completed" />
+            <ImpactStat target={85}  suffix="%" format=""         label="Would Recommend to a Classmate" />
           </div>
           <RevealSection>
             <div className="logo-strip">
@@ -923,6 +933,238 @@ export default function NKsStudySync() {
         </div>
       </section>
 
+      {/* QUIZLENZ */}
+<section className="section-black" id="quizlenz" style={{ borderTop: "4px solid var(--amber)", borderBottom: "4px solid var(--amber)" }}>
+  <div className="section-inner" style={{ padding: "100px 5%" }}>
+
+    {/* Header */}
+    <RevealSection>
+      <div style={{ textAlign: "center", marginBottom: "0.75rem" }}>
+        <span className="section-tag" style={{ background: "var(--amber)", color: "var(--black)", fontFamily: "'Oswald', sans-serif" }}>
+          POWERED BY AI
+        </span>
+      </div>
+      <h2 className="section-title-amber" style={{ marginBottom: "0.75rem" }}>
+        Meet <span style={{ color: "#fff" }}>Quizlenz —</span>
+      </h2>
+      <h2 className="section-title-white" style={{ marginTop: 0, marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.4rem)" }}>
+        Your Personal AI Study Partner
+      </h2>
+      <p className="section-sub-white" style={{ maxWidth: "780px", margin: "0 auto 3.5rem" }}>
+        Upload any lecture note, PDF, or past question — and Quizlenz transforms it into 
+        interactive quizzes, smart summaries, and deep-dive Q&amp;A sessions. 
+        Think of it as NotebookLM, built specifically for the way engineering students actually study.
+      </p>
+    </RevealSection>
+
+    {/* Feature Cards Grid */}
+    <div style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+      gap: "1.5rem",
+      marginBottom: "4rem",
+      width: "100%"
+    }}>
+      {[
+        {
+          icon: (
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          ),
+          label: "UPLOAD",
+          title: "Drop Any Material",
+          desc: "Lecture slides, PDF textbooks, scanned past questions, handwritten notes — Quizlenz reads it all. No reformatting, no copy-pasting. Just upload and go.",
+        },
+        {
+          icon: (
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          ),
+          label: "ASK",
+          title: "Ask It Anything",
+          desc: "\"Explain Thevenin's theorem from slide 14 like I'm in Form 3.\" \"What are the five most likely exam questions from this chapter?\" Quizlenz answers from your own material.",
+        },
+        {
+          icon: (
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 11 12 14 22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          ),
+          label: "QUIZ",
+          title: "Auto-Generated Quizzes",
+          desc: "Quizlenz builds custom MCQs, fill-in-the-blank, and theory questions directly from your notes. Not generic internet questions — questions built from what your lecturer actually taught.",
+        },
+        
+      ].map((card, i) => (
+        <RevealSection key={card.title} className={`d${i + 1}`}>
+          <div style={{
+            background: "rgba(255,255,255,0.04)",
+            border: "2px solid rgba(245,163,0,0.25)",
+            borderRadius: "20px",
+            padding: "2.2rem",
+            height: "100%",
+            transition: "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
+            cursor: "default",
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.border = "2px solid var(--amber)";
+            e.currentTarget.style.background = "rgba(245,163,0,0.07)";
+            e.currentTarget.style.transform = "translateY(-6px)";
+            e.currentTarget.style.boxShadow = "0 16px 40px rgba(245,163,0,0.15)";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.border = "2px solid rgba(245,163,0,0.25)";
+            e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow = "none";
+          }}>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              background: "rgba(245,163,0,0.12)", border: "1.5px solid rgba(245,163,0,0.3)",
+              borderRadius: "8px", padding: "0.35rem 0.8rem",
+              marginBottom: "1.2rem",
+            }}>
+              {card.icon}
+              <span style={{
+                fontFamily: "'Oswald', sans-serif", fontSize: "0.7rem",
+                fontWeight: 700, letterSpacing: "0.15em", color: "var(--amber)",
+              }}>{card.label}</span>
+            </div>
+            <h3 style={{
+              fontFamily: "'Oswald', sans-serif", fontSize: "1.35rem",
+              color: "#fff", marginBottom: "0.75rem",
+            }}>{card.title}</h3>
+            <p style={{ color: "rgba(255,255,255,0.7)", lineHeight: 1.8, fontSize: "0.95rem", fontWeight: 600 }}>
+              {card.desc}
+            </p>
+          </div>
+        </RevealSection>
+      ))}
+    </div>
+
+    {/* Comparison Block */}
+    <RevealSection className="d2">
+      <div style={{
+        background: "rgba(245,163,0,0.06)",
+        border: "2px solid rgba(245,163,0,0.2)",
+        borderRadius: "24px",
+        padding: "3rem",
+        maxWidth: "860px",
+        margin: "0 auto 4rem",
+        width: "100%",
+      }}>
+        <p style={{
+          fontFamily: "'Oswald', sans-serif", fontSize: "0.75rem",
+          letterSpacing: "0.18em", color: "var(--amber)", marginBottom: "1.2rem",
+          textTransform: "uppercase",
+        }}>How It Stacks Up</p>
+        <h3 style={{
+          fontFamily: "'Oswald', sans-serif", fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+          color: "#fff", marginBottom: "2rem", lineHeight: 1.2,
+        }}>
+          NotebookLM is powerful.<br />
+          <span style={{ color: "var(--amber)" }}>Quizlenz is built for <em style={{ fontStyle: "normal", color: "var(--red)" }}>your</em> exams.</span>
+        </h3>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
+          {[
+            { label: "NotebookLM", points: ["General purpose AI notebook", "Great for research & podcasts", "No exam-focused quiz mode", "Not optimised for engineering courses"], color: "rgba(255,255,255,0.15)", textColor: "rgba(255,255,255,0.55)", tag: "General Tool" },
+            { label: "Quizlenz", points: ["Built for African engineering students", "Auto-generates past-question style quizzes", "Understands your specific course material", "Integrated with NK's StudySync community"], color: "rgba(245,163,0,0.1)", textColor: "rgba(255,255,255,0.85)", tag: "Your Tool", highlight: true },
+          ].map((col) => (
+            <div key={col.label} style={{
+              background: col.color,
+              border: col.highlight ? "2px solid rgba(245,163,0,0.4)" : "2px solid rgba(255,255,255,0.08)",
+              borderRadius: "16px",
+              padding: "1.5rem",
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.2rem" }}>
+                <span style={{
+                  fontFamily: "'Oswald', sans-serif", fontSize: "1.1rem",
+                  color: col.highlight ? "var(--amber)" : "rgba(255,255,255,0.5)", fontWeight: 700,
+                }}>{col.label}</span>
+                {col.highlight && (
+                  <span style={{
+                    background: "var(--amber)", color: "var(--black)",
+                    fontSize: "0.65rem", fontWeight: 800,
+                    letterSpacing: "0.1em", padding: "0.2rem 0.6rem",
+                    borderRadius: "100px", fontFamily: "'Oswald', sans-serif",
+                  }}>✦ {col.tag}</span>
+                )}
+              </div>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+                {col.points.map((pt, i) => (
+                  <li key={i} style={{
+                    display: "flex", alignItems: "flex-start", gap: "0.6rem",
+                    color: col.textColor, fontSize: "0.88rem", lineHeight: 1.5, fontWeight: 600,
+                  }}>
+                    <span style={{ color: col.highlight ? "var(--amber)" : "rgba(255,255,255,0.3)", flexShrink: 0, marginTop: "2px" }}>
+                      {col.highlight ? "✓" : "–"}
+                    </span>
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </RevealSection>
+
+    {/* CTA */}
+    <RevealSection className="d3">
+      <div style={{ textAlign: "center" }}>
+        <p style={{
+          color: "rgba(255,255,255,0.55)", fontSize: "0.95rem",
+          fontWeight: 700, marginBottom: "1.5rem", letterSpacing: "0.02em",
+        }}>
+          Free to use. No account needed to try it.
+        </p>
+        <button
+          onClick={handleQuizlenzClick}
+          style={{
+            background: "var(--amber)",
+            color: "var(--black)",
+            border: "3px solid var(--amber)",
+            padding: "1rem 2.8rem",
+            fontFamily: "'Oswald', sans-serif",
+            fontSize: "1.1rem",
+            fontWeight: 700,
+            letterSpacing: "0.08em",
+            cursor: "pointer",
+            borderRadius: "10px",
+            boxShadow: "6px 6px 0 var(--red)",
+            transition: "all 0.3s cubic-bezier(0.23, 1, 0.32, 1)",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.6rem",
+          }}
+          onMouseEnter={e => { e.currentTarget.style.transform = "translate(3px,3px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--red)"; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = "translate(0,0)"; e.currentTarget.style.boxShadow = "6px 6px 0 var(--red)"; }}
+        >
+          Try Quizlenz Free →
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </button>
+        <p style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.8rem", marginTop: "1rem", fontWeight: 600 }}>
+          Trusted by NK's StudySync students across KNUST engineering departments
+        </p>
+      </div>
+    </RevealSection>
+
+  </div>
+</section>
+
       {/* JOIN */}
       <section className="join-section" id="join">
         <div className="section-inner">
@@ -965,15 +1207,24 @@ export default function NKsStudySync() {
             )}
 
             {/* ADD THIS — Full Registration CTA button */}
-            <div style={{ marginTop: "2rem", textAlign: "center" }}>
-              <button
-                className="btn-primary"
-                onClick={() => navigate("/contact")}
-                style={{ fontSize: "1rem", padding: "0.9rem 2.4rem" }}
-              >
-                 Join Nk's StudySync →
-              </button>
-            </div>
+           <div style={{ 
+  marginTop: "2rem", 
+  textAlign: "center", 
+  display: "flex", 
+  justifyContent: "center", 
+  gap: "1.2rem", 
+  flexWrap: "wrap" 
+}}>
+  <button
+    className="btn-primary"
+    onClick={() => navigate("/contact")}
+    style={{ fontSize: "1rem", padding: "0.9rem 2.4rem" }}
+  >
+    Join Nk's StudySync →
+  </button>
+
+</div>
+
 
             <div className="ss-socials">
               
@@ -1039,7 +1290,7 @@ export default function NKsStudySync() {
               <div className="footer-tagline">Built by students, for students. Shaping Tomorrow's Engineers Today.</div>
             </div>
             <div className="footer-links">
-              {["About","Blog","Privacy Policy","Contact"].map((l) => (
+              {["About Founder","Blog","Privacy Policy","Contact"].map((l) => (
                 <a key={l} href="#">{l}</a>
               ))}
             </div>
