@@ -574,13 +574,13 @@ function RevealSection({ children, className = "", delay = "" }) {
   );
 }
 
-const handleQuizlenzClick = async () => {
-  await supabase.from("quizlenz_clicks").insert([{
+const handleQuizLensAIClick = async () => {
+  await supabase.from("QuizLensAI_clicks").insert([{
     clicked_at: new Date().toISOString(),
-    referrer: "homepage_quizlenz_section",
+    referrer: "homepage_QuizLensAI_section",
     user_agent: navigator.userAgent,
   }]);
-  window.open("https://quizlensai.com", "_blank");
+  window.open("https://QuizLensAIAIAIAIai.com", "_blank");
 };
 
 const schools = [
@@ -667,11 +667,18 @@ export default function NKsStudySync() {
       {/* NAV */}
       <nav className={`nav${scrolled ? " scrolled" : ""}`}>
         <div className="nav-logo" onClick={() => scrollTo("hero")}>
-          <div className="logo-bolt">⚡</div>
+      
+<div className="footer-logo-text" style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+  <img 
+    src="/IMG_8586.JPG.jpeg" 
+    alt="NK's StudySync"
+    style={{ height: "38px", width: "38px", objectFit: "contain", borderRadius: "6px", filter: "brightness(0) invert(1)" }}
+  />
+</div>
           <span><span className="logo-nk">Nk's</span> StudySync</span>
         </div>
         <ul className="nav-links">
-          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["quizlenz","Quizlenz"],["join","Join"]].map(([id, label]) => (
+          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAIAI","QuizLensAIAI"],["join","Join"]].map(([id, label]) => (
            
            <li key={id}>
               <a href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
@@ -691,7 +698,7 @@ export default function NKsStudySync() {
       <div className={`mobile-drawer${drawerOpen ? " open" : ""}`}>
         <button className="drawer-close" onClick={() => setDrawerOpen(false)}>✕</button>
         <ul>
-          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["quizlenz","Quizlenz"],["join","Join"]].map(([id, label]) => (
+          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["join","Join"]].map(([id, label]) => (
             <li key={id}>
               <a href="#" onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
             </li>
@@ -933,8 +940,8 @@ export default function NKsStudySync() {
         </div>
       </section>
 
-      {/* QUIZLENZ */}
-<section className="section-black" id="quizlenz" style={{ borderTop: "4px solid var(--amber)", borderBottom: "4px solid var(--amber)" }}>
+      {/* QuizLensAI */}
+<section className="section-black" id="QuizLensAI" style={{ borderTop: "4px solid var(--amber)", borderBottom: "4px solid var(--amber)" }}>
   <div className="section-inner" style={{ padding: "100px 5%" }}>
 
     {/* Header */}
@@ -945,13 +952,13 @@ export default function NKsStudySync() {
         </span>
       </div>
       <h2 className="section-title-amber" style={{ marginBottom: "0.75rem" }}>
-        Meet <span style={{ color: "#fff" }}>Quizlenz —</span>
+        Meet <span style={{ color: "#fff" }}>QuizLensAI —</span>
       </h2>
       <h2 className="section-title-white" style={{ marginTop: 0, marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.4rem)" }}>
         Your Personal AI Study Partner
       </h2>
       <p className="section-sub-white" style={{ maxWidth: "780px", margin: "0 auto 3.5rem" }}>
-        Upload any lecture note, PDF, or past question — and Quizlenz transforms it into 
+        Upload any lecture note, PDF, or past question — and QuizLensAI transforms it into 
         interactive quizzes, smart summaries, and deep-dive Q&amp;A sessions. 
         Think of it as NotebookLM, built specifically for the way engineering students actually study.
       </p>
@@ -978,7 +985,7 @@ export default function NKsStudySync() {
           ),
           label: "UPLOAD",
           title: "Drop Any Material",
-          desc: "Lecture slides, PDF textbooks, scanned past questions, handwritten notes — Quizlenz reads it all. No reformatting, no copy-pasting. Just upload and go.",
+          desc: "Lecture slides, PDF textbooks, scanned past questions, handwritten notes — QuizLensAI reads it all. No reformatting, no copy-pasting. Just upload and go.",
         },
         {
           icon: (
@@ -990,7 +997,7 @@ export default function NKsStudySync() {
           ),
           label: "ASK",
           title: "Ask It Anything",
-          desc: "\"Explain Thevenin's theorem from slide 14 like I'm in Form 3.\" \"What are the five most likely exam questions from this chapter?\" Quizlenz answers from your own material.",
+          desc: "\"Explain Thevenin's theorem from slide 14 like I'm in Form 3.\" \"What are the five most likely exam questions from this chapter?\" QuizLensAI answers from your own material.",
         },
         {
           icon: (
@@ -1001,7 +1008,7 @@ export default function NKsStudySync() {
           ),
           label: "QUIZ",
           title: "Auto-Generated Quizzes",
-          desc: "Quizlenz builds custom MCQs, fill-in-the-blank, and theory questions directly from your notes. Not generic internet questions — questions built from what your lecturer actually taught.",
+          desc: "QuizLensAI builds custom MCQs, fill-in-the-blank, and theory questions directly from your notes. Not generic internet questions — questions built from what your lecturer actually taught.",
         },
         
       ].map((card, i) => (
@@ -1072,12 +1079,12 @@ export default function NKsStudySync() {
           color: "#fff", marginBottom: "2rem", lineHeight: 1.2,
         }}>
           NotebookLM is powerful.<br />
-          <span style={{ color: "var(--amber)" }}>Quizlenz is built for <em style={{ fontStyle: "normal", color: "var(--red)" }}>your</em> exams.</span>
+          <span style={{ color: "var(--amber)" }}>QuizLensAI is built for <em style={{ fontStyle: "normal", color: "var(--red)" }}>your</em> exams.</span>
         </h3>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
           {[
             { label: "NotebookLM", points: ["General purpose AI notebook", "Great for research & podcasts", "No exam-focused quiz mode", "Not optimised for engineering courses"], color: "rgba(255,255,255,0.15)", textColor: "rgba(255,255,255,0.55)", tag: "General Tool" },
-            { label: "Quizlenz", points: ["Built for African engineering students", "Auto-generates past-question style quizzes", "Understands your specific course material", "Integrated with NK's StudySync community"], color: "rgba(245,163,0,0.1)", textColor: "rgba(255,255,255,0.85)", tag: "Your Tool", highlight: true },
+            { label: "QuizLensAI", points: ["Built for African engineering students", "Auto-generates past-question style quizzes", "Understands your specific course material", "Integrated with NK's StudySync community"], color: "rgba(245,163,0,0.1)", textColor: "rgba(255,255,255,0.85)", tag: "Your Tool", highlight: true },
           ].map((col) => (
             <div key={col.label} style={{
               background: col.color,
@@ -1128,7 +1135,7 @@ export default function NKsStudySync() {
       Free to use. No account needed to try it.
     </p>
     <button
-      onClick={handleQuizlenzClick}
+      onClick={handleQuizLensAIClick}
       style={{
         background: "var(--amber)",
         color: "var(--black)",
@@ -1153,7 +1160,7 @@ export default function NKsStudySync() {
       onMouseEnter={e => { e.currentTarget.style.transform = "translate(3px,3px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--red)"; }}
       onMouseLeave={e => { e.currentTarget.style.transform = "translate(0,0)"; e.currentTarget.style.boxShadow = "6px 6px 0 var(--red)"; }}
     >
-      Try Quizlenz Free →
+      Try QuizLensAI Free →
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
         style={{ flexShrink: 0 }}>
         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
