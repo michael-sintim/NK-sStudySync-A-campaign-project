@@ -1059,90 +1059,103 @@ export default function NKsStudySync() {
     </div>
 
     {/* Comparison Block */}
-    <RevealSection className="d2">
-      <div style={{
-        background: "rgba(245,163,0,0.06)",
-        border: "2px solid rgba(245,163,0,0.2)",
-        borderRadius: "24px",
-        padding: "3rem",
-        maxWidth: "860px",
-        margin: "0 auto 4rem",
-        width: "100%",
-      }}>
-        <p style={{
-          fontFamily: "'Oswald', sans-serif", fontSize: "0.75rem",
-          letterSpacing: "0.18em", color: "var(--amber)", marginBottom: "1.2rem",
-          textTransform: "uppercase",
-        }}>How It Stacks Up</p>
-        <h3 style={{
-          fontFamily: "'Oswald', sans-serif", fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
-          color: "#fff", marginBottom: "2rem", lineHeight: 1.2,
+<RevealSection className="d2">
+  <div style={{
+    background: "rgba(245,163,0,0.06)",
+    border: "2px solid rgba(245,163,0,0.2)",
+    borderRadius: "24px",
+    padding: "clamp(1.5rem, 5vw, 3rem)", // Responsive padding
+    maxWidth: "860px",
+    margin: "0 auto 4rem",
+    width: "100%",
+  }}>
+    <p style={{
+      fontFamily: "'Oswald', sans-serif", fontSize: "0.75rem",
+      letterSpacing: "0.18em", color: "var(--amber)", marginBottom: "1.2rem",
+      textTransform: "uppercase", textAlign: "center"
+    }}>How It Stacks Up</p>
+    
+    <h3 style={{
+      fontFamily: "'Oswald', sans-serif", fontSize: "clamp(1.4rem, 4vw, 2.2rem)",
+      color: "#fff", marginBottom: "2rem", lineHeight: 1.3, textAlign: "center"
+    }}>
+      NotebookLM is powerful.<br />
+      <span style={{ color: "var(--amber)", display: "block", marginTop: "0.5rem" }}>
+        QuizLensAI is built for <em style={{ fontStyle: "normal", color: "var(--red)" }}>your</em> exams.
+      </span>
+    </h3>
+
+    {/* RESPONSIVE GRID: Stacks on mobile, side-by-side on desktop */}
+    <div style={{ 
+      display: "grid", 
+      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", 
+      gap: "1.5rem" 
+    }}>
+      {[
+        { label: "NotebookLM", points: ["General purpose AI notebook", "Great for research & podcasts", "No exam-focused quiz mode", "Not optimised for engineering courses"], color: "rgba(255,255,255,0.15)", textColor: "rgba(255,255,255,0.55)", tag: "General Tool" },
+        { label: "QuizLensAI", points: ["Built for African engineering students", "Auto-generates past-question style quizzes", "Understands your specific course material", "Integrated with NK's StudySync community"], color: "rgba(245,163,0,0.1)", textColor: "rgba(255,255,255,0.85)", tag: "Your Tool", highlight: true },
+      ].map((col) => (
+        <div key={col.label} style={{
+          background: col.color,
+          border: col.highlight ? "2px solid rgba(245,163,0,0.4)" : "2px solid rgba(255,255,255,0.08)",
+          borderRadius: "16px",
+          padding: "1.5rem",
+          display: "flex",
+          flexDirection: "column"
         }}>
-          NotebookLM is powerful.<br />
-          <span style={{ color: "var(--amber)" }}>QuizLensAI is built for <em style={{ fontStyle: "normal", color: "var(--red)" }}>your</em> exams.</span>
-        </h3>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
-          {[
-            { label: "NotebookLM", points: ["General purpose AI notebook", "Great for research & podcasts", "No exam-focused quiz mode", "Not optimised for engineering courses"], color: "rgba(255,255,255,0.15)", textColor: "rgba(255,255,255,0.55)", tag: "General Tool" },
-            { label: "QuizLensAI", points: ["Built for African engineering students", "Auto-generates past-question style quizzes", "Understands your specific course material", "Integrated with NK's StudySync community"], color: "rgba(245,163,0,0.1)", textColor: "rgba(255,255,255,0.85)", tag: "Your Tool", highlight: true },
-          ].map((col) => (
-            <div key={col.label} style={{
-              background: col.color,
-              border: col.highlight ? "2px solid rgba(245,163,0,0.4)" : "2px solid rgba(255,255,255,0.08)",
-              borderRadius: "16px",
-              padding: "1.5rem",
-            }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.2rem" }}>
-                <span style={{
-                  fontFamily: "'Oswald', sans-serif", fontSize: "1.1rem",
-                  color: col.highlight ? "var(--amber)" : "rgba(255,255,255,0.5)", fontWeight: 700,
-                }}>{col.label}</span>
-                {col.highlight && (
-                  <span style={{
-                    background: "var(--amber)", color: "var(--black)",
-                    fontSize: "0.65rem", fontWeight: 800,
-                    letterSpacing: "0.1em", padding: "0.2rem 0.6rem",
-                    borderRadius: "100px", fontFamily: "'Oswald', sans-serif",
-                  }}>✦ {col.tag}</span>
-                )}
-              </div>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-                {col.points.map((pt, i) => (
-                  <li key={i} style={{
-                    display: "flex", alignItems: "flex-start", gap: "0.6rem",
-                    color: col.textColor, fontSize: "0.88rem", lineHeight: 1.5, fontWeight: 600,
-                  }}>
-                    <span style={{ color: col.highlight ? "var(--amber)" : "rgba(255,255,255,0.3)", flexShrink: 0, marginTop: "2px" }}>
-                      {col.highlight ? "✓" : "–"}
-                    </span>
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.2rem", flexWrap: "wrap", gap: "0.5rem" }}>
+            <span style={{
+              fontFamily: "'Oswald', sans-serif", fontSize: "1.1rem",
+              color: col.highlight ? "var(--amber)" : "rgba(255,255,255,0.5)", fontWeight: 700,
+            }}>{col.label}</span>
+            {col.highlight && (
+              <span style={{
+                background: "var(--amber)", color: "var(--black)",
+                fontSize: "0.65rem", fontWeight: 800,
+                letterSpacing: "0.1em", padding: "0.2rem 0.6rem",
+                borderRadius: "100px", fontFamily: "'Oswald', sans-serif",
+              }}>✦ {col.tag}</span>
+            )}
+          </div>
+          <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.8rem", padding: 0, margin: 0 }}>
+            {col.points.map((pt, i) => (
+              <li key={i} style={{
+                display: "flex", alignItems: "flex-start", gap: "0.6rem",
+                color: col.textColor, fontSize: "0.88rem", lineHeight: 1.4, fontWeight: 600,
+              }}>
+                <span style={{ color: col.highlight ? "var(--amber)" : "rgba(255,255,255,0.3)", flexShrink: 0, marginTop: "2px" }}>
+                  {col.highlight ? "✓" : "–"}
+                </span>
+                {pt}
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-    </RevealSection>
-{/* CTA */}
+      ))}
+    </div>
+  </div>
+</RevealSection>
+
+{/* CTA SECTION */}
 <RevealSection className="d3">
   <div style={{ textAlign: "center", padding: "0 1rem" }}>
     <p style={{
-      color: "rgba(255,255,255,0.55)", fontSize: "clamp(0.82rem, 2.5vw, 0.95rem)",
+      color: "rgba(255,255,255,0.55)", fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)",
       fontWeight: 700, marginBottom: "1.5rem", letterSpacing: "0.02em",
       lineHeight: 1.6,
     }}>
       Free to use. No account needed to try it.
     </p>
+    
     <button
       onClick={handleQuizLensAIClick}
       style={{
         background: "var(--amber)",
         color: "var(--black)",
         border: "3px solid var(--amber)",
-        padding: "clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 5vw, 2.8rem)",
+        padding: "1rem 2rem",
         fontFamily: "'Oswald', sans-serif",
-        fontSize: "clamp(0.9rem, 3vw, 1.1rem)",
+        fontSize: "clamp(1rem, 3vw, 1.1rem)",
         fontWeight: 700,
         letterSpacing: "0.08em",
         cursor: "pointer",
@@ -1153,14 +1166,15 @@ export default function NKsStudySync() {
         alignItems: "center",
         justifyContent: "center",
         gap: "0.6rem",
-        width: "clamp(200px, 80vw, 320px)",
+        width: "auto", // Changed to auto for better fit
+        minWidth: "260px",
         maxWidth: "100%",
-        whiteSpace: "nowrap",
+        whiteSpace: "normal", // Allows text to wrap if button is too small
       }}
       onMouseEnter={e => { e.currentTarget.style.transform = "translate(3px,3px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--red)"; }}
       onMouseLeave={e => { e.currentTarget.style.transform = "translate(0,0)"; e.currentTarget.style.boxShadow = "6px 6px 0 var(--red)"; }}
     >
-      Try QuizLensAI Free →
+      <span style={{ textAlign: "center" }}>Try QuizLensAI Free →</span>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
         style={{ flexShrink: 0 }}>
         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -1168,20 +1182,16 @@ export default function NKsStudySync() {
         <line x1="10" y1="14" x2="21" y2="3"/>
       </svg>
     </button>
+    
     <p style={{
-      color: "rgba(255,255,255,0.3)", fontSize: "clamp(0.72rem, 2vw, 0.8rem)",
-      marginTop: "1rem", fontWeight: 600, lineHeight: 1.6,
-      maxWidth: "360px", margin: "1rem auto 0",
-      padding: "0 1rem",
+      color: "rgba(255,255,255,0.3)", fontSize: "0.8rem",
+      marginTop: "1.5rem", fontWeight: 600, lineHeight: 1.6,
+      maxWidth: "400px", margin: "1.5rem auto 0",
     }}>
       Trusted by NK's StudySync students across KNUST engineering departments
     </p>
   </div>
 </RevealSection>
-
-</div>
-</section>
-
       {/* JOIN */}
       <section className="join-section" id="join">
         <div className="section-inner">
