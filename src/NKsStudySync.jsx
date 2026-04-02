@@ -906,7 +906,7 @@ export default function NKsStudySync() {
   {
     initials: "FS",
     name: "Farama Saunffaa Emmanuel",
-    school: "Level 200 · Engineering",
+    school: "Level 200 · Electrical Engineering",
     quote: "NK checked my CENG report formatting and said it was very good and unique — only one font throughout, Times New Roman. My plagiarism came back at 13% and most of the highlighted areas were just the table of contents, acknowledgement and declaration. Passed clean.",
     delay: "d2"
   },
