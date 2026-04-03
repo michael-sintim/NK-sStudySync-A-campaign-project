@@ -478,6 +478,15 @@ body {
     .problem-grid { grid-template-columns: 1fr; }
     .stat-cluster { grid-template-columns: 1fr 1fr; }
     .section-inner { padding: 80px 5%; }
+    @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .stat-cluster { grid-template-columns: 1fr 1fr; }
+    .section-inner { padding: 80px 5%; }
+    .problem-text { text-align: center; }
+    .problem-text h2 { text-align: center; color: var(--amber); }
+    .problem-text p { text-align: center; }
   }
   @media (max-width: 600px) {
     .signup-form { flex-direction: column; }
@@ -488,6 +497,45 @@ body {
     .section-inner { padding: 60px 1.5rem; }
     .manifesto-item { flex-direction: column; gap: 1rem; }
     .manifesto-num { width: 100%; }
+    .stat-cluster { gap: 1rem; padding: 0 0.25rem; }
+    .stat-card { padding: 1.5rem 0.75rem; }
+    .problem-text h2 { font-size: 1.8rem; }
+    .problem-text { padding: 0 0.25rem; }
+  }
+  }
+  @media (max-width: 600px) {
+    .signup-form { flex-direction: column; }
+    .signup-form input { border-right: 2px solid var(--black); border-bottom: none; border-radius: 8px 8px 0 0; }
+    .signup-form button { border-radius: 0 0 8px 8px; }
+    .pull-quote { font-size: 1.8rem; }
+    .hero-title { font-size: 3rem; }
+    .section-inner { padding: 60px 1.5rem; }
+    .manifesto-item { flex-direction: column; gap: 1rem; }
+    .manifesto-num { width: 100%; }
+    @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .stat-cluster { grid-template-columns: 1fr 1fr; }
+    .section-inner { padding: 80px 5%; }
+    .problem-text { text-align: center; }
+    .problem-text h2 { text-align: center; color: var(--amber); }
+    .problem-text p { text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .signup-form { flex-direction: column; }
+    .signup-form input { border-right: 2px solid var(--black); border-bottom: none; border-radius: 8px 8px 0 0; }
+    .signup-form button { border-radius: 0 0 8px 8px; }
+    .pull-quote { font-size: 1.8rem; }
+    .hero-title { font-size: 3rem; }
+    .section-inner { padding: 60px 1.5rem; }
+    .manifesto-item { flex-direction: column; gap: 1rem; }
+    .manifesto-num { width: 100%; }
+    .stat-cluster { gap: 1rem; padding: 0 0.25rem; }
+    .stat-card { padding: 1.5rem 0.75rem; }
+    .problem-text h2 { font-size: 1.8rem; }
+    .problem-text { padding: 0 0.25rem; }
+  }
   }
 `;
 
