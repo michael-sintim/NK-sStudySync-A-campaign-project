@@ -641,7 +641,7 @@ const handleQuizLensAIClick = async () => {
 };
 
 const schools = [
-  "Aerospace Engineering","Agricultural Engineering","Biomedical Engineering",
+  "Aerospace Engineering","Agricultural Engineering"," Automobile Engineering","Biomedical Engineering",
   "Chemical Engineering","Civil Engineering","Computer Engineering",
   "Electrical/Electronic Engineering","Geological Engineering","Geomatic Engineering",
   "Industrial Engineering","Materials Engineering","Mechanical Engineering",
