@@ -649,6 +649,7 @@ const schools = [
   "Telecommunication Engineering"
 ];
 
+
 /* ===== MAIN COMPONENT ===== */
 export default function NKsStudySync() {
   const navigate = useNavigate();
