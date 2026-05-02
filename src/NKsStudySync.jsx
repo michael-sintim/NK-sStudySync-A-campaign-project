@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
+import InternshipHelpDesk from "./Internshiphelpdesk "
 
 const THEME = {
   amber: "#F5A300",
@@ -649,7 +650,7 @@ const schools = [
   "Telecommunication Engineering"
 ];
 
-
+  
 /* ===== MAIN COMPONENT ===== */
 export default function NKsStudySync() {
   const navigate = useNavigate();
@@ -741,7 +742,7 @@ export default function NKsStudySync() {
           <span><span className="logo-nk">Nk's</span> StudySync</span>
         </div>
         <ul className="nav-links">
-          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["join","Join"]].map(([id, label]) => (
+          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["internships","Internships"],["join","Join"]].map(([id, label]) => (
            
            <li key={id}>
               <a href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
@@ -761,7 +762,7 @@ export default function NKsStudySync() {
       <div className={`mobile-drawer${drawerOpen ? " open" : ""}`}>
         <button className="drawer-close" onClick={() => setDrawerOpen(false)}>✕</button>
         <ul>
-          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["join","Join"]].map(([id, label]) => (
+          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["internships","Internships"],["join","Join"]].map(([id, label]) => (
             <li key={id}>
               <a href="#" onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
             </li>
@@ -1275,6 +1276,79 @@ export default function NKsStudySync() {
 </RevealSection>
 </div>
 </section>
+
+
+{/* INTERNSHIP TEASER */}
+<section className="section-amber-deep" id="internships">
+  <div className="section-inner">
+    <RevealSection>
+      <div style={{ textAlign: "center", marginBottom: "1rem" }}>
+        <span className="section-tag">🎓 INTERNSHIP HELP DESK</span>
+      </div>
+      <h2 className="section-title-black" style={{ marginBottom: "1rem" }}>
+        Find Your <span style={{ color: "var(--red)" }}>Industrial Attachment</span>
+      </h2>
+      <p className="section-sub-black" style={{ maxWidth: "680px", margin: "0 auto 2.5rem" }}>
+        We've done the hard work for you. Browse 72 verified companies across Ghana — 
+        filtered by your engineering programme, city, and area of interest.
+        Government bodies, multinationals, and local firms all in one place.
+      </p>
+    </RevealSection>
+
+    <RevealSection className="d1">
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+        gap: "1.2rem",
+        marginBottom: "3rem",
+      }}>
+        {[
+          { num: "72", label: "Verified Companies" },
+          { num: "18", label: "Engineering Programmes" },
+          { num: "10+", label: "Cities Covered" },
+          { num: "6", label: "Regions in Ghana" },
+        ].map((s) => (
+          <div key={s.label} style={{
+            background: "rgba(0,0,0,0.08)",
+            border: "3px solid var(--black)",
+            borderRadius: "16px",
+            padding: "1.5rem",
+            textAlign: "center",
+            boxShadow: "5px 5px 0 var(--black)",
+          }}>
+            <span style={{
+              fontFamily: "'Oswald', sans-serif",
+              fontSize: "2.5rem",
+              fontWeight: 700,
+              color: "var(--red)",
+              display: "block",
+              lineHeight: 1,
+            }}>{s.num}</span>
+            <div style={{
+              fontSize: "0.82rem",
+              fontWeight: 800,
+              color: "var(--black)",
+              marginTop: "0.4rem",
+            }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </RevealSection>
+
+    <RevealSection className="d2">
+      <div style={{ textAlign: "center" }}>
+        <button
+          className="btn-primary"
+          onClick={() => navigate("/internships")}
+          style={{ fontSize: "1rem", padding: "0.9rem 2.4rem" }}
+        >
+          Browse All Internship Companies →
+        </button>
+      </div>
+    </RevealSection>
+  </div>
+</section>
+
 
       {/* JOIN */}
       <section className="join-section" id="join">
