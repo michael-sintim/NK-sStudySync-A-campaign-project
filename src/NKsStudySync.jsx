@@ -749,7 +749,7 @@ export default function NKsStudySync() {
 ))}
 <li>
   <a href="/internships" onClick={(e) => { e.preventDefault(); navigate("/internships"); }}>
-    Industrial Bridge
+    Industry Bridge
   </a>
 </li>
         </ul>
@@ -773,7 +773,7 @@ export default function NKsStudySync() {
 ))}
 <li>
   <a href="/internships" onClick={(e) => { e.preventDefault(); navigate("/internships"); }}>
-    Industrial Bridge
+    Industry Bridge
   </a>
 </li>
         </ul>
@@ -1292,7 +1292,7 @@ export default function NKsStudySync() {
   <div className="section-inner">
     <RevealSection>
       <div style={{ textAlign: "center", marginBottom: "1rem" }}>
-        <span className="section-tag">🎓 The Industrial Bridge </span>
+        <span className="section-tag">🎓 The Industry Bridge </span>
       </div>
       <h2 className="section-title-black" style={{ marginBottom: "1rem" }}>
         Find Your <span style={{ color: "var(--red)" }}>Industrial Attachment</span>

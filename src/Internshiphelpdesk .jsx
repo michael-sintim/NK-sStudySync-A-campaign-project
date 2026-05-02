@@ -600,7 +600,7 @@ export default function InternshipHelpDesk() {
 
           {/* Header */}
           <div className="ihd-header">
-            <span className="ihd-tag">🎓 THE INDUSTRIAL BRIDGE</span>
+            <span className="ihd-tag">🎓 THE Industry Bridge</span>
             <h2 className="ihd-title">
               Find Your <span>Industrial Attachment</span>
             </h2>
