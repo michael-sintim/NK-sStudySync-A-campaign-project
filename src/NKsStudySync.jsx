@@ -233,7 +233,7 @@ body {
   }
   .section-amber-deep {
     width: 100%;
-    background: #FFD700;
+    background: var(--amber);
     border-top: 4px solid var(--black);
     border-bottom: 4px solid var(--black);
   }
@@ -280,7 +280,7 @@ body {
   .section-title-black { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--black); text-align: center; margin-bottom: 1rem; width: 100%; }
   .section-title-white { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white); text-align: center; margin-bottom: 1rem; width: 100%; }
   .section-title-amber { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--amber); text-align: center; margin-bottom: 1rem; width: 100%; }
-  .section-sub-black { text-align: center; color: rgba(0,0,0,0.65); font-size: 1.1rem; font-weight: 600; margin-bottom: 3rem; width: 100%; }
+  .section-sub-black { text-align: center; color: rgba(0,0,0,0.9); font-size: 1.1rem; font-weight: 600; margin-bottom: 3rem; width: 100%; }
   .section-sub-white { text-align: center; color: rgba(255,255,255,0.75); font-size: 1.1rem; font-weight: 600; margin-bottom: 3rem; width: 100%; }
 
   /* ===== MISSION ===== */
@@ -1309,7 +1309,7 @@ export default function NKsStudySync() {
           { num: "6", label: "Regions in Ghana" },
         ].map((s) => (
           <div key={s.label} style={{
-            background: "rgba(0,0,0,0.08)",
+            background: "rgba(0,0,0,0.0)",
             border: "3px solid var(--black)",
             borderRadius: "16px",
             padding: "1.5rem",
