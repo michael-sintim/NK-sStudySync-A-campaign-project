@@ -766,13 +766,13 @@ export default function NKsStudySync() {
       <div className={`mobile-drawer${drawerOpen ? " open" : ""}`}>
         <button className="drawer-close" onClick={() => setDrawerOpen(false)}>✕</button>
         <ul>
-          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["join","Join"]].map(([id, label]) => (
+      {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["join","Join"]].map(([id, label]) => (
   <li key={id}>
-    <a href="#" onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
+    <a href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
   </li>
 ))}
 <li>
-  <a href="/internships" onClick={(e) => { e.preventDefault(); navigate("/internships"); setDrawerOpen(false); }}>
+  <a href="/internships" onClick={(e) => { e.preventDefault(); navigate("/internships"); }}>
     Industrial Bridge
   </a>
 </li>
