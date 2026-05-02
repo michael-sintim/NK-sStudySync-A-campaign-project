@@ -742,7 +742,7 @@ export default function NKsStudySync() {
           <span><span className="logo-nk">Nk's</span> StudySync</span>
         </div>
         <ul className="nav-links">
-          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["internships","Internships"],["join","Join"]].map(([id, label]) => (
+          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["Industrial Bridge","Industrial Bridge"],["join","Join"]].map(([id, label]) => (
            
            <li key={id}>
               <a href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
@@ -762,7 +762,7 @@ export default function NKsStudySync() {
       <div className={`mobile-drawer${drawerOpen ? " open" : ""}`}>
         <button className="drawer-close" onClick={() => setDrawerOpen(false)}>✕</button>
         <ul>
-          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["internships","Internships"],["join","Join"]].map(([id, label]) => (
+          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["Industrial Bridge","Industrial Bridge"],["join","Join"]].map(([id, label]) => (
             <li key={id}>
               <a href="#" onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
             </li>
@@ -1283,7 +1283,7 @@ export default function NKsStudySync() {
   <div className="section-inner">
     <RevealSection>
       <div style={{ textAlign: "center", marginBottom: "1rem" }}>
-        <span className="section-tag">🎓 INTERNSHIP HELP DESK</span>
+        <span className="section-tag">🎓 The Industrial Bridge </span>
       </div>
       <h2 className="section-title-black" style={{ marginBottom: "1rem" }}>
         Find Your <span style={{ color: "var(--red)" }}>Industrial Attachment</span>
