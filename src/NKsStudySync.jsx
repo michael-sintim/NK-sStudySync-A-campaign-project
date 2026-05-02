@@ -63,7 +63,7 @@ body {
     position: fixed; top: 0; width: 100%; z-index: 1000;
     padding: 1.25rem 5%;
     display: flex; align-items: center; justify-content: space-between;
-    background: var(--amber-dark);
+    background: var(--amber-light);
     backdrop-filter: blur(10px);
     border-bottom: 3px solid var(--black);
     box-shadow: 0 4px 0 var(--black);

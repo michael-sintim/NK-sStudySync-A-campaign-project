@@ -18,7 +18,7 @@ const styles = `
     position: fixed; top: 0; width: 100%; z-index: 1000;
     padding: 1.1rem 5%;
     display: flex; align-items: center; justify-content: space-between;
-    background: #E09000;
+    background: var(--amber-light);
     border-bottom: 3px solid #111;
     box-shadow: 0 4px 0 #111;
   }
@@ -31,7 +31,7 @@ const styles = `
   .ip-nav-logo .red { color: #D32F2F; }
   .ip-back-btn {
     background: #111; color: #F5A300;
-    border: 2px solid #111; padding: 0.55rem 1.3rem;
+    border: 2px solid #111; padding: 0.55rem 0.8rem;
     font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 700;
     letter-spacing: 0.06em; cursor: pointer; border-radius: 8px;
     box-shadow: 3px 3px 0 #D32F2F;
@@ -77,6 +77,18 @@ export default function InternshipPage() {
       {/* Nav */}
       <nav className="ip-nav">
         <div className="ip-nav-logo" onClick={() => navigate("/")}>
+            <div className="nav-logo" onClick={() => scrollTo("hero")}>
+  <img
+    src="/IMG_8586.JPG.jpeg"
+    alt="NK's StudySync"
+    style={{
+      height: "42px",
+      width: "42px",
+      objectFit: "contain",
+      borderRadius: "8px",
+    }}
+  />
+</div>
           <span><span className="red">Nk's</span> StudySync</span>
         </div>
         <button className="ip-back-btn" onClick={() => navigate("/")}>

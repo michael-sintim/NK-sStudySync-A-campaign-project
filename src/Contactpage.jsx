@@ -44,7 +44,7 @@ const getStyles = () => `
     position: fixed; top: 0; width: 100%; z-index: 1000;
     padding: 1.1rem 5%;
     display: flex; align-items: center; justify-content: space-between;
-    background: var(--amber-dark);
+    background: var(--amber-light);
     border-bottom: 3px solid var(--black);
     box-shadow: 0 4px 0 var(--black);
   }
@@ -164,7 +164,7 @@ const getStyles = () => `
     width: 100%;
   }
   .cp-input:focus, .cp-select:focus, .cp-textarea:focus {
-    border-color: var(--amber-dark);
+    border-color:var(--amber-light);
     box-shadow: 0 0 0 3px rgba(245,163,0,0.15);
     background: var(--white);
   }
@@ -387,7 +387,18 @@ export default function ContactPage() {
     <div className="cp-root" key={styleVersion}>
       <nav className="cp-nav">
         <div className="cp-nav-logo">
-          <div className="cp-logo-bolt">⚡</div>
+           <div className="nav-logo" onClick={() => scrollTo("hero")}>
+  <img
+    src="/IMG_8586.JPG.jpeg"
+    alt="NK's StudySync"
+    style={{
+      height: "42px",
+      width: "42px",
+      objectFit: "contain",
+      borderRadius: "8px",
+    }}
+  />
+</div>
           <span><span className="cp-logo-nk">Nk's</span> StudySync</span>
         </div>
         <button className="cp-back-btn" onClick={() => navigate("/")}>
