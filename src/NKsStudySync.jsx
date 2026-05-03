@@ -1298,7 +1298,7 @@ export default function NKsStudySync() {
         Find Your <span style={{ color: "var(--red)" }}>Industrial Attachment</span>
       </h2>
       <p className="section-sub-black" style={{ maxWidth: "680px", margin: "0 auto 2.5rem" }}>
-        We've done the hard work for you. Browse 72 verified companies across Ghana — 
+        We've done the hard work for you. Browse 178 verified companies across Ghana — 
         filtered by your engineering programme, city, and area of interest.
         Government bodies, multinationals, and local firms all in one place.
       </p>
@@ -1312,10 +1312,10 @@ export default function NKsStudySync() {
         marginBottom: "3rem",
       }}>
         {[
-          { num: "72", label: "Verified Companies" },
+          { num: "178", label: "Verified Companies" },
           { num: "18", label: "Engineering Programmes" },
-          { num: "10+", label: "Cities Covered" },
-          { num: "6", label: "Regions in Ghana" },
+          { num: "20+", label: "Cities Covered" },
+          { num: "16", label: "Regions in Ghana" },
         ].map((s) => (
           <div key={s.label} style={{
             background: "rgba(0,0,0,0.0)",
