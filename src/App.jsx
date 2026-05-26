@@ -3,6 +3,7 @@ import NKsStudySync from "./NKsStudySync";
 import ContactPage from "./Contactpage";
 import InternshipPage from "./InternshipPage";
 import ScrollToTop from "./ScrollToTop.jsx";
+import CWACalculator from "./CWACalculator";
 
 function HomeWrapper() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<HomeWrapper />} />
         <Route path="/contact" element={<ContactWrapper />} />
         <Route path="/internships" element={<InternshipPage />} />
+        <Route path="/cwa" element={<CWACalculator />} />
       </Routes>
     </BrowserRouter>
   );

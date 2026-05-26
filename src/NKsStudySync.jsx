@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
-import InternshipHelpDesk from "./Internshiphelpdesk "
+import InternshipHelpDesk from "./Internshiphelpdesk ";
 
 const THEME = {
   amber: "#F5A300",
@@ -37,21 +37,18 @@ const styles = `
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  overflow-x: hidden;
-  max-width: 100%;
-}
+  html { overflow-x: hidden; max-width: 100%; }
 
-body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background: var(--amber);
-  color: var(--black);
-  overflow-x: hidden;
-  max-width: 100%;
-  width: 100%;
-  line-height: 1.6;
-  position: relative;
-}
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--amber);
+    color: var(--black);
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    line-height: 1.6;
+    position: relative;
+  }
 
   h1, h2, h3, h4 {
     font-family: 'Oswald', sans-serif;
@@ -303,22 +300,22 @@ body {
     border-radius: 20px; padding: 2.5rem;
     box-shadow: 8px 8px 0 var(--black); transition: var(--ease); width: 100%;
   }
-    
   .mission-card:hover, .testimonial-card:hover {
     transform: translateY(-8px); box-shadow: 12px 12px 0 var(--black);
-  }.mission-icon {
-  width: 56px; height: 56px;
-  background: rgba(211,47,47,0.08);
-  border: 2px solid rgba(211,47,47,0.15);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.5rem;
-  transition: var(--ease);
-}
-.mission-card:hover .mission-icon {
-  background: rgba(211,47,47,0.15);
-  border-color: var(--red);
-}
+  }
+  .mission-icon {
+    width: 56px; height: 56px;
+    background: rgba(211,47,47,0.08);
+    border: 2px solid rgba(211,47,47,0.15);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: var(--ease);
+  }
+  .mission-card:hover .mission-icon {
+    background: rgba(211,47,47,0.15);
+    border-color: var(--red);
+  }
   .mission-card h3 { font-size: 1.5rem; color: var(--red); margin-bottom: 0.75rem; }
   .mission-card p { color: var(--black-soft); line-height: 1.7; font-size: 1rem; font-weight: 600; }
 
@@ -352,7 +349,6 @@ body {
   .impact-label { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 0.5rem; font-weight: 700; line-height: 1.4; }
   .logo-strip { overflow: hidden; border-top: 3px solid rgba(255,255,255,0.3); padding-top: 2rem; width: 100%; }
   .logo-strip-track { display: flex; gap: 2rem; animation: scrollLogos 25s linear infinite; width: max-content; }
-  
   @keyframes scrollLogos { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .logo-pill {
     background: rgba(255,255,255,0.15); color: var(--white);
@@ -425,16 +421,14 @@ body {
     display: flex; align-items: center; justify-content: center;
     gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; width: 100%;
   }
-  .ss-soc-lbl {
-    font-weight: 800; font-size: 0.85rem; color: var(--black); margin-right: 0.5rem;
-  }
+  .ss-soc-lbl { font-weight: 800; font-size: 0.85rem; color: var(--black); margin-right: 0.5rem; }
   .ss-soc-btn {
     display: inline-flex; align-items: center; gap: 8px;
     background: transparent; color: black;
     border: 2px solid black;
     padding: 0.5rem 1.1rem; cursor: pointer; border-radius: 6px; margin: 4px;
     font-family: 'Poppins', sans-serif; font-size: 0.8rem; font-weight: 700;
-    letter-spacing: 0.00em; transition: transform 0.18s, box-shadow 0.18s;
+    transition: transform 0.18s, box-shadow 0.18s;
   }
   .ss-soc-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
   .ss-soc-btn svg { flex-shrink: 0; }
@@ -453,18 +447,19 @@ body {
   .footer-copy { color: rgba(255,255,255,0.25); font-size: 0.85rem; }
   .footer-socials { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   .footer-social-icon {
-  width: 38px; height: 38px;
-  background: rgba(255,255,255,0.08);
-  border: 2px solid rgba(255,255,255,0.15); border-radius: 8px;
-  display: inline-flex; align-items: center; justify-content: center;
-  text-decoration: none; transition: all 0.2s; flex-shrink: 0;
-}
-.footer-social-icon:hover {
-  background: var(--amber-light);
-  border-color: var(--amber-light);
-  transform: translateY(-2px);
-}
-.footer-social-icon:hover svg { fill: var(--black); }
+    width: 38px; height: 38px;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.15); border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: all 0.2s; flex-shrink: 0;
+  }
+  .footer-social-icon:hover {
+    background: var(--amber-light);
+    border-color: var(--amber-light);
+    transform: translateY(-2px);
+  }
+  .footer-social-icon:hover svg { fill: var(--black); }
+
   /* ===== REVEAL ANIMATIONS ===== */
   .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; width: 100%; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -479,12 +474,6 @@ body {
     .problem-grid { grid-template-columns: 1fr; }
     .stat-cluster { grid-template-columns: 1fr 1fr; }
     .section-inner { padding: 80px 5%; }
-    @media (max-width: 900px) {
-    .nav-links, .nav-cta { display: none; }
-    .hamburger { display: flex; }
-    .problem-grid { grid-template-columns: 1fr; }
-    .stat-cluster { grid-template-columns: 1fr 1fr; }
-    .section-inner { padding: 80px 5%; }
     .problem-text { text-align: center; }
     .problem-text h2 { text-align: center; color: var(--amber); }
     .problem-text p { text-align: center; }
@@ -502,41 +491,6 @@ body {
     .stat-card { padding: 1.5rem 0.75rem; }
     .problem-text h2 { font-size: 1.8rem; }
     .problem-text { padding: 0 0.25rem; }
-  }
-  }
-  @media (max-width: 600px) {
-    .signup-form { flex-direction: column; }
-    .signup-form input { border-right: 2px solid var(--black); border-bottom: none; border-radius: 8px 8px 0 0; }
-    .signup-form button { border-radius: 0 0 8px 8px; }
-    .pull-quote { font-size: 1.8rem; }
-    .hero-title { font-size: 3rem; }
-    .section-inner { padding: 60px 1.5rem; }
-    .manifesto-item { flex-direction: column; gap: 1rem; }
-    .manifesto-num { width: 100%; }
-    @media (max-width: 900px) {
-    .nav-links, .nav-cta { display: none; }
-    .hamburger { display: flex; }
-    .problem-grid { grid-template-columns: 1fr; }
-    .stat-cluster { grid-template-columns: 1fr 1fr; }
-    .section-inner { padding: 80px 5%; }
-    .problem-text { text-align: center; }
-    .problem-text h2 { text-align: center; color: var(--amber); }
-    .problem-text p { text-align: center; }
-  }
-  @media (max-width: 600px) {
-    .signup-form { flex-direction: column; }
-    .signup-form input { border-right: 2px solid var(--black); border-bottom: none; border-radius: 8px 8px 0 0; }
-    .signup-form button { border-radius: 0 0 8px 8px; }
-    .pull-quote { font-size: 1.8rem; }
-    .hero-title { font-size: 3rem; }
-    .section-inner { padding: 60px 1.5rem; }
-    .manifesto-item { flex-direction: column; gap: 1rem; }
-    .manifesto-num { width: 100%; }
-    .stat-cluster { gap: 1rem; padding: 0 0.25rem; }
-    .stat-card { padding: 1.5rem 0.75rem; }
-    .problem-text h2 { font-size: 1.8rem; }
-    .problem-text { padding: 0 0.25rem; }
-  }
   }
 `;
 
@@ -642,7 +596,7 @@ const handleQuizLensAIClick = async () => {
 };
 
 const schools = [
-  "Aerospace Engineering","Agricultural Engineering"," Automobile Engineering","Biomedical Engineering",
+  "Aerospace Engineering","Agricultural Engineering","Automobile Engineering","Biomedical Engineering",
   "Chemical Engineering","Civil Engineering","Computer Engineering",
   "Electrical/Electronic Engineering","Geological Engineering","Geomatic Engineering",
   "Industrial Engineering","Materials Engineering","Mechanical Engineering",
@@ -650,7 +604,6 @@ const schools = [
   "Telecommunication Engineering"
 ];
 
-  
 /* ===== MAIN COMPONENT ===== */
 export default function NKsStudySync() {
   const navigate = useNavigate();
@@ -702,9 +655,7 @@ export default function NKsStudySync() {
     }
     setLoading(true);
     setSignupError("");
-    const { error } = await supabase
-      .from("email_signups")
-      .insert([{ email }]);
+    const { error } = await supabase.from("email_signups").insert([{ email }]);
     if (error) {
       if (error.code === "23505") {
         setSignupError("This email is already registered!");
@@ -718,41 +669,51 @@ export default function NKsStudySync() {
     setLoading(false);
   };
 
+  // ─── Nav items: [id, label, isRoute] ───
+  // isRoute=true → navigate("/id"), isRoute=false → scrollTo(id)
+  const navItems = [
+    ["mission",     "Mission",              false],
+    ["problem",     "Why NK's StudySync",   false],
+    ["impact",      "Impact",               false],
+    ["voices",      "Students",             false],
+    ["QuizLensAI",  "QuizLensAI",           false],
+    // ["join",        "Join",                 false],
+    ["internships", "Industry Bridge",      true ],
+    ["cwa",         "CWA Calculator",       true ],
+  ];
+
   return (
     <>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"></link>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
       {/* NAV */}
       <nav className={`nav${scrolled ? " scrolled" : ""}`}>
         <div className="nav-logo" onClick={() => scrollTo("hero")}>
-      
-<div className="nav-logo" onClick={() => scrollTo("hero")}>
-  <img
-    src="/IMG_8586.JPG.jpeg"
-    alt="NK's StudySync"
-    style={{
-      height: "42px",
-      width: "42px",
-      objectFit: "contain",
-      borderRadius: "8px",
-    }}
-  />
-</div>
+          <img
+            src="/IMG_8586.JPG.jpeg"
+            alt="NK's StudySync"
+            style={{ height: "42px", width: "42px", objectFit: "contain", borderRadius: "8px" }}
+          />
           <span><span className="logo-nk">Nk's</span> StudySync</span>
         </div>
+
         <ul className="nav-links">
-          {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["join","Join"]].map(([id, label]) => (
-  <li key={id}>
-    <a href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
-  </li>
-))}
-<li>
-  <a href="/internships" onClick={(e) => { e.preventDefault(); navigate("/internships"); }}>
-    Industry Bridge
-  </a>
-</li>
+          {navItems.map(([id, label, isRoute]) => (
+            <li key={id}>
+              <a
+                href={isRoute ? `/${id}` : `#${id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  isRoute ? navigate(`/${id}`) : scrollTo(id);
+                }}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
         </ul>
+
         <button className="nav-cta" onClick={() => navigate("/contact")}>
           Join Nk's StudySync
         </button>
@@ -761,21 +722,25 @@ export default function NKsStudySync() {
         </button>
       </nav>
 
-      {/* DRAWER */}
+      {/* MOBILE DRAWER */}
       <div className={`drawer-overlay${drawerOpen ? " open" : ""}`} onClick={() => setDrawerOpen(false)} />
       <div className={`mobile-drawer${drawerOpen ? " open" : ""}`}>
         <button className="drawer-close" onClick={() => setDrawerOpen(false)}>✕</button>
         <ul>
-      {[["mission","Mission"],["problem","Why NK's StudySync"],["impact","Impact"],["voices","Students"],["QuizLensAI","QuizLensAI"],["join","Join"]].map(([id, label]) => (
-  <li key={id}>
-    <a href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollTo(id); }}>{label}</a>
-  </li>
-))}
-<li>
-  <a href="/internships" onClick={(e) => { e.preventDefault(); navigate("/internships"); }}>
-    Industry Bridge
-  </a>
-</li>
+          {navItems.map(([id, label, isRoute]) => (
+            <li key={id}>
+              <a
+                href={isRoute ? `/${id}` : `#${id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  isRoute ? navigate(`/${id}`) : scrollTo(id);
+                  setDrawerOpen(false);
+                }}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -809,7 +774,6 @@ export default function NKsStudySync() {
         </div>
       </section>
 
-
       {/* MISSION */}
       <section className="section-amber" id="mission">
         <div className="section-inner">
@@ -822,43 +786,43 @@ export default function NKsStudySync() {
             </blockquote>
           </RevealSection>
           <div className="mission-grid">
-          {[
-  {
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-      </svg>
-    ),
-    title: "Academic Equity",
-    desc: "No student should fall behind because of poor tools. We're levelling the playing field for every learner, regardless of background or institution.",
-    delay: "d1"
-  },
-  {
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
-    ),
-    title: "Real Collaboration",
-    desc: "Study groups that actually work. No more scattered chats and missed messages — focused, productive sessions that move the needle.",
-    delay: "d2"
-  },
-  {
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <polyline points="12 6 12 12 16 14"/>
-      </svg>
-    ),
-    title: "Extra Tutorial Sessions",
-    desc: "Dedicated weekend tutorials led by top-performing peers. Get the targeted help you need on your hardest topics before the week even begins.",
-    delay: "d3"
-  },
-].map((c) => (
+            {[
+              {
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                  </svg>
+                ),
+                title: "Academic Equity",
+                desc: "No student should fall behind because of poor tools. We're levelling the playing field for every learner, regardless of background or institution.",
+                delay: "d1"
+              },
+              {
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                ),
+                title: "Real Collaboration",
+                desc: "Study groups that actually work. No more scattered chats and missed messages — focused, productive sessions that move the needle.",
+                delay: "d2"
+              },
+              {
+                icon: (
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                ),
+                title: "Extra Tutorial Sessions",
+                desc: "Dedicated weekend tutorials led by top-performing peers. Get the targeted help you need on your hardest topics before the week even begins.",
+                delay: "d3"
+              },
+            ].map((c) => (
               <RevealSection key={c.title} className={c.delay}>
                 <div className="mission-card">
                   <div className="mission-icon">{c.icon}</div>
@@ -923,10 +887,10 @@ export default function NKsStudySync() {
             <p className="section-sub-white">Real results from real students. No spin, no cherry-picking.</p>
           </RevealSection>
           <div className="impact-grid">
-            <ImpactStat target={1000}  suffix="+" format="short"    label="Students Already Using NK's StudySync" />
-            <ImpactStat target={89}   suffix="%" format=""         label="Report Better Grades Within 4 Weeks" />
+            <ImpactStat target={1000} suffix="+" format="short"   label="Students Already Using NK's StudySync" />
+            <ImpactStat target={89}   suffix="%" format=""        label="Report Better Grades Within 4 Weeks" />
             <ImpactStat target={30}   suffix=""  format="millions" label="Study Sessions Completed" />
-            <ImpactStat target={85}  suffix="%" format=""         label="Would Recommend to a Classmate" />
+            <ImpactStat target={85}   suffix="%" format=""        label="Would Recommend to a Classmate" />
           </div>
           <RevealSection>
             <div className="logo-strip">
@@ -956,28 +920,28 @@ export default function NKsStudySync() {
           </RevealSection>
           <div className="testimonials-grid">
             {[
-  {
-    initials: "RD",
-    name: "Reindorf D. K. Baah Maurice",
-    school: "Level 200 · Automobile Engineering",
-    quote: "I sent my CENG report for plagiarism check and proofreading — NK looked through everything and told me my report was actually well done. That kind of honest feedback from a senior who genuinely cares is exactly what I needed before submission.",
-    delay: "d1"
-  },
-  {
-    initials: "FS",
-    name: "Farama Saunffaa Emmanuel",
-    school: "Level 200 · Electrical Engineering",
-    quote: "NK checked my CENG report formatting and said it was very good and unique — only one font throughout, Times New Roman. My plagiarism came back at 13% and most of the highlighted areas were just the table of contents, acknowledgement and declaration. Passed clean.",
-    delay: "d2"
-  },
-  {
-    initials: "EQ",
-    name: "Emmanuel Quansah",
-    school: "Level 200 · Aerospace Engineering",
-    quote: "I didn't even know how to use Turnitin for plagiarism checking. NK walked me through exactly where to find it on the CENG portal — step by step. Submitted on time with no stress.",
-    delay: "d3"
-  },
-].map((t) => (
+              {
+                initials: "RD",
+                name: "Reindorf D. K. Baah Maurice",
+                school: "Level 200 · Automobile Engineering",
+                quote: "I sent my CENG report for plagiarism check and proofreading — NK looked through everything and told me my report was actually well done. That kind of honest feedback from a senior who genuinely cares is exactly what I needed before submission.",
+                delay: "d1"
+              },
+              {
+                initials: "FS",
+                name: "Farama Saunffaa Emmanuel",
+                school: "Level 200 · Electrical Engineering",
+                quote: "NK checked my CENG report formatting and said it was very good and unique — only one font throughout, Times New Roman. My plagiarism came back at 13% and most of the highlighted areas were just the table of contents, acknowledgement and declaration. Passed clean.",
+                delay: "d2"
+              },
+              {
+                initials: "EQ",
+                name: "Emmanuel Quansah",
+                school: "Level 200 · Aerospace Engineering",
+                quote: "I didn't even know how to use Turnitin for plagiarism checking. NK walked me through exactly where to find it on the CENG portal — step by step. Submitted on time with no stress.",
+                delay: "d3"
+              },
+            ].map((t) => (
               <RevealSection key={t.name} className={t.delay}>
                 <div className="testimonial-card">
                   <div className="big-quote">"</div>
@@ -1009,356 +973,204 @@ export default function NKsStudySync() {
             </h2>
           </RevealSection>
           <div className="manifesto-list">
-        {[
-          { n:"01", heading:"Lectures Are Not Enough —",          sub:"And We Are Filling The Gap",    desc:"A 75-minute lecture moving at full pace cannot reach every student. NK's StudySync exists in the space between the lecture hall and the examination hall — and that space is where we do our best work.", delay:"d1" },
-          { n:"02", heading:"Confusion Is Not Failure —",          sub:"It Is Just The Starting Point", desc:"Feeling lost after a lecture does not mean you are not smart enough. It means you need a different explanation. We provide that explanation — without judgement, without rushing, without giving up on you.", delay:"d2" },
-          { n:"03", heading:"Resources Should Be Free —",          sub:"And Easy To Find",              desc:"Students should not have to beg seniors on WhatsApp for past questions the night before an exam. We organise, verify, and share every resource our community needs completely free of charge.", delay:"d3" },
-          { n:"04", heading:"Group Work Should Actually Work —",   sub:"We Make That Happen",           desc:"We structure study groups so they produce results instead of wasted evenings. Focused agendas, peer accountability, and shared goals turn group sessions into real academic progress.", delay:"d2" },
-          { n:"05", heading:"No One Studies Alone —",              sub:"Not On Our Watch",              desc:"The loneliest moment in engineering is sitting with a concept you cannot crack and having no one to call. We make sure that moment does not exist for any student in our community.", delay:"d3" },
-        ].map((m) => (
-          <RevealSection key={m.n} className={m.delay}>
-            <div className="manifesto-item">
-              <div className="manifesto-num">{m.n}</div>
-              <div className="manifesto-content">
-                <h3>
-                  <span style={{ color:"var(--amber)" }}>{m.heading}</span> {m.sub}
-                </h3>
-                <p>{m.desc}</p>
-              </div>
-            </div>
-          </RevealSection>
-        ))}
-      </div>
+            {[
+              { n:"01", heading:"Lectures Are Not Enough —",        sub:"And We Are Filling The Gap",    desc:"A 75-minute lecture moving at full pace cannot reach every student. NK's StudySync exists in the space between the lecture hall and the examination hall — and that space is where we do our best work.", delay:"d1" },
+              { n:"02", heading:"Confusion Is Not Failure —",        sub:"It Is Just The Starting Point", desc:"Feeling lost after a lecture does not mean you are not smart enough. It means you need a different explanation. We provide that explanation — without judgement, without rushing, without giving up on you.", delay:"d2" },
+              { n:"03", heading:"Resources Should Be Free —",        sub:"And Easy To Find",              desc:"Students should not have to beg seniors on WhatsApp for past questions the night before an exam. We organise, verify, and share every resource our community needs completely free of charge.", delay:"d3" },
+              { n:"04", heading:"Group Work Should Actually Work —", sub:"We Make That Happen",           desc:"We structure study groups so they produce results instead of wasted evenings. Focused agendas, peer accountability, and shared goals turn group sessions into real academic progress.", delay:"d2" },
+              { n:"05", heading:"No One Studies Alone —",            sub:"Not On Our Watch",              desc:"The loneliest moment in engineering is sitting with a concept you cannot crack and having no one to call. We make sure that moment does not exist for any student in our community.", delay:"d3" },
+            ].map((m) => (
+              <RevealSection key={m.n} className={m.delay}>
+                <div className="manifesto-item">
+                  <div className="manifesto-num">{m.n}</div>
+                  <div className="manifesto-content">
+                    <h3>
+                      <span style={{ color:"var(--amber)" }}>{m.heading}</span> {m.sub}
+                    </h3>
+                    <p>{m.desc}</p>
+                  </div>
+                </div>
+              </RevealSection>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* QuizLensAI */}
-<section className="section-black" id="QuizLensAI" style={{ borderTop: "4px solid var(--amber)", borderBottom: "4px solid var(--amber)" }}>
-  <div className="section-inner" style={{ padding: "100px 5%" }}>
-
-    {/* Header */}
-    <RevealSection>
-      <div style={{ textAlign: "center", marginBottom: "0.75rem" }}>
-        <span className="section-tag" style={{ background: "var(--amber)", color: "var(--black)", fontFamily: "'Oswald', sans-serif" }}>
-          POWERED BY AI
-        </span>
-      </div>
-      <h2 className="section-title-amber" style={{ marginBottom: "0.75rem" }}>
-        Meet <span style={{ color: "#fff" }}>QuizLensAI —</span>
-      </h2>
-      <h2 className="section-title-white" style={{ marginTop: 0, marginBottom: "1rem", fontSize: "clamp(1.5rem, 3vw, 2.4rem)" }}>
-        Your Personal AI Study Partner
-      </h2>
-      <p className="section-sub-white" style={{ maxWidth: "780px", margin: "0 auto 3.5rem" }}>
-        Upload any lecture note, PDF, or past question — and QuizLensAI transforms it into 
-        interactive quizzes, smart summaries, and deep-dive Q&amp;A sessions. 
-        Think of it as NotebookLM, built specifically for the way engineering students actually study.
-      </p>
-    </RevealSection>
-
-    {/* Feature Cards Grid */}
-    <div style={{
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-      gap: "1.5rem",
-      marginBottom: "4rem",
-      width: "100%"
-    }}>
-      {[
-        {
-          icon: (
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-              <polyline points="10 9 9 9 8 9"/>
-            </svg>
-          ),
-          label: "UPLOAD",
-          title: "Drop Any Material",
-          desc: "Lecture slides, PDF textbooks, scanned past questions, handwritten notes — QuizLensAI reads it all. No reformatting, no copy-pasting. Just upload and go.",
-        },
-        {
-          icon: (
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-              <line x1="12" y1="17" x2="12.01" y2="17"/>
-            </svg>
-          ),
-          label: "ASK",
-          title: "Ask It Anything",
-          desc: "\"Explain Thevenin's theorem from slide 14 like I'm in Form 3.\" \"What are the five most likely exam questions from this chapter?\" QuizLensAI answers from your own material.",
-        },
-        {
-          icon: (
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 11 12 14 22 4"/>
-              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-            </svg>
-          ),
-          label: "QUIZ",
-          title: "Auto-Generated Quizzes",
-          desc: "QuizLensAI builds custom MCQs, fill-in-the-blank, and theory questions directly from your notes. Not generic internet questions — questions built from what your lecturer actually taught.",
-        },
-        
-      ].map((card, i) => (
-        <RevealSection key={card.title} className={`d${i + 1}`}>
-          <div style={{
-            background: "rgba(255,255,255,0.04)",
-            border: "2px solid rgba(245,163,0,0.25)",
-            borderRadius: "20px",
-            padding: "2.2rem",
-            height: "100%",
-            transition: "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
-            cursor: "default",
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.border = "2px solid var(--amber)";
-            e.currentTarget.style.background = "rgba(245,163,0,0.07)";
-            e.currentTarget.style.transform = "translateY(-6px)";
-            e.currentTarget.style.boxShadow = "0 16px 40px rgba(245,163,0,0.15)";
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.border = "2px solid rgba(245,163,0,0.25)";
-            e.currentTarget.style.background = "rgba(255,255,255,0.04)";
-            e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = "none";
-          }}>
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: "0.5rem",
-              background: "rgba(245,163,0,0.12)", border: "1.5px solid rgba(245,163,0,0.3)",
-              borderRadius: "8px", padding: "0.35rem 0.8rem",
-              marginBottom: "1.2rem",
-            }}>
-              {card.icon}
-              <span style={{
-                fontFamily: "'Oswald', sans-serif", fontSize: "0.7rem",
-                fontWeight: 700, letterSpacing: "0.15em", color: "var(--amber)",
-              }}>{card.label}</span>
+      <section className="section-black" id="QuizLensAI" style={{ borderTop:"4px solid var(--amber)", borderBottom:"4px solid var(--amber)" }}>
+        <div className="section-inner" style={{ padding:"100px 5%" }}>
+          <RevealSection>
+            <div style={{ textAlign:"center", marginBottom:"0.75rem" }}>
+              <span className="section-tag" style={{ background:"var(--amber)", color:"var(--black)" }}>POWERED BY AI</span>
             </div>
-            <h3 style={{
-              fontFamily: "'Oswald', sans-serif", fontSize: "1.35rem",
-              color: "#fff", marginBottom: "0.75rem",
-            }}>{card.title}</h3>
-            <p style={{ color: "rgba(255,255,255,0.7)", lineHeight: 1.8, fontSize: "0.95rem", fontWeight: 600 }}>
-              {card.desc}
+            <h2 className="section-title-amber" style={{ marginBottom:"0.75rem" }}>
+              Meet <span style={{ color:"#fff" }}>QuizLensAI —</span>
+            </h2>
+            <h2 className="section-title-white" style={{ marginTop:0, marginBottom:"1rem", fontSize:"clamp(1.5rem, 3vw, 2.4rem)" }}>
+              Your Personal AI Study Partner
+            </h2>
+            <p className="section-sub-white" style={{ maxWidth:"780px", margin:"0 auto 3.5rem" }}>
+              Upload any lecture note, PDF, or past question — and QuizLensAI transforms it into
+              interactive quizzes, smart summaries, and deep-dive Q&amp;A sessions.
+              Think of it as NotebookLM, built specifically for the way engineering students actually study.
             </p>
-          </div>
-        </RevealSection>
-      ))}
-    </div>
+          </RevealSection>
 
-    {/* Comparison Block */}
-<RevealSection className="d2">
-  <div style={{
-    background: "rgba(245,163,0,0.06)",
-    border: "2px solid rgba(245,163,0,0.2)",
-    borderRadius: "24px",
-    padding: "clamp(1.5rem, 5vw, 3rem)", // Responsive padding
-    maxWidth: "860px",
-    margin: "0 auto 4rem",
-    width: "100%",
-  }}>
-    <p style={{
-      fontFamily: "'Oswald', sans-serif", fontSize: "0.75rem",
-      letterSpacing: "0.18em", color: "var(--amber)", marginBottom: "1.2rem",
-      textTransform: "uppercase", textAlign: "center"
-    }}>How It Stacks Up</p>
-    
-    <h3 style={{
-      fontFamily: "'Oswald', sans-serif", fontSize: "clamp(1.4rem, 4vw, 2.2rem)",
-      color: "#fff", marginBottom: "2rem", lineHeight: 1.3, textAlign: "center"
-    }}>
-      NotebookLM is powerful.<br />
-      <span style={{ color: "var(--amber)", display: "block", marginTop: "0.5rem" }}>
-        QuizLensAI is built for <em style={{ fontStyle: "normal", color: "var(--red)" }}>your</em> exams.
-      </span>
-    </h3>
-
-    {/* RESPONSIVE GRID: Stacks on mobile, side-by-side on desktop */}
-    <div style={{ 
-      display: "grid", 
-      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", 
-      gap: "1.5rem" 
-    }}>
-      {[
-        { label: "NotebookLM", points: ["General purpose AI notebook", "Great for research & podcasts", "No exam-focused quiz mode", "Not optimised for engineering courses"], color: "rgba(255,255,255,0.15)", textColor: "rgba(255,255,255,0.55)", tag: "General Tool" },
-        { label: "QuizLensAI", points: ["Built for African engineering students", "Auto-generates past-question style quizzes", "Understands your specific course material", "Integrated with NK's StudySync community"], color: "rgba(245,163,0,0.1)", textColor: "rgba(255,255,255,0.85)", tag: "Your Tool", highlight: true },
-      ].map((col) => (
-        <div key={col.label} style={{
-          background: col.color,
-          border: col.highlight ? "2px solid rgba(245,163,0,0.4)" : "2px solid rgba(255,255,255,0.08)",
-          borderRadius: "16px",
-          padding: "1.5rem",
-          display: "flex",
-          flexDirection: "column"
-        }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.2rem", flexWrap: "wrap", gap: "0.5rem" }}>
-            <span style={{
-              fontFamily: "'Oswald', sans-serif", fontSize: "1.1rem",
-              color: col.highlight ? "var(--amber)" : "rgba(255,255,255,0.5)", fontWeight: 700,
-            }}>{col.label}</span>
-            {col.highlight && (
-              <span style={{
-                background: "var(--amber)", color: "var(--black)",
-                fontSize: "0.65rem", fontWeight: 800,
-                letterSpacing: "0.1em", padding: "0.2rem 0.6rem",
-                borderRadius: "100px", fontFamily: "'Oswald', sans-serif",
-              }}>✦ {col.tag}</span>
-            )}
-          </div>
-          <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.8rem", padding: 0, margin: 0 }}>
-            {col.points.map((pt, i) => (
-              <li key={i} style={{
-                display: "flex", alignItems: "flex-start", gap: "0.6rem",
-                color: col.textColor, fontSize: "0.88rem", lineHeight: 1.4, fontWeight: 600,
-              }}>
-                <span style={{ color: col.highlight ? "var(--amber)" : "rgba(255,255,255,0.3)", flexShrink: 0, marginTop: "2px" }}>
-                  {col.highlight ? "✓" : "–"}
-                </span>
-                {pt}
-              </li>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))", gap:"1.5rem", marginBottom:"4rem", width:"100%" }}>
+            {[
+              {
+                icon: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>),
+                label: "UPLOAD", title: "Drop Any Material",
+                desc: "Lecture slides, PDF textbooks, scanned past questions, handwritten notes — QuizLensAI reads it all. No reformatting, no copy-pasting. Just upload and go.",
+              },
+              {
+                icon: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>),
+                label: "ASK", title: "Ask It Anything",
+                desc: "\"Explain Thevenin's theorem from slide 14 like I'm in Form 3.\" \"What are the five most likely exam questions from this chapter?\" QuizLensAI answers from your own material.",
+              },
+              {
+                icon: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>),
+                label: "QUIZ", title: "Auto-Generated Quizzes",
+                desc: "QuizLensAI builds custom MCQs, fill-in-the-blank, and theory questions directly from your notes. Not generic internet questions — questions built from what your lecturer actually taught.",
+              },
+            ].map((card, i) => (
+              <RevealSection key={card.title} className={`d${i + 1}`}>
+                <div
+                  style={{ background:"rgba(255,255,255,0.04)", border:"2px solid rgba(245,163,0,0.25)", borderRadius:"20px", padding:"2.2rem", height:"100%", transition:"all 0.4s cubic-bezier(0.23, 1, 0.32, 1)", cursor:"default" }}
+                  onMouseEnter={e => { e.currentTarget.style.border="2px solid var(--amber)"; e.currentTarget.style.background="rgba(245,163,0,0.07)"; e.currentTarget.style.transform="translateY(-6px)"; e.currentTarget.style.boxShadow="0 16px 40px rgba(245,163,0,0.15)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.border="2px solid rgba(245,163,0,0.25)"; e.currentTarget.style.background="rgba(255,255,255,0.04)"; e.currentTarget.style.transform="translateY(0)"; e.currentTarget.style.boxShadow="none"; }}
+                >
+                  <div style={{ display:"inline-flex", alignItems:"center", gap:"0.5rem", background:"rgba(245,163,0,0.12)", border:"1.5px solid rgba(245,163,0,0.3)", borderRadius:"8px", padding:"0.35rem 0.8rem", marginBottom:"1.2rem" }}>
+                    {card.icon}
+                    <span style={{ fontFamily:"'Oswald', sans-serif", fontSize:"0.7rem", fontWeight:700, letterSpacing:"0.15em", color:"var(--amber)" }}>{card.label}</span>
+                  </div>
+                  <h3 style={{ fontFamily:"'Oswald', sans-serif", fontSize:"1.35rem", color:"#fff", marginBottom:"0.75rem" }}>{card.title}</h3>
+                  <p style={{ color:"rgba(255,255,255,0.7)", lineHeight:1.8, fontSize:"0.95rem", fontWeight:600 }}>{card.desc}</p>
+                </div>
+              </RevealSection>
             ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </div>
-</RevealSection>
-
-{/* CTA SECTION */}
-<RevealSection className="d3">
-  <div style={{ textAlign: "center", padding: "0 1rem" }}>
-    <p style={{
-      color: "rgba(255,255,255,0.55)", fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)",
-      fontWeight: 700, marginBottom: "1.5rem", letterSpacing: "0.02em",
-      lineHeight: 1.6,
-    }}>
-      Free to use. No account needed to try it.
-    </p>
-    
-    <button
-      onClick={handleQuizLensAIClick}
-      style={{
-        background: "var(--amber)",
-        color: "var(--black)",
-        border: "3px solid var(--amber)",
-        padding: "1rem 2rem",
-        fontFamily: "'Oswald', sans-serif",
-        fontSize: "clamp(1rem, 3vw, 1.1rem)",
-        fontWeight: 700,
-        letterSpacing: "0.08em",
-        cursor: "pointer",
-        borderRadius: "10px",
-        boxShadow: "6px 6px 0 var(--red)",
-        transition: "all 0.3s cubic-bezier(0.23, 1, 0.32, 1)",
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "0.6rem",
-        width: "auto", // Changed to auto for better fit
-        minWidth: "260px",
-        maxWidth: "100%",
-        whiteSpace: "normal", // Allows text to wrap if button is too small
-      }}
-      onMouseEnter={e => { e.currentTarget.style.transform = "translate(3px,3px)"; e.currentTarget.style.boxShadow = "3px 3px 0 var(--red)"; }}
-      onMouseLeave={e => { e.currentTarget.style.transform = "translate(0,0)"; e.currentTarget.style.boxShadow = "6px 6px 0 var(--red)"; }}
-    >
-      <span style={{ textAlign: "center" }}>Try QuizLensAI Free →</span>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-        style={{ flexShrink: 0 }}>
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-        <polyline points="15 3 21 3 21 9"/>
-        <line x1="10" y1="14" x2="21" y2="3"/>
-      </svg>
-    </button>
-    
-    <p style={{
-      color: "rgba(255,255,255,0.3)", fontSize: "0.8rem",
-      marginTop: "1.5rem", fontWeight: 600, lineHeight: 1.6,
-      maxWidth: "400px", margin: "1.5rem auto 0",
-    }}>
-      Trusted by NK's StudySync students across KNUST engineering departments
-    </p>
-  </div>
-</RevealSection>
-</div>
-</section>
-
-
-{/* INTERNSHIP TEASER */}
-<section className="section-amber-deep" id="internships">
-  <div className="section-inner">
-    <RevealSection>
-      <div style={{ textAlign: "center", marginBottom: "1rem" }}>
-        <span className="section-tag">🎓 The Industry Bridge </span>
-      </div>
-      <h2 className="section-title-black" style={{ marginBottom: "1rem" }}>
-        Find Your <span style={{ color: "var(--red)" }}>Industrial Attachment</span>
-      </h2>
-      <p className="section-sub-black" style={{ maxWidth: "680px", margin: "0 auto 2.5rem" }}>
-        We've done the hard work for you. Browse 178 verified companies across Ghana — 
-        filtered by your engineering programme, city, and area of interest.
-        Government bodies, multinationals, and local firms all in one place.
-      </p>
-    </RevealSection>
-
-    <RevealSection className="d1">
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-        gap: "1.2rem",
-        marginBottom: "3rem",
-      }}>
-        {[
-          { num: "178", label: "Verified Companies" },
-          { num: "18", label: "Engineering Programmes" },
-          { num: "20+", label: "Cities Covered" },
-          { num: "16", label: "Regions in Ghana" },
-        ].map((s) => (
-          <div key={s.label} style={{
-            background: "rgba(0,0,0,0.0)",
-            border: "3px solid var(--black)",
-            borderRadius: "16px",
-            padding: "1.5rem",
-            textAlign: "center",
-            boxShadow: "5px 5px 0 var(--black)",
-          }}>
-            <span style={{
-              fontFamily: "'Oswald', sans-serif",
-              fontSize: "2.5rem",
-              fontWeight: 700,
-              color: "var(--red)",
-              display: "block",
-              lineHeight: 1,
-            }}>{s.num}</span>
-            <div style={{
-              fontSize: "0.82rem",
-              fontWeight: 800,
-              color: "var(--black)",
-              marginTop: "0.4rem",
-            }}>{s.label}</div>
           </div>
-        ))}
-      </div>
-    </RevealSection>
 
-    <RevealSection className="d2">
-      <div style={{ textAlign: "center" }}>
-        <button
-          className="btn-primary"
-          onClick={() => navigate("/internships")}
-          style={{ fontSize: "1rem", padding: "0.9rem 2.4rem" }}
-        >
-          Browse All Internship Companies →
-        </button>
-      </div>
-    </RevealSection>
-  </div>
-</section>
+          <RevealSection className="d2">
+            <div style={{ background:"rgba(245,163,0,0.06)", border:"2px solid rgba(245,163,0,0.2)", borderRadius:"24px", padding:"clamp(1.5rem, 5vw, 3rem)", maxWidth:"860px", margin:"0 auto 4rem", width:"100%" }}>
+              <p style={{ fontFamily:"'Oswald', sans-serif", fontSize:"0.75rem", letterSpacing:"0.18em", color:"var(--amber)", marginBottom:"1.2rem", textTransform:"uppercase", textAlign:"center" }}>How It Stacks Up</p>
+              <h3 style={{ fontFamily:"'Oswald', sans-serif", fontSize:"clamp(1.4rem, 4vw, 2.2rem)", color:"#fff", marginBottom:"2rem", lineHeight:1.3, textAlign:"center" }}>
+                NotebookLM is powerful.<br />
+                <span style={{ color:"var(--amber)", display:"block", marginTop:"0.5rem" }}>
+                  QuizLensAI is built for <em style={{ fontStyle:"normal", color:"var(--red)" }}>your</em> exams.
+                </span>
+              </h3>
+              <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))", gap:"1.5rem" }}>
+                {[
+                  { label:"NotebookLM", points:["General purpose AI notebook","Great for research & podcasts","No exam-focused quiz mode","Not optimised for engineering courses"], color:"rgba(255,255,255,0.15)", textColor:"rgba(255,255,255,0.55)", highlight:false },
+                  { label:"QuizLensAI", points:["Built for African engineering students","Auto-generates past-question style quizzes","Understands your specific course material","Integrated with NK's StudySync community"], color:"rgba(245,163,0,0.1)", textColor:"rgba(255,255,255,0.85)", tag:"Your Tool", highlight:true },
+                ].map((col) => (
+                  <div key={col.label} style={{ background:col.color, border:col.highlight?"2px solid rgba(245,163,0,0.4)":"2px solid rgba(255,255,255,0.08)", borderRadius:"16px", padding:"1.5rem", display:"flex", flexDirection:"column" }}>
+                    <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:"1.2rem", flexWrap:"wrap", gap:"0.5rem" }}>
+                      <span style={{ fontFamily:"'Oswald', sans-serif", fontSize:"1.1rem", color:col.highlight?"var(--amber)":"rgba(255,255,255,0.5)", fontWeight:700 }}>{col.label}</span>
+                      {col.highlight && (<span style={{ background:"var(--amber)", color:"var(--black)", fontSize:"0.65rem", fontWeight:800, letterSpacing:"0.1em", padding:"0.2rem 0.6rem", borderRadius:"100px", fontFamily:"'Oswald', sans-serif" }}>✦ {col.tag}</span>)}
+                    </div>
+                    <ul style={{ listStyle:"none", display:"flex", flexDirection:"column", gap:"0.8rem", padding:0, margin:0 }}>
+                      {col.points.map((pt, i) => (
+                        <li key={i} style={{ display:"flex", alignItems:"flex-start", gap:"0.6rem", color:col.textColor, fontSize:"0.88rem", lineHeight:1.4, fontWeight:600 }}>
+                          <span style={{ color:col.highlight?"var(--amber)":"rgba(255,255,255,0.3)", flexShrink:0, marginTop:"2px" }}>{col.highlight?"✓":"–"}</span>
+                          {pt}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </RevealSection>
 
+          <RevealSection className="d3">
+            <div style={{ textAlign:"center", padding:"0 1rem" }}>
+              <p style={{ color:"rgba(255,255,255,0.55)", fontSize:"clamp(0.85rem, 2.5vw, 0.95rem)", fontWeight:700, marginBottom:"1.5rem", lineHeight:1.6 }}>
+                Free to use. No account needed to try it.
+              </p>
+              <button
+                onClick={handleQuizLensAIClick}
+                style={{ background:"var(--amber)", color:"var(--black)", border:"3px solid var(--amber)", padding:"1rem 2rem", fontFamily:"'Oswald', sans-serif", fontSize:"clamp(1rem, 3vw, 1.1rem)", fontWeight:700, letterSpacing:"0.08em", cursor:"pointer", borderRadius:"10px", boxShadow:"6px 6px 0 var(--red)", transition:"all 0.3s cubic-bezier(0.23, 1, 0.32, 1)", display:"inline-flex", alignItems:"center", justifyContent:"center", gap:"0.6rem", minWidth:"260px", maxWidth:"100%" }}
+                onMouseEnter={e => { e.currentTarget.style.transform="translate(3px,3px)"; e.currentTarget.style.boxShadow="3px 3px 0 var(--red)"; }}
+                onMouseLeave={e => { e.currentTarget.style.transform="translate(0,0)"; e.currentTarget.style.boxShadow="6px 6px 0 var(--red)"; }}
+              >
+                Try QuizLensAI Free →
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink:0 }}>
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </button>
+              <p style={{ color:"rgba(255,255,255,0.3)", fontSize:"0.8rem", marginTop:"1.5rem", fontWeight:600, lineHeight:1.6, maxWidth:"400px", margin:"1.5rem auto 0" }}>
+                Trusted by NK's StudySync students across KNUST engineering departments
+              </p>
+            </div>
+          </RevealSection>
+        </div>
+      </section>
+
+      {/* INTERNSHIP TEASER */}
+      <section className="section-amber-deep" id="internships">
+        <div className="section-inner">
+          <RevealSection>
+            <div style={{ textAlign:"center", marginBottom:"1rem" }}>
+              <span className="section-tag">🎓 The Industry Bridge</span>
+            </div>
+            <h2 className="section-title-black" style={{ marginBottom:"1rem" }}>
+              Find Your <span style={{ color:"var(--red)" }}>Industrial Attachment</span>
+            </h2>
+            <p className="section-sub-black" style={{ maxWidth:"680px", margin:"0 auto 2.5rem" }}>
+              We've done the hard work for you. Browse 178 verified companies across Ghana — 
+              filtered by your engineering programme, city, and area of interest.
+              Government bodies, multinationals, and local firms all in one place.
+            </p>
+          </RevealSection>
+          <RevealSection className="d1">
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(200px, 1fr))", gap:"1.2rem", marginBottom:"3rem" }}>
+              {[
+                { num:"178", label:"Verified Companies" },
+                { num:"18",  label:"Engineering Programmes" },
+                { num:"20+", label:"Cities Covered" },
+                { num:"16",  label:"Regions in Ghana" },
+              ].map((s) => (
+                <div key={s.label} style={{ border:"3px solid var(--black)", borderRadius:"16px", padding:"1.5rem", textAlign:"center", boxShadow:"5px 5px 0 var(--black)" }}>
+                  <span style={{ fontFamily:"'Oswald', sans-serif", fontSize:"2.5rem", fontWeight:700, color:"var(--red)", display:"block", lineHeight:1 }}>{s.num}</span>
+                  <div style={{ fontSize:"0.82rem", fontWeight:800, color:"var(--black)", marginTop:"0.4rem" }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </RevealSection>
+          <RevealSection className="d2">
+            <div style={{ textAlign:"center" }}>
+              <button className="btn-primary" onClick={() => navigate("/internships")} style={{ fontSize:"1rem", padding:"0.9rem 2.4rem" }}>
+                Browse All Internship Companies →
+              </button>
+            </div>
+          </RevealSection>
+        </div>
+      </section>
+
+      {/* CWA CALCULATOR TEASER */}
+      <section className="section-black" id="cwa">
+        <div className="section-inner" style={{ textAlign:"center" }}>
+          <RevealSection>
+            <div style={{ marginBottom:"0.75rem" }}>
+              <span className="section-tag">FREE TOOL</span>
+            </div>
+            <h2 className="section-title-amber" style={{ marginBottom:"1rem" }}>
+              Know Your <span style={{ color:"#fff" }}>Class Standing</span>
+            </h2>
+            <p className="section-sub-white" style={{ maxWidth:"600px", margin:"0 auto 2.5rem" }}>
+              Enter your courses and scores — your CWA, GPA, and exactly what you need
+              to reach First Class, all calculated instantly. Free, no login required.
+            </p>
+            <button className="btn-primary" onClick={() => navigate("/cwa")} style={{ fontSize:"1rem", padding:"0.9rem 2.4rem" }}>
+              Open CWA Calculator →
+            </button>
+          </RevealSection>
+        </div>
+      </section>
 
       {/* JOIN */}
       <section className="join-section" id="join">
@@ -1375,17 +1187,11 @@ export default function NKsStudySync() {
               and join 500 students changing how we learn.
             </p>
           </RevealSection>
-
           <RevealSection className="d1">
-            {submitted && (
-              <span className="signup-msg-success">✅ You're in! Welcome to the movement.</span>
-            )}
-            {signupError && (
-              <span className="signup-msg-error">⚠️ {signupError}</span>
-            )}
+            {submitted && <span className="signup-msg-success">✅ You're in! Welcome to the movement.</span>}
+            {signupError && <span className="signup-msg-error">⚠️ {signupError}</span>}
             {!submitted && (
               <div className="signup-form">
-                
                 <input
                   type="email"
                   placeholder="Enter your student email..."
@@ -1394,82 +1200,32 @@ export default function NKsStudySync() {
                   onKeyDown={(e) => e.key === "Enter" && handleSignup()}
                   disabled={loading}
                 />
-               <button onClick={handleSignup} disabled={loading}>
-  {loading ? "Joining..." : "Join Now →"}
- 
-</button>
+                <button onClick={handleSignup} disabled={loading}>
+                  {loading ? "Joining..." : "Join Now →"}
+                </button>
               </div>
-              
             )}
-
-            {/* ADD THIS — Full Registration CTA button */}
-           <div style={{ 
-  marginTop: "2rem", 
-  textAlign: "center", 
-  display: "flex", 
-  justifyContent: "center", 
-  gap: "1.2rem", 
-  flexWrap: "wrap" 
-}}>
-  <button
-    className="btn-primary"
-    onClick={() => navigate("/contact")}
-    style={{ fontSize: "1rem", padding: "0.9rem 2.4rem" }}
-  >
-    Register For Nk's StudySync →
-  </button>
-
-</div>
-
-
+            <div style={{ marginTop:"2rem", textAlign:"center", display:"flex", justifyContent:"center", gap:"1.2rem", flexWrap:"wrap" }}>
+              <button className="btn-primary" onClick={() => navigate("/contact")} style={{ fontSize:"1rem", padding:"0.9rem 2.4rem" }}>
+                Register For Nk's StudySync →
+              </button>
+            </div>
             <div className="ss-socials">
-              
               <span className="ss-soc-lbl">Spread the word:</span>
-
-              <button className="ss-soc-btn" onClick={() => window.open('https://x.com/nksstudysync?s=21','_blank')}>
-                <span style={{ background:"#000000", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                </span>
-                Twitter
-              </button>
-
-              <button className="ss-soc-btn" onClick={() => window.open('https://t.me/NKstudysync','_blank')} >
-                <span style={{ background:"#26A5E4", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                  </svg>
-                </span>
-                Telegram
-              </button>
-
-              <button className="ss-soc-btn" onClick={() => window.open('https://whatsapp.com/channel/0029VbBhEgpGE56o9hpRwl3h','_blank')}>
-                <span style={{ background:"#25D366", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-                  </svg>
-                </span>
-                WhatsApp
-              </button>
-
-              <button className="ss-soc-btn" onClick={() => window.open('https://www.tiktok.com/@nksstudysync?_r=1&_t=ZS-94YRfL8NmxY','_blank')}>
-                <span style={{ background:"#010101", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
-                  </svg>
-                </span>
-                TikTok
-              </button>
-
-              <button className="ss-soc-btn"  onClick={() => window.open("https://youtube.com/@nksstudysync?si=muGnVD2CntcJ5kTT","_blank")}>
-                <span style={{ background:"#FF0000", borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                </span>
-                YouTube
-              </button>
+              {[
+                { label:"Twitter",  url:"https://x.com/nksstudysync?s=21",                          bg:"#000000", icon:<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/> },
+                { label:"Telegram", url:"https://t.me/NKstudysync",                                  bg:"#26A5E4", icon:<path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/> },
+                { label:"WhatsApp", url:"https://whatsapp.com/channel/0029VbBhEgpGE56o9hpRwl3h",   bg:"#25D366", icon:<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/> },
+                { label:"TikTok",   url:"https://www.tiktok.com/@nksstudysync?_r=1&_t=ZS-94YRfL8NmxY", bg:"#010101", icon:<path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/> },
+                { label:"YouTube",  url:"https://youtube.com/@nksstudysync?si=muGnVD2CntcJ5kTT",   bg:"#FF0000", icon:<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/> },
+              ].map((s) => (
+                <button key={s.label} className="ss-soc-btn" onClick={() => window.open(s.url, "_blank")}>
+                  <span style={{ background:s.bg, borderRadius:"6px", width:"26px", height:"26px", display:"inline-flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="white">{s.icon}</svg>
+                  </span>
+                  {s.label}
+                </button>
+              ))}
             </div>
           </RevealSection>
         </div>
@@ -1480,9 +1236,7 @@ export default function NKsStudySync() {
         <div className="footer-inner">
           <div className="footer-top">
             <div className="footer-brand">
-              <div className="footer-logo-text">
-                <span className="red">Nk's</span> StudySync
-              </div>
+              <div className="footer-logo-text"><span className="red">Nk's</span> StudySync</div>
               <div className="footer-tagline">Built by students, for students. Shaping Tomorrow's Engineers Today.</div>
             </div>
             <div className="footer-links">
@@ -1494,31 +1248,17 @@ export default function NKsStudySync() {
           <div className="footer-bottom">
             <span className="footer-copy">© 2025 Nk's StudySync. All rights reserved.</span>
             <div className="footer-socials">
-              <a href="https://youtube.com/@nksstudysync?si=muGnVD2CntcJ5kTT" target="_blank" className="footer-social-icon" aria-label="YouTube">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
-              <a href="https://t.me/NKstudysync" className="footer-social-icon"  target="_blank" aria-label="Telegram">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                </svg>
-              </a>
-              <a href="https://www.tiktok.com/@nksstudysync?_r=1&_t=ZS-94YRfL8NmxY" target="_blank" className="footer-social-icon" aria-label="TikTok">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
-                </svg>
-              </a>
-              <a href="https://x.com/nksstudysync?s=21" className="footer-social-icon" target="_blank" aria-label="X (Twitter)">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-              <a href="https://whatsapp.com/channel/0029VbBhEgpGE56o9hpRwl3h" target="_blank" className="footer-social-icon" aria-label="WhatsApp">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-                </svg>
-              </a>
+              {[
+                { href:"https://youtube.com/@nksstudysync?si=muGnVD2CntcJ5kTT", label:"YouTube",    icon:<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/> },
+                { href:"https://t.me/NKstudysync",                                 label:"Telegram",   icon:<path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/> },
+                { href:"https://www.tiktok.com/@nksstudysync?_r=1&_t=ZS-94YRfL8NmxY", label:"TikTok", icon:<path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/> },
+                { href:"https://x.com/nksstudysync?s=21",                          label:"X (Twitter)", icon:<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632 5.905-5.632Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/> },
+                { href:"https://whatsapp.com/channel/0029VbBhEgpGE56o9hpRwl3h",    label:"WhatsApp",   icon:<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/> },
+              ].map((s) => (
+                <a key={s.label} href={s.href} target="_blank" className="footer-social-icon" aria-label={s.label}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d={s.icon.props.d}/></svg>
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -1526,3 +1266,5 @@ export default function NKsStudySync() {
     </>
   );
 }
+
+
