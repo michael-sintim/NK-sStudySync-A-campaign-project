@@ -245,7 +245,7 @@ export default function CWACalculator() {
     // Upgrade targets — for every class above current
     const upgrades = CLASSES.filter((cls) => cls.min > cwa).map((cls) => {
       const gap = cls.min - cwa;
-      const impossible = cls.min > 100; // safety — can never be >100%
+      const impossible = cls.min > 100;
       return { cls, gap, target: cls.min, impossible };
     });
 
@@ -258,16 +258,30 @@ export default function CWACalculator() {
     return name;
   };
 
+  const handleReset = () => {
+    _id = 0;
+    setResult(null);
+    setCourses([
+      newCourse("Engineering Mathematics", "3", ""),
+      newCourse("Introduction to Programming", "3", ""),
+      newCourse("Mechanics of Materials", "2", ""),
+    ]);
+  };
+
   return (
-    <>
+    <div style={S.page}>
       <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
         rel="stylesheet"
       />
+      <link
+  href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
 
       {/* NAV */}
       <nav style={S.nav}>
-        <span style={S.navLogo}>
+        <span style={S.navLogo} onClick={() => navigate("/")}>
           <span style={{ color: "#D32F2F" }}>Nk's</span> StudySync
         </span>
         <button style={S.backBtn} onClick={() => navigate("/")}>
@@ -639,10 +653,7 @@ export default function CWACalculator() {
                   cursor: "pointer",
                   letterSpacing: "0.05em",
                 }}
-                onClick={() => {
-                  setResult(null);
-                  setCourses([newCourse(), newCourse(), newCourse()]);
-                }}
+                onClick={handleReset}
               >
                 Reset Calculator
               </button>
@@ -650,6 +661,6 @@ export default function CWACalculator() {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
