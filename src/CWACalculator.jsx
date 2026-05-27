@@ -535,7 +535,7 @@ export default function CWATargetPlanner() {
           <p style={S.sectionLbl}>Your current standing</p>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1rem" }}>
-            <FormField label="Credits completed so far" hint="Total from all past semesters">
+            <FormField label="Credits completed" hint="Total from all past semesters">
               <input
                 style={S.input}
                 type="number"
