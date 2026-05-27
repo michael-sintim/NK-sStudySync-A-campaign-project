@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-
+import { useNavigate } from "react-router-dom";
 /* ─── Constants ─── */
 const CLASSES = [
   { name: "First Class",        min: 70, color: "#F5A300", bg: "rgba(245,163,0,0.12)",   border: "rgba(245,163,0,0.4)"  },
@@ -429,6 +429,7 @@ function MathCard({ result }) {
 
 /* ─── Main Component ─── */
 export default function CWATargetPlanner() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ cumCreds: "", curCWA: "", semCreds: "", targetCWA: "" });
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
@@ -481,7 +482,7 @@ export default function CWATargetPlanner() {
 
       {/* NAV */}
       <nav style={S.nav}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", cursor: "pointer" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", cursor: "pointer" }} onClick={() => navigate("/")}>
           <img
             src="/IMG_8586.JPG.jpeg"
             alt="NK's StudySync"
@@ -491,7 +492,7 @@ export default function CWATargetPlanner() {
             <span style={{ color: "#D32F2F" }}>Nk's</span> StudySync
           </span>
         </div>
-        <button style={S.backBtn}>← Back to Home</button>
+        <button style={S.backBtn} onClick={() => navigate("/")}>← Back to Home</button>
       </nav>
 
       <div style={S.inner}>
