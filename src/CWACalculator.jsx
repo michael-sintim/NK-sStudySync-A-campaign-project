@@ -2,46 +2,23 @@ import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 /* ─── Grade / Class constants ─── */
-const GRADE_SCALE = [
-  { min: 70, letter: "A",  gp: 4.0 },
-  { min: 60, letter: "B+", gp: 3.5 },
-  { min: 55, letter: "B",  gp: 3.0 },
-  { min: 50, letter: "C+", gp: 2.5 },
-  { min: 45, letter: "C",  gp: 2.0 },
-  { min: 40, letter: "D",  gp: 1.5 },
-  { min: 0,  letter: "F",  gp: 0.0 },
-];
-
 const CLASSES = [
   { name: "First Class",        min: 70,   color: "#F5A300", bg: "rgba(245,163,0,0.15)",    border: "#F5A300" },
   { name: "Second Class Upper", min: 60,   color: "#68D391", bg: "rgba(56,161,105,0.15)",   border: "#68D391" },
   { name: "Second Class Lower", min: 50,   color: "#63B3ED", bg: "rgba(66,153,225,0.15)",   border: "#63B3ED" },
   { name: "Pass",               min: 45,   color: "#A0AEC0", bg: "rgba(160,174,192,0.15)",  border: "#A0AEC0" },
-  { name: "Fail",               min: 0,    color: "#FC8181", bg: "rgba(245,101,101,0.15)",  border: "#FC8181" },
 ];
 
-function getGrade(score) {
-  return GRADE_SCALE.find((g) => score >= g.min) ?? GRADE_SCALE[GRADE_SCALE.length - 1];
-}
-
 function getClass(cwa) {
-  return CLASSES.find((c) => cwa >= c.min) ?? CLASSES[CLASSES.length - 1];
+  return CLASSES.find((c) => cwa >= c.min) ?? { name: "Fail", min: 0, color: "#FC8181", bg: "rgba(245,101,101,0.15)", border: "#FC8181" };
 }
-
-let _id = 0;
-const newCourse = (name = "", credits = "", score = "") => ({
-  id: ++_id,
-  name,
-  credits,
-  score,
-});
 
 /* ─── Inline styles ─── */
 const S = {
   page: {
     minHeight: "100vh",
     background: "linear-gradient(160deg,#111111 0%,#1a1a1a 100%)",
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontFamily: "'Poppins', sans-serif",
     color: "#fff",
     paddingBottom: "5rem",
   },
@@ -76,7 +53,7 @@ const S = {
     letterSpacing: "0.05em",
   },
   inner: {
-    maxWidth: "760px",
+    maxWidth: "720px",
     margin: "0 auto",
     padding: "3rem 1.5rem",
   },
@@ -100,96 +77,61 @@ const S = {
     marginBottom: "0.5rem",
   },
   sub: {
-    color: "rgba(255,255,255,0.5)",
+    color: "rgba(255,255,255,0.55)",
     fontSize: "0.95rem",
     marginBottom: "2.5rem",
-    lineHeight: 1.6,
+    lineHeight: 1.7,
   },
   card: {
     background: "rgba(255,255,255,0.04)",
     border: "1.5px solid rgba(245,163,0,0.2)",
     borderRadius: "18px",
-    padding: "1.5rem",
+    padding: "1.8rem",
     marginBottom: "1.2rem",
-  },
-  colHead: {
-    display: "grid",
-    gridTemplateColumns: "2fr 1fr 1fr 44px",
-    gap: "8px",
-    paddingBottom: "0.5rem",
-    fontSize: "0.7rem",
-    fontWeight: 800,
-    letterSpacing: "0.1em",
-    color: "rgba(255,255,255,0.35)",
-    textTransform: "uppercase",
-  },
-  row: {
-    display: "grid",
-    gridTemplateColumns: "2fr 1fr 1fr 44px",
-    gap: "8px",
-    marginBottom: "8px",
-    alignItems: "center",
   },
   input: {
     background: "rgba(255,255,255,0.07)",
-    border: "1.5px solid rgba(255,255,255,0.12)",
-    borderRadius: "8px",
+    border: "1.5px solid rgba(255,255,255,0.14)",
+    borderRadius: "10px",
     color: "#fff",
-    padding: "0.5rem 0.6rem",
-    fontSize: "0.88rem",
+    padding: "0.7rem 0.8rem",
+    fontSize: "0.95rem",
     width: "100%",
     outline: "none",
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontFamily: "'Poppins', sans-serif",
+    transition: "border-color 0.2s",
   },
-  delBtn: {
-    background: "rgba(211,47,47,0.12)",
-    border: "1.5px solid rgba(211,47,47,0.3)",
-    color: "#f87171",
-    borderRadius: "8px",
-    width: "36px",
-    height: "36px",
-    cursor: "pointer",
-    fontSize: "0.9rem",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+  label: {
+    fontSize: "0.78rem",
+    fontWeight: 600,
+    color: "rgba(255,255,255,0.6)",
+    display: "block",
+    marginBottom: "0.35rem",
+    letterSpacing: "0.02em",
   },
-  addBtn: {
-    background: "transparent",
-    border: "1.5px dashed rgba(245,163,0,0.35)",
-    color: "#F5A300",
-    borderRadius: "8px",
-    padding: "0.55rem 1.2rem",
-    fontSize: "0.85rem",
-    fontWeight: 700,
-    cursor: "pointer",
-    width: "100%",
-    marginTop: "0.5rem",
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
+  sectionLbl: {
+    fontSize: "0.7rem",
+    fontWeight: 800,
+    letterSpacing: "0.12em",
+    color: "rgba(255,255,255,0.35)",
+    textTransform: "uppercase",
+    marginBottom: "0.75rem",
   },
   calcBtn: {
     background: "#F5A300",
     color: "#111",
     border: "none",
-    borderRadius: "10px",
-    padding: "0.9rem 2rem",
-    fontSize: "1rem",
+    borderRadius: "12px",
+    padding: "1rem 2rem",
+    fontSize: "1.05rem",
     fontWeight: 800,
     cursor: "pointer",
     width: "100%",
     boxShadow: "5px 5px 0 #D32F2F",
     fontFamily: "'Oswald', sans-serif",
     letterSpacing: "0.05em",
-    marginBottom: "2rem",
+    marginBottom: "1.5rem",
     transition: "all 0.25s",
-  },
-  sectionLbl: {
-    fontSize: "0.7rem",
-    fontWeight: 800,
-    letterSpacing: "0.12em",
-    color: "rgba(255,255,255,0.3)",
-    textTransform: "uppercase",
-    marginBottom: "0.75rem",
   },
   errMsg: {
     color: "#FC8181",
@@ -198,92 +140,142 @@ const S = {
     padding: "0.5rem",
     marginBottom: "1rem",
   },
+  successMsg: {
+    color: "#68D391",
+    fontSize: "0.88rem",
+    textAlign: "center",
+    padding: "0.5rem",
+    marginBottom: "1rem",
+    fontWeight: 600,
+  },
 };
 
-/* ─── Component ─── */
 export default function CWACalculator() {
   const navigate = useNavigate();
-  const [courses, setCourses] = useState([
-    newCourse("Engineering Mathematics", "3", ""),
-    newCourse("Introduction to Programming", "3", ""),
-    newCourse("Mechanics of Materials", "2", ""),
-  ]);
+
+  // ─── State ───
+  const [cumulativeCredits, setCumulativeCredits] = useState("");
+  const [currentCWA, setCurrentCWA] = useState("");
+  const [semesterCredits, setSemesterCredits] = useState("");
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const updateCourse = (id, field, value) =>
-    setCourses((prev) => prev.map((c) => (c.id === id ? { ...c, [field]: value } : c)));
-
-  const addCourse = () => setCourses((prev) => [...prev, newCourse()]);
-  const delCourse = (id) => setCourses((prev) => prev.filter((c) => c.id !== id));
-
+  // ─── Calculate ───
   const calculate = useCallback(() => {
     setError("");
-    const parsed = [];
-    for (const c of courses) {
-      const credits = parseFloat(c.credits);
-      const score = parseFloat(c.score);
-      if (isNaN(credits) || credits <= 0) {
-        setError("Please enter valid credit hours (must be > 0) for every course.");
-        return;
-      }
-      if (isNaN(score) || score < 0 || score > 100) {
-        setError("Please enter valid scores (0 – 100) for every course.");
-        return;
-      }
-      const grade = getGrade(score);
-      parsed.push({ name: c.name || `Course ${parsed.length + 1}`, credits, score, ...grade });
+    setSuccess("");
+    setResult(null);
+
+    // Parse inputs
+    const cumCreds = parseFloat(cumulativeCredits);
+    const cwa = parseFloat(currentCWA);
+    const semCreds = parseFloat(semesterCredits);
+
+    // Validation
+    if (isNaN(cumCreds) || cumCreds <= 0) {
+      setError("Please enter a valid number of cumulative credits (must be > 0).");
+      return;
+    }
+    if (isNaN(cwa) || cwa < 0 || cwa > 100) {
+      setError("Please enter a valid current CWA (0 – 100).");
+      return;
+    }
+    if (isNaN(semCreds) || semCreds <= 0) {
+      setError("Please enter valid credit hours for this semester (must be > 0).");
+      return;
     }
 
-    const totalCredits = parsed.reduce((s, c) => s + c.credits, 0);
-    const weightedScore = parsed.reduce((s, c) => s + c.score * c.credits, 0);
-    const weightedGP = parsed.reduce((s, c) => s + c.gp * c.credits, 0);
-    const cwa = weightedScore / totalCredits;
-    const gpa = weightedGP / totalCredits;
     const currentClass = getClass(cwa);
+    const totalCreditsAfter = cumCreds + semCreds;
+    const cumulativeWeightedMarks = cwa * cumCreds;
 
-    // Upgrade targets — for every class above current
-    const upgrades = CLASSES.filter((cls) => cls.min > cwa).map((cls) => {
-      const gap = cls.min - cwa;
-      const impossible = cls.min > 100;
-      return { cls, gap, target: cls.min, impossible };
+    // Calculate required average for each class standing
+    const targets = CLASSES.map((cls) => {
+      const requiredWeighted = cls.min * totalCreditsAfter;
+      const neededFromSem = requiredWeighted - cumulativeWeightedMarks;
+      const requiredAvg = neededFromSem / semCreds;
+      const achievable = requiredAvg <= 100;
+      const alreadyThere = cwa >= cls.min;
+      return {
+        cls,
+        requiredAvg,
+        achievable,
+        alreadyThere,
+        displayAvg: alreadyThere ? 0 : requiredAvg,
+      };
     });
 
-    setResult({ parsed, totalCredits, cwa, gpa, currentClass, upgrades });
-  }, [courses]);
+    // Scenario projections: what happens at different semester averages
+    const scenarios = [40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100].map((avg) => {
+      const semWeighted = avg * semCreds;
+      const newCumWeighted = cumulativeWeightedMarks + semWeighted;
+      const newCWA = newCumWeighted / totalCreditsAfter;
+      const newClass = getClass(newCWA);
+      return { avg, newCWA: newCWA.toFixed(2), newClass };
+    });
 
+    // Check if already at First Class
+    if (cwa >= 70) {
+      setSuccess("🎓 You're already on a First Class trajectory! Keep your average at 70%+ to maintain it.");
+    }
+
+    setResult({
+      cumCreds,
+      cwa,
+      semCreds,
+      totalCreditsAfter,
+      currentClass,
+      targets,
+      scenarios,
+    });
+  }, [cumulativeCredits, currentCWA, semesterCredits]);
+
+  // ─── Helpers ───
   const tierLabel = (name) => {
     if (name === "Second Class Upper") return "2nd Upper";
     if (name === "Second Class Lower") return "2nd Lower";
     return name;
   };
 
-  const handleReset = () => {
-    _id = 0;
-    setResult(null);
-    setCourses([
-      newCourse("Engineering Mathematics", "3", ""),
-      newCourse("Introduction to Programming", "3", ""),
-      newCourse("Mechanics of Materials", "2", ""),
-    ]);
+  const formatAvg = (val, alreadyThere) => {
+    if (alreadyThere) return "Already achieved ✓";
+    if (val > 100) return `Not possible (needs ${val.toFixed(1)}%)`;
+    return `${val.toFixed(2)}%`;
   };
 
+  const handleReset = () => {
+    setCumulativeCredits("");
+    setCurrentCWA("");
+    setSemesterCredits("");
+    setResult(null);
+    setError("");
+    setSuccess("");
+  };
+
+  // ─── Render ───
   return (
     <div style={S.page}>
       <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
       />
-      <link
-  href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
-  rel="stylesheet"
-/>
 
       {/* NAV */}
       <nav style={S.nav}>
-        <span style={S.navLogo} onClick={() => navigate("/")}>
-          <span style={{ color: "#D32F2F" }}>Nk's</span> StudySync
-        </span>
+        <div
+          style={{ display: "flex", alignItems: "center", gap: "0.75rem", cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        >
+          <img
+            src="/IMG_8586.JPG.jpeg"
+            alt="NK's StudySync"
+            style={{ height: "42px", width: "42px", objectFit: "contain", borderRadius: "8px" }}
+          />
+          <span style={S.navLogo}>
+            <span style={{ color: "#D32F2F" }}>Nk's</span> StudySync
+          </span>
+        </div>
         <button style={S.backBtn} onClick={() => navigate("/")}>
           ← Back to Home
         </button>
@@ -292,22 +284,23 @@ export default function CWACalculator() {
       <div style={S.inner}>
         {/* Header */}
         <div style={{ marginBottom: "0.5rem" }}>
-          <span style={S.badge}>GPA / CWA CALCULATOR</span>
+          <span style={S.badge}>TARGET CWA PLANNER</span>
         </div>
         <h1 style={S.h1}>
-          CWA <span style={{ color: "#fff" }}>Calculator</span>
+          What You <span style={{ color: "#fff" }}>Need</span>
         </h1>
         <p style={S.sub}>
-          Enter your courses, credit hours, and percentage scores. We'll calculate your
-          Cumulative Weighted Average, show your class standing, and tell you exactly what
-          you need to move up.
+          Already know your current CWA from the portal or AIM app? Enter it below along with
+          your total credits so far and this semester's credit load. We'll show you exactly
+          what average you need this semester to reach each class standing — and whether it's
+          realistically achievable.
         </p>
 
-        {/* Class standard reference */}
+        {/* Grading reference */}
         <div style={{ ...S.card, marginBottom: "2rem", background: "rgba(245,163,0,0.04)" }}>
-          <p style={S.sectionLbl}>Grading standards (KNUST / standard)</p>
+          <p style={S.sectionLbl}>KNUST Grading Standards</p>
           <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-            {CLASSES.map((c) => (
+            {[...CLASSES].reverse().map((c) => (
               <span
                 key={c.name}
                 style={{
@@ -320,59 +313,104 @@ export default function CWACalculator() {
                   fontWeight: 800,
                 }}
               >
-                {c.name}: {c.min === 0 ? "< 45%" : c.min === 45 ? "45 – 49.99%" : c.min === 50 ? "50 – 59.99%" : c.min === 60 ? "60 – 69.99%" : "70%+"}
+                {c.name}: {c.min === 45 ? "45 – 49.99%" : c.min === 50 ? "50 – 59.99%" : c.min === 60 ? "60 – 69.99%" : "70%+"}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Course input */}
+        {/* Input Form */}
         <div style={S.card}>
-          <div style={S.colHead}>
-            <div>Course name</div>
-            <div>Credit hrs</div>
-            <div>Score (%)</div>
-            <div />
-          </div>
-          {courses.map((c) => (
-            <div key={c.id} style={S.row}>
-              <input
-                style={S.input}
-                type="text"
-                placeholder="e.g. Engineering Maths"
-                value={c.name}
-                onChange={(e) => updateCourse(c.id, "name", e.target.value)}
-              />
+          <p style={S.sectionLbl}>📋 Your Current Standing</p>
+          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.82rem", marginBottom: "1.5rem", lineHeight: 1.6 }}>
+            Find your <strong style={{ color: "#F5A300" }}>cumulative credits</strong> and{" "}
+            <strong style={{ color: "#F5A300" }}>current CWA</strong> on your student portal
+            or the AIM app. These are your totals from all semesters completed so far.
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.2rem", marginBottom: "1.5rem" }}>
+            <div>
+              <label style={S.label}>Cumulative Credits So Far</label>
               <input
                 style={S.input}
                 type="number"
-                placeholder="3"
+                placeholder="e.g. 45"
                 min="1"
-                max="6"
-                value={c.credits}
-                onChange={(e) => updateCourse(c.id, "credits", e.target.value)}
+                max="300"
+                value={cumulativeCredits}
+                onChange={(e) => {
+                  setCumulativeCredits(e.target.value);
+                  setResult(null);
+                  setError("");
+                  setSuccess("");
+                }}
+                onFocus={(e) => e.currentTarget.style.borderColor = "#F5A300"}
+                onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.14)"}
               />
+              <span style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.3)", marginTop: "0.25rem", display: "block" }}>
+                Total credits from all past semesters
+              </span>
+            </div>
+            <div>
+              <label style={S.label}>Current Cumulative CWA (%)</label>
               <input
                 style={S.input}
                 type="number"
-                placeholder="75"
+                placeholder="e.g. 62.50"
                 min="0"
                 max="100"
-                step="0.1"
-                value={c.score}
-                onChange={(e) => updateCourse(c.id, "score", e.target.value)}
+                step="0.01"
+                value={currentCWA}
+                onChange={(e) => {
+                  setCurrentCWA(e.target.value);
+                  setResult(null);
+                  setError("");
+                  setSuccess("");
+                }}
+                onFocus={(e) => e.currentTarget.style.borderColor = "#F5A300"}
+                onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.14)"}
               />
-              <button style={S.delBtn} onClick={() => delCourse(c.id)} aria-label="Remove">
-                ✕
-              </button>
+              <span style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.3)", marginTop: "0.25rem", display: "block" }}>
+                Your overall weighted average
+              </span>
             </div>
-          ))}
-          <button style={S.addBtn} onClick={addCourse}>
-            + Add another course
-          </button>
+          </div>
+
+          <div style={{ marginBottom: "1rem" }}>
+            <label style={S.label}>Credit Hours This Semester</label>
+            <input
+              style={{ ...S.input, maxWidth: "300px" }}
+              type="number"
+              placeholder="e.g. 18"
+              min="1"
+              max="30"
+              value={semesterCredits}
+              onChange={(e) => {
+                setSemesterCredits(e.target.value);
+                setResult(null);
+                setError("");
+                setSuccess("");
+              }}
+              onFocus={(e) => e.currentTarget.style.borderColor = "#F5A300"}
+              onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.14)"}
+            />
+            <span style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.3)", marginTop: "0.25rem", display: "block" }}>
+              Total credits you're registered for this semester
+            </span>
+          </div>
         </div>
 
-        {error && <p style={S.errMsg}>⚠️ {error}</p>}
+        {error && (
+          <div style={{ ...S.card, border: "1.5px solid rgba(252,129,129,0.3)", background: "rgba(252,129,129,0.05)", marginBottom: "1rem" }}>
+            <p style={{ ...S.errMsg, margin: 0 }}>⚠️ {error}</p>
+          </div>
+        )}
+
+        {success && (
+          <div style={{ ...S.card, border: "1.5px solid rgba(104,211,145,0.3)", background: "rgba(104,211,145,0.05)", marginBottom: "1rem" }}>
+            <p style={{ ...S.successMsg, margin: 0 }}>{success}</p>
+          </div>
+        )}
 
         <button
           style={S.calcBtn}
@@ -386,41 +424,35 @@ export default function CWACalculator() {
             e.currentTarget.style.boxShadow = "5px 5px 0 #D32F2F";
           }}
         >
-          Calculate My CWA →
+          Calculate Required Averages →
         </button>
 
         {/* ─── RESULTS ─── */}
         {result && (
           <div>
-            {/* Big CWA display */}
+            {/* Summary Card */}
             <div
               style={{
                 ...S.card,
+                background: "rgba(245,163,0,0.06)",
+                border: "2px solid rgba(245,163,0,0.35)",
                 textAlign: "center",
-                background: "rgba(245,163,0,0.07)",
-                border: `2px solid rgba(245,163,0,0.4)`,
-                padding: "2.5rem",
+                padding: "2rem",
               }}
             >
-              <p style={{ ...S.sectionLbl, marginBottom: "0.4rem" }}>Your CWA this semester</p>
-              <div
-                style={{
+              <p style={{ ...S.sectionLbl, marginBottom: "0.3rem" }}>Your Current Standing</p>
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: "0.5rem", marginBottom: "0.5rem" }}>
+                <span style={{
                   fontFamily: "'Oswald', sans-serif",
-                  fontSize: "clamp(3.5rem,10vw,5rem)",
+                  fontSize: "clamp(2.5rem,6vw,3.5rem)",
                   fontWeight: 700,
                   color: "#F5A300",
                   lineHeight: 1,
-                }}
-              >
-                {result.cwa.toFixed(2)}
-                <span style={{ fontSize: "1.5rem", color: "rgba(255,255,255,0.35)" }}>%</span>
+                }}>
+                  {result.cwa.toFixed(2)}
+                </span>
+                <span style={{ fontSize: "1.2rem", color: "rgba(255,255,255,0.4)" }}>%</span>
               </div>
-              <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem", margin: "0.4rem 0 1.2rem" }}>
-                GPA equivalent:{" "}
-                <strong style={{ color: "#fff" }}>{result.gpa.toFixed(2)}</strong>
-                &nbsp;·&nbsp; Total credits:{" "}
-                <strong style={{ color: "#fff" }}>{result.totalCredits}</strong>
-              </p>
               <span
                 style={{
                   display: "inline-block",
@@ -428,213 +460,204 @@ export default function CWACalculator() {
                   border: `2px solid ${result.currentClass.border}`,
                   color: result.currentClass.color,
                   borderRadius: "100px",
-                  padding: "0.45rem 1.5rem",
+                  padding: "0.4rem 1.5rem",
                   fontWeight: 800,
-                  fontSize: "0.95rem",
+                  fontSize: "0.9rem",
                   letterSpacing: "0.05em",
+                  marginBottom: "1rem",
                 }}
               >
                 {result.currentClass.name}
               </span>
-            </div>
-
-            {/* Tier bar */}
-            <div
-              style={{
+              <div style={{
                 display: "flex",
-                borderRadius: "10px",
-                overflow: "hidden",
-                border: "1.5px solid rgba(255,255,255,0.08)",
-                marginBottom: "1.2rem",
-              }}
-            >
-              {[...CLASSES].reverse().map((c) => {
-                const isActive = c.name === result.currentClass.name;
-                return (
-                  <div
-                    key={c.name}
-                    style={{
-                      flex: 1,
-                      padding: "0.6rem 0.2rem",
-                      textAlign: "center",
-                      fontSize: "0.65rem",
-                      fontWeight: 800,
-                      letterSpacing: "0.04em",
-                      background: c.bg,
-                      color: c.color,
-                      outline: isActive ? "2.5px solid white" : "none",
-                      outlineOffset: "-2px",
-                    }}
-                  >
-                    {tierLabel(c.name)}
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Upgrade targets */}
-            <div style={S.card}>
-              <p style={S.sectionLbl}>
-                {result.upgrades.length ? "What you need to move up" : "You're at the top — maintain it!"}
-              </p>
-              {result.upgrades.length === 0 && (
-                <p style={{ color: "#F5A300", fontWeight: 700, fontSize: "0.95rem" }}>
-                  🎓 You're on a First Class trajectory. Keep your average at{" "}
-                  {result.cwa.toFixed(2)}% or above to secure it.
-                </p>
-              )}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))",
-                  gap: "1rem",
-                }}
-              >
-                {result.upgrades.map((u) => (
-                  <div
-                    key={u.cls.name}
-                    style={{
-                      background: u.impossible ? "rgba(255,255,255,0.03)" : u.cls.bg,
-                      border: `1.5px solid ${u.impossible ? "rgba(255,255,255,0.1)" : u.cls.border}`,
-                      borderRadius: "14px",
-                      padding: "1.2rem",
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontSize: "0.65rem",
-                        fontWeight: 800,
-                        letterSpacing: "0.12em",
-                        color: "rgba(255,255,255,0.35)",
-                        textTransform: "uppercase",
-                        marginBottom: "0.3rem",
-                      }}
-                    >
-                      To reach
-                    </p>
-                    <p
-                      style={{
-                        fontWeight: 700,
-                        fontSize: "0.9rem",
-                        color: u.impossible ? "rgba(255,255,255,0.4)" : u.cls.color,
-                        marginBottom: "0.4rem",
-                      }}
-                    >
-                      {u.cls.name}
-                    </p>
-                    {u.impossible ? (
-                      <p style={{ fontSize: "0.8rem", color: "rgba(255,100,100,0.7)", fontWeight: 600 }}>
-                        Requires &gt;100% — not achievable this semester
-                      </p>
-                    ) : (
-                      <>
-                        <div
-                          style={{
-                            fontFamily: "'Oswald', sans-serif",
-                            fontSize: "2rem",
-                            fontWeight: 700,
-                            color: u.cls.color,
-                            lineHeight: 1,
-                          }}
-                        >
-                          {u.target.toFixed(1)}%+
-                        </div>
-                        <p
-                          style={{
-                            fontSize: "0.78rem",
-                            color: "rgba(255,255,255,0.5)",
-                            marginTop: "0.35rem",
-                            lineHeight: 1.5,
-                          }}
-                        >
-                          You need a <strong style={{ color: "#fff" }}>{u.target.toFixed(1)}%</strong>{" "}
-                          average across all your units.
-                          <br />
-                          You're{" "}
-                          <strong style={{ color: u.cls.color }}>{u.gap.toFixed(2)}%</strong> away.
-                        </p>
-                      </>
-                    )}
-                  </div>
-                ))}
+                justifyContent: "center",
+                gap: "2rem",
+                fontSize: "0.82rem",
+                color: "rgba(255,255,255,0.5)",
+              }}>
+                <span>{result.cumCreds} credits completed</span>
+                <span>{result.semCreds} credits this sem</span>
+                <span>{result.totalCreditsAfter} total after</span>
               </div>
             </div>
 
-            {/* Breakdown table */}
+            {/* Required Averages per Class */}
             <div style={S.card}>
-              <p style={S.sectionLbl}>Course breakdown</p>
-              <div style={{ overflowX: "auto" }}>
-                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>
-                  <thead>
-                    <tr>
-                      {["Course", "Credits", "Score", "Grade", "Weighted"].map((h) => (
-                        <th
-                          key={h}
+              <p style={S.sectionLbl}>🎯 Required Semester Average for Each Class</p>
+              <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.8rem", marginBottom: "1rem" }}>
+                Here's the average score you need across all your courses this semester to reach each standing.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                {result.targets.map((t) => {
+                  const isCurrent = t.cls.name === result.currentClass.name && result.cwa >= t.cls.min;
+                  const isImpossible = !t.achievable && !t.alreadyThere;
+                  const isAchievable = t.achievable && !t.alreadyThere;
+
+                  return (
+                    <div
+                      key={t.cls.name}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        padding: "1rem 1.3rem",
+                        background: isCurrent
+                          ? "rgba(245,163,0,0.12)"
+                          : isImpossible
+                          ? "rgba(255,255,255,0.02)"
+                          : t.cls.bg,
+                        border: `1.5px solid ${
+                          isCurrent ? "#F5A300" : isImpossible ? "rgba(255,255,255,0.08)" : t.cls.border
+                        }`,
+                        borderRadius: "12px",
+                        opacity: isImpossible ? 0.5 : 1,
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                        <div
                           style={{
-                            textAlign: h === "Course" ? "left" : "center",
-                            color: "rgba(255,255,255,0.35)",
-                            fontSize: "0.68rem",
-                            letterSpacing: "0.1em",
-                            textTransform: "uppercase",
-                            padding: "0 0.5rem 0.6rem",
-                            borderBottom: "1px solid rgba(255,255,255,0.08)",
+                            width: "10px",
+                            height: "10px",
+                            borderRadius: "50%",
+                            background: t.cls.color,
+                            flexShrink: 0,
                           }}
-                        >
-                          {h}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {result.parsed.map((c, i) => (
-                      <tr key={i}>
-                        <td style={{ padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.85)" }}>
-                          {c.name}
-                        </td>
-                        <td style={{ padding: "0.5rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.7)" }}>
-                          {c.credits}
-                        </td>
-                        <td style={{ padding: "0.5rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.85)" }}>
-                          {c.score.toFixed(1)}%
-                        </td>
-                        <td style={{ padding: "0.5rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                          <span
-                            style={{
-                              background: "rgba(245,163,0,0.15)",
-                              color: "#F5A300",
-                              borderRadius: "6px",
-                              padding: "0.15rem 0.5rem",
-                              fontWeight: 700,
-                              fontSize: "0.8rem",
-                            }}
-                          >
-                            {c.letter}
+                        />
+                        <div>
+                          <p style={{ fontWeight: 700, fontSize: "0.9rem", color: t.cls.color }}>
+                            {t.cls.name}
+                          </p>
+                          <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.4)" }}>
+                            {t.cls.min}%+ required overall
+                          </p>
+                        </div>
+                      </div>
+                      <div style={{ textAlign: "right" }}>
+                        {t.alreadyThere ? (
+                          <span style={{
+                            background: "rgba(104,211,145,0.15)",
+                            color: "#68D391",
+                            padding: "0.35rem 0.9rem",
+                            borderRadius: "6px",
+                            fontSize: "0.8rem",
+                            fontWeight: 700,
+                          }}>
+                            Already achieved ✓
                           </span>
-                        </td>
-                        <td style={{ padding: "0.5rem", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,0.06)", color: "#F5A300", fontWeight: 700 }}>
-                          {(c.score * c.credits).toFixed(1)}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                  <tfoot>
-                    <tr style={{ borderTop: "2px solid rgba(255,255,255,0.15)" }}>
-                      <td style={{ padding: "0.6rem 0.5rem", fontWeight: 700, color: "#fff" }}>
-                        Semester Total
-                      </td>
-                      <td style={{ textAlign: "center", fontWeight: 700, color: "#fff", padding: "0.6rem 0.5rem" }}>
-                        {result.totalCredits}
-                      </td>
-                      <td style={{ textAlign: "center", fontWeight: 700, color: "#F5A300", padding: "0.6rem 0.5rem" }}>
-                        {result.cwa.toFixed(2)}%
-                      </td>
-                      <td />
-                      <td style={{ textAlign: "center", fontWeight: 700, color: "#F5A300", padding: "0.6rem 0.5rem" }}>
-                        {(result.cwa * result.totalCredits).toFixed(1)}
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
+                        ) : t.achievable ? (
+                          <>
+                            <p style={{
+                              fontFamily: "'Oswald', sans-serif",
+                              fontSize: "1.4rem",
+                              fontWeight: 700,
+                              color: t.cls.color,
+                              lineHeight: 1.1,
+                            }}>
+                              {t.requiredAvg.toFixed(1)}%
+                            </p>
+                            <p style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.4)" }}>
+                              needed this semester
+                            </p>
+                          </>
+                        ) : (
+                          <span style={{
+                            background: "rgba(252,129,129,0.15)",
+                            color: "#FC8181",
+                            padding: "0.35rem 0.9rem",
+                            borderRadius: "6px",
+                            fontSize: "0.8rem",
+                            fontWeight: 700,
+                          }}>
+                            Needs &gt;100% — not possible
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* What-If Scenarios */}
+            <div style={S.card}>
+              <p style={S.sectionLbl}>📈 What-If Scenarios</p>
+              <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.8rem", marginBottom: "1rem" }}>
+                See how different semester averages would affect your cumulative CWA after this semester.
+                Each cell shows your new CWA and class standing.
+              </p>
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(95px, 1fr))",
+                gap: "0.5rem",
+              }}>
+                {result.scenarios.map((s) => {
+                  const improved = parseFloat(s.newCWA) > result.cwa;
+                  const sameClass = s.newClass.name === result.currentClass.name;
+                  return (
+                    <div
+                      key={s.avg}
+                      style={{
+                        background: improved
+                          ? s.newClass.bg
+                          : "rgba(255,255,255,0.03)",
+                        border: `1.5px solid ${improved ? s.newClass.border : "rgba(255,255,255,0.08)"}`,
+                        borderRadius: "10px",
+                        padding: "0.7rem 0.5rem",
+                        textAlign: "center",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      <p style={{ fontSize: "0.62rem", color: "rgba(255,255,255,0.35)", marginBottom: "0.2rem" }}>
+                        Avg {s.avg}%
+                      </p>
+                      <p style={{
+                        fontFamily: "'Oswald', sans-serif",
+                        fontSize: "1rem",
+                        fontWeight: 700,
+                        color: improved ? "#F5A300" : "#fff",
+                      }}>
+                        {s.newCWA}%
+                      </p>
+                      <span style={{
+                        display: "inline-block",
+                        background: s.newClass.bg,
+                        color: s.newClass.color,
+                        borderRadius: "4px",
+                        padding: "0.1rem 0.4rem",
+                        fontSize: "0.6rem",
+                        fontWeight: 700,
+                        marginTop: "0.25rem",
+                        letterSpacing: "0.03em",
+                      }}>
+                        {tierLabel(s.newClass.name)}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* The Math Explained */}
+            <div style={{ ...S.card, background: "rgba(255,255,255,0.02)", border: "1.5px solid rgba(255,255,255,0.06)" }}>
+              <p style={S.sectionLbl}>🔍 How This Works</p>
+              <div style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8 }}>
+                <p>
+                  Your <strong style={{ color: "#F5A300" }}>cumulative weighted marks</strong> ={" "}
+                  {result.cwa.toFixed(2)}% × {result.cumCreds} credits ={" "}
+                  <strong style={{ color: "#fff" }}>{(result.cwa * result.cumCreds).toFixed(1)}</strong>
+                </p>
+                <p>
+                  After this semester, you'll have{" "}
+                  <strong style={{ color: "#fff" }}>{result.totalCreditsAfter} total credits</strong>.
+                </p>
+                <p>
+                  To reach a target CWA, we work backwards: how many weighted marks do you need from this
+                  semester to push your cumulative total to the target?
+                </p>
+                <p style={{ marginTop: "0.5rem", color: "rgba(255,255,255,0.35)", fontStyle: "italic" }}>
+                  Formula: Required semester avg = (Target CWA × Total credits) - (Current CWA × Past credits) ÷ Semester credits
+                </p>
               </div>
             </div>
 
@@ -645,8 +668,8 @@ export default function CWACalculator() {
                   background: "transparent",
                   border: "2px solid rgba(255,255,255,0.15)",
                   color: "rgba(255,255,255,0.5)",
-                  borderRadius: "8px",
-                  padding: "0.5rem 1.4rem",
+                  borderRadius: "10px",
+                  padding: "0.6rem 1.6rem",
                   fontFamily: "'Oswald', sans-serif",
                   fontWeight: 700,
                   fontSize: "0.85rem",
@@ -655,9 +678,18 @@ export default function CWACalculator() {
                 }}
                 onClick={handleReset}
               >
-                Reset Calculator
+                Start Over
               </button>
             </div>
+          </div>
+        )}
+
+        {/* No results yet — placeholder */}
+        {!result && !error && (
+          <div style={{ ...S.card, textAlign: "center", background: "rgba(255,255,255,0.02)", border: "1.5px dashed rgba(255,255,255,0.08)" }}>
+            <p style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.9rem" }}>
+              👆 Enter your numbers above and click calculate to see what you need.
+            </p>
           </div>
         )}
       </div>
