@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+
 /* ─── Constants ─── */
 const CLASSES = [
   { name: "First Class",        min: 70, color: "#F5A300", bg: "rgba(245,163,0,0.12)",   border: "rgba(245,163,0,0.4)"  },
@@ -261,12 +262,7 @@ function HeroCard({ result }) {
 }
 
 function TargetsCard({ result }) {
-  const { cumCreds, curCWA, semCreds, totalCreds, currentWeighted } = result;
-
-  const allCls = [
-    ...CLASSES,
-    { name: "Pass (minimum)", min: 45, color: "#A0AEC0", bg: "rgba(160,174,192,0.12)", border: "rgba(160,174,192,0.4)" },
-  ];
+  const { curCWA, totalCreds, currentWeighted, semCreds } = result;
 
   const rows = CLASSES.map((cls) => {
     const needed = (cls.min * totalCreds - currentWeighted) / semCreds;
@@ -288,29 +284,51 @@ function TargetsCard({ result }) {
               key={cls.name}
               style={{
                 display: "flex",
+                flexWrap: "wrap",
                 alignItems: "center",
                 justifyContent: "space-between",
                 padding: "0.9rem 1.1rem",
+                gap: "0.75rem",
                 background: alreadyThere ? cls.bg : impossible ? "rgba(255,255,255,0.02)" : cls.bg,
                 border: `1px solid ${alreadyThere ? cls.border : impossible ? "rgba(255,255,255,0.06)" : cls.border}`,
                 borderRadius: "12px",
                 opacity: impossible ? 0.5 : 1,
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "0.65rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", flex: "1 1 auto" }}>
                 <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: cls.color, flexShrink: 0 }} />
                 <div>
                   <p style={{ fontWeight: 700, fontSize: "0.88rem", color: cls.color }}>{cls.name}</p>
                   <p style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.35)" }}>{cls.min}%+ overall</p>
                 </div>
               </div>
-              <div style={{ textAlign: "right" }}>
+              <div style={{ textAlign: "right", flex: "0 0 auto" }}>
                 {alreadyThere ? (
-                  <span style={{ background: "rgba(104,211,145,0.15)", color: "#68D391", padding: "0.3rem 0.8rem", borderRadius: "6px", fontSize: "0.78rem", fontWeight: 700 }}>
+                  <span style={{ 
+                    background: "rgba(104,211,145,0.15)", 
+                    color: "#68D391", 
+                    padding: "0.3rem 0.8rem", 
+                    borderRadius: "6px", 
+                    fontSize: "0.78rem", 
+                    fontWeight: 700,
+                    display: "inline-block",
+                    whiteSpace: "normal",
+                    wordBreak: "keep-all",
+                  }}>
                     Already achieved ✓
                   </span>
                 ) : impossible ? (
-                  <span style={{ background: "rgba(252,129,129,0.1)", color: "#FC8181", padding: "0.3rem 0.8rem", borderRadius: "6px", fontSize: "0.78rem", fontWeight: 700 }}>
+                  <span style={{ 
+                    background: "rgba(252,129,129,0.1)", 
+                    color: "#FC8181", 
+                    padding: "0.3rem 0.8rem", 
+                    borderRadius: "6px", 
+                    fontSize: "0.78rem", 
+                    fontWeight: 700,
+                    display: "inline-block",
+                    whiteSpace: "normal",
+                    wordBreak: "keep-all",
+                  }}>
                     Needs {needed.toFixed(0)}% — not possible
                   </span>
                 ) : (
