@@ -199,7 +199,7 @@ function HeroCard({ result }) {
     verdictText = `Hitting ${targetCWA}% overall would require a ${requiredAvg.toFixed(1)}% average — mathematically impossible. Consider a lower target or plan across multiple semesters.`;
   } else {
     bigText = `${requiredAvg.toFixed(1)}%`;
-    labelText = `average this semester to reach a ${targetCWA}% CWA`;
+    labelText = `this semester to reach a ${targetCWA}% CWA`;
     badgeText = `Target: ${targetCls.name} (${targetCWA}%+)`;
     badgeColor = { bg: "rgba(245,163,0,0.12)", color: "#F5A300" };
     const difficulty =
