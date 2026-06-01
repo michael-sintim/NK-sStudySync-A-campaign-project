@@ -679,7 +679,7 @@ export default function NKsStudySync() {
     ["QuizLensAI",  "QuizLensAI",           false],
     // ["join",        "Join",                 false],
     ["internships", "Industry Bridge",      true ],
-    ["cwa",         "CWA Calculator",       true ],
+    ["cwa",         "CWA Planner",       true ],
   ];
 
   return (
